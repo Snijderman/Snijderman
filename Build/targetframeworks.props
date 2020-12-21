@@ -1,0 +1,9 @@
+<Project>
+   <PropertyGroup>
+
+      <ClassLibTargetFrameworks>netstandard2.1;net5.0</ClassLibTargetFrameworks>
+
+      <ApplicationTargetFrameworks>netcoreapp3.1;net5.0</ApplicationTargetFrameworks>
+
+   </PropertyGroup>
+</Project>

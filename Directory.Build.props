@@ -1,0 +1,40 @@
+<Project>
+   <Import Project="Build\dependencies.props" />
+   <Import Project="Build\version.props" />
+   <Import Project="Build\targetframeworks.props" />
+   <Import Project="Build\assemblynaming.props" />
+
+   <PropertyGroup>
+      <IsSnijdermanTestProject Condition="$(MSBuildProjectName.EndsWith('tests', StringComparison.OrdinalIgnoreCase))">true</IsSnijdermanTestProject>
+      <IsSnijdermanSampleProject Condition="$(MSBuildProjectName.EndsWith('.example', StringComparison.OrdinalIgnoreCase)) or $(MSBuildProjectName.StartsWith('example', StringComparison.OrdinalIgnoreCase))">true</IsSnijdermanSampleProject>
+   </PropertyGroup>
+
+   <PropertyGroup>
+      <SnijdermanRequiredTargetFrameworks>$(ClassLibTargetFrameworks)</SnijdermanRequiredTargetFrameworks>
+   </PropertyGroup>
+
+   <PropertyGroup Condition="'$(IsSnijdermanTestProject)' == 'true' or '$(IsSnijdermanSampleProject)' == 'true'">
+      <SnijdermanRequiredTargetFrameworks>$(ApplicationTargetFrameworks)</SnijdermanRequiredTargetFrameworks>
+   </PropertyGroup>
+
+   <PropertyGroup>
+      <TargetFrameworks>$(SnijdermanRequiredTargetFrameworks)</TargetFrameworks>
+      <Platforms>AnyCPU;x64</Platforms>
+      <LangVersion>latest</LangVersion>
+
+      <!-- Set versions for all projects.  -->
+      <Version>$(SnijdermanVersion)</Version>
+      <AssemblyVersion>$(SnijdermanAssemblyVersion)</AssemblyVersion>
+      <FileVersion>$(SnijdermanFileVersion)</FileVersion>
+
+      <!-- Temporary to enable code coverage in VS -->
+      <!-- Required in both test/product projects. This is a temporary workaround for https://github.com/Microsoft/vstest/issues/800 -->
+      <DebugType>Full</DebugType>
+
+      <!-- Authoring information -->
+      <Company>Snijderman</Company>
+      <Authors>$(Company)</Authors>
+      <Copyright>Copyright 2020 (c) $(Company). All rights reserved.</Copyright>
+   </PropertyGroup>
+
+</Project>

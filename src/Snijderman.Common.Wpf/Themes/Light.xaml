@@ -1,0 +1,281 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:defaults="clr-namespace:Snijderman.Common.Wpf.Themes.Default"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+   <ResourceDictionary.MergedDictionaries>
+      <ResourceDictionary Source="pack://application:,,,/Snijderman.Common.Wpf;component/Themes/SnijdermanWpfThemeResources.xaml"/>
+   </ResourceDictionary.MergedDictionaries>
+
+   <!-- Fonts -->
+   <FontFamily x:Key="DefaultFontFamily">Segoe UI</FontFamily>
+   <sys:Double x:Key="DefaultFontSize">13</sys:Double>
+   <sys:Double x:Key="SmallFontSize">11</sys:Double>
+
+   <FontFamily x:Key="FixedFontFamily">Consolas</FontFamily>
+   <sys:Double x:Key="FixedFontSize">13.333</sys:Double>
+
+   <!-- layout margins -->
+   <Thickness x:Key="RootMargin">-42,-8,-16,-16</Thickness>
+   <Thickness x:Key="ContentMargin">16,28,16,16</Thickness>
+   <Thickness x:Key="StatusMargin">-16,16,0,0</Thickness>
+   <Thickness x:Key="HeaderMargin">0,-28,44,0</Thickness>
+
+   <Thickness x:Key="SplitLeft">0,0,0,0</Thickness>
+   <Thickness x:Key="SplitRight">16,0,0,0</Thickness>
+
+   <!--Close system button-->
+   <sys:Double x:Key="CloseButtonWidth">32</sys:Double>
+
+   <!--System Button-->
+   <sys:Double x:Key="SystemButtonHeight">24</sys:Double>
+   <sys:Double x:Key="SystemButtonWidth">32</sys:Double>
+
+   <!-- Colors -->
+   <!-- default accent color -->
+   <Color x:Key="{x:Static defaults:Colors.AccentColorKey}">#1ba1e2</Color>
+   <Color x:Key="{x:Static defaults:Colors.ForegroundColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.WindowTitleForegroundColorKey}">#333333</Color>
+
+   <Color x:Key="{x:Static defaults:Colors.BackgroundColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.WindowBackgroundColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.BorderColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.DisabledForegroundColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.WindowButtonHighlightColorKey}">#ededed</Color>
+   <Color x:Key="{x:Static defaults:Colors.WindowButtonInteractionColorKey}">#f4f4f4</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.WindowBorderActiveColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <DynamicResource x:Key="{x:Static defaults:Colors.WindowBorderColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+
+   <!-- Button -->
+   <!-- Background -->
+   <Color x:Key="{x:Static defaults:Colors.ButtonBackgroundColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.ButtonBackgroundHoverColorKey}">#dddddd</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.ButtonBackgroundPressedColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <!-- Border  -->
+   <Color x:Key="{x:Static defaults:Colors.ButtonBorderColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.ButtonBorderHoverColorKey}">#cccccc</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.ButtonBorderPressedColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <!-- Text -->
+   <Color x:Key="{x:Static defaults:Colors.ButtonTextColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ButtonTextHoverColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ButtonTextPressedColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.ButtonTextDisabledColorKey}">#a1a1a1</Color>
+
+   <!-- Items -->
+   <Color x:Key="{x:Static defaults:Colors.ItemBackgroundHoverColorKey}">#dddddd</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.ItemBackgroundSelectedColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.ItemBorderColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.ItemTextColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ItemTextSelectedColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.ItemTextHoverColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ItemTextDisabledColorKey}">#919191</Color>
+
+   <!-- Input -->
+   <Color x:Key="{x:Static defaults:Colors.InputBackgroundColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.InputBackgroundHoverColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.InputBorderColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.InputBorderHoverColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.InputTextColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.InputTextHoverColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.InputTextDisabledColorKey}">#919191</Color>
+
+   <!-- Popup -->
+   <Color x:Key="{x:Static defaults:Colors.PopupBackgroundColorKey}">#ffffff</Color>
+
+   <!-- Modern -->
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonBorderColorKey}">#919191</Color>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonBorderHoverColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonBorderPressedColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonBorderDisabledColorKey}">#919191</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.ModernButtonIconBackgroundPressedColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonIconForegroundPressedColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonTextColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonTextHoverColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonTextPressedColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.ModernButtonTextDisabledColorKey}">#a1a1a1</Color>
+
+   <!-- ScrollBar -->
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarBackgroundColorKey}">Transparent</Color>
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarThumbBackgroundColorKey}">Transparent</Color>
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarThumbBackgroundDraggingColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarThumbBackgroundHoverColorKey}">#dddddd</Color>
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarThumbBorderColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarThumbForegroundColorKey}">Transparent</Color>
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarThumbForegroundDraggingColorKey}">Transparent</Color>
+   <Color x:Key="{x:Static defaults:Colors.ScrollBarThumbForegroundHoverColorKey}">Transparent</Color>
+
+   <!-- Seperator -->
+   <Color x:Key="{x:Static defaults:Colors.SeparatorBackgroundColorKey}">#cccccc</Color>
+
+   <!-- Window text -->
+   <Color x:Key="{x:Static defaults:Colors.WindowTextReadOnlyColorKey}">#919191</Color>
+
+   <!-- Datagrid -->
+   <Color x:Key="{x:Static defaults:Colors.DataGridBackgroundColorKey}">Transparent</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridForegroundColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridCellBackgroundColorKey}">Transparent</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridCellBackgroundHoverColorKey}">#dddddd</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.DataGridCellBackgroundSelectedColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.DataGridCellForegroundColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridCellForegroundHoverColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridCellForegroundSelectedColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridHeaderBackgroundColorKey}">Transparent</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridHeaderBackgroundHoverColorKey}">#dddddd</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.DataGridHeaderBackgroundPressedColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <DynamicResource x:Key="{x:Static defaults:Colors.DataGridHeaderBackgroundSelectedColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.DataGridHeaderForegroundColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridHeaderForegroundHoverColorKey}">#333333</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridHeaderForegroundPressedColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridHeaderForegroundSelectedColorKey}">#ffffff</Color>
+   <Color x:Key="{x:Static defaults:Colors.DataGridGridLinesColorKey}">#cccccc</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.DataGridDropSeparatorColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+
+   <!-- Hyperlinkk -->
+   <DynamicResource x:Key="{x:Static defaults:Colors.HyperlinkColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <DynamicResource x:Key="{x:Static defaults:Colors.HyperlinkHoverColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.HyperlinkDisabledColorKey}">#919191</Color>
+
+   <!-- Progress -->
+   <Color x:Key="{x:Static defaults:Colors.ProgressBackgroundColorKey}">#dddddd</Color>
+
+   <!-- Slider -->
+   <DynamicResource x:Key="{x:Static defaults:Colors.SliderSelectionBackgroundColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <DynamicResource x:Key="{x:Static defaults:Colors.SliderSelectionBorderColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.SliderThumbBackgroundColorKey}">#ffffff</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.SliderThumbBackgroundDraggingColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.SliderThumbBackgroundHoverColorKey}">#dddddd</Color>
+   <Color x:Key="{x:Static defaults:Colors.SliderThumbBackgroundDisabledColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.SliderThumbBorderColorKey}">#cccccc</Color>
+   <DynamicResource x:Key="{x:Static defaults:Colors.SliderThumbBorderDraggingColorKey}" ResourceKey="{x:Static defaults:Colors.AccentColorKey}"/>
+   <Color x:Key="{x:Static defaults:Colors.SliderThumbBorderHoverColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.SliderThumbBorderDisabledColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.SliderTrackBackgroundColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.SliderTrackBorderColorKey}">#cccccc</Color>
+   <Color x:Key="{x:Static defaults:Colors.SliderTickColorKey}">#919191</Color>
+   <Color x:Key="{x:Static defaults:Colors.SliderTickDisabledColorKey}">#cccccc</Color>
+
+
+   <!-- Brushes -->
+   <!-- Note: a DynamicResource needs te be looked up using a StaticResource!!! -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.AccentBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.AccentColorKey}}" />
+
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.BackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.BackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ForegroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ForegroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.WindowBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.WindowBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.WindowTitleForegroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.WindowTitleForegroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DisabledForegroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DisabledForegroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.BorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.AccentColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.WindowButtonHighlightBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.WindowButtonHighlightColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.WindowButtonInteractionBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.WindowButtonInteractionColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.WindowBorderBrushKey}" Color="{StaticResource {x:Static defaults:Colors.WindowBorderColorKey}}" Opacity=".5"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.WindowBorderActiveBrushKey}" Color="{StaticResource {x:Static defaults:Colors.WindowBorderActiveColorKey}}"/>
+
+   <!-- Butto -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ButtonBackgroundColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonBackgroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ButtonBackgroundHoverColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonBackgroundPressedBrushKey}" Color="{StaticResource {x:Static defaults:Colors.ButtonBackgroundPressedColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ButtonBorderColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonBorderHoverBrushKey}"   Color="{DynamicResource {x:Static defaults:Colors.ButtonBorderHoverColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonBorderPressedBrushKey}" Color="{StaticResource {x:Static defaults:Colors.ButtonBorderPressedColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonTextBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ButtonTextColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonTextHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ButtonTextHoverColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonTextPressedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ButtonTextPressedColorKey}}" />
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ButtonTextDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ButtonTextDisabledColorKey}}" />
+
+   <!-- Items -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ItemBackgroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ItemBackgroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ItemBackgroundSelectedBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.ItemBackgroundSelectedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ItemBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ItemBorderColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ItemTextBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ItemTextColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ItemTextSelectedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ItemTextSelectedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ItemTextHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ItemTextHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ItemTextDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ItemTextDisabledColorKey}}"/>
+
+   <!-- Input -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.InputBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.InputBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.InputBackgroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.InputBackgroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.InputBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.InputBorderColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.InputBorderHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.InputBorderHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.InputTextBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.InputTextColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.InputTextHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.InputTextHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.InputTextDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.InputTextDisabledColorKey}}"/>
+
+   <!-- Popup -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.PopupBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.PopupBackgroundColorKey}}"/>
+
+   <!-- Modern -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonBorderColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonBorderHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonBorderHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonBorderPressedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonBorderPressedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonBorderDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonBorderDisabledColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonIconBackgroundPressedBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.ModernButtonIconBackgroundPressedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonIconForegroundPressedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonIconForegroundPressedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonTextBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonTextColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonTextHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonTextHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonTextPressedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonTextPressedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ModernButtonTextDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ModernButtonTextDisabledColorKey}}"/>
+
+   <!-- Scrollbar -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarThumbBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarThumbBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarThumbBackgroundDraggingBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarThumbBackgroundDraggingColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarThumbBackgroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarThumbBackgroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarThumbBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarThumbBorderColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarThumbForegroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarThumbForegroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarThumbForegroundDraggingBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarThumbForegroundDraggingColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ScrollBarThumbForegroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ScrollBarThumbForegroundHoverColorKey}}"/>
+
+   <!-- Seperator -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SeparatorBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SeparatorBackgroundColorKey}}"/>
+
+   <!-- Window text -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.WindowTextReadOnlyBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.WindowTextReadOnlyColorKey}}"/>
+
+   <!-- Datagrid -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridForegroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridForegroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridCellBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridCellBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridCellBackgroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridCellBackgroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridCellBackgroundSelectedBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.DataGridCellBackgroundSelectedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridCellForegroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridCellForegroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridCellForegroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridCellForegroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridCellForegroundSelectedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridCellForegroundSelectedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridHeaderBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderBackgroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridHeaderBackgroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderBackgroundPressedBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.DataGridHeaderBackgroundPressedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderBackgroundSelectedBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.DataGridHeaderBackgroundSelectedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderForegroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridHeaderForegroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderForegroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridHeaderForegroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderForegroundPressedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridHeaderForegroundPressedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridHeaderForegroundSelectedBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridHeaderForegroundSelectedColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridGridLinesBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.DataGridGridLinesColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.DataGridDropSeparatorBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.DataGridDropSeparatorColorKey}}"/>
+
+   <!-- Hyperlink -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.HyperlinkBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.HyperlinkColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.HyperlinkHoverBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.HyperlinkHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.HyperlinkDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.HyperlinkDisabledColorKey}}"/>
+
+   <!-- Progress -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.ProgressBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.ProgressBackgroundColorKey}}"/>
+
+   <!-- Slider -->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderSelectionBackgroundBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.SliderSelectionBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderSelectionBorderBrushKey}" Color="{StaticResource  {x:Static defaults:Colors.SliderSelectionBorderColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderThumbBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBackgroundDraggingBrushKey}" Color="{StaticResource {x:Static defaults:Colors.SliderThumbBackgroundDraggingColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBackgroundHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderThumbBackgroundHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBackgroundDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderThumbBackgroundDisabledColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderThumbBorderColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBorderDraggingBrushKey}" Color="{StaticResource {x:Static defaults:Colors.SliderThumbBorderDraggingColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBorderHoverBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderThumbBorderHoverColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderThumbBorderDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderThumbBorderDisabledColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderTrackBackgroundBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderTrackBackgroundColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderTrackBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderTrackBorderColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderTickBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderTickColorKey}}"/>
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.SliderTickDisabledBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.SliderTickDisabledColorKey}}"/>
+
+   <!-- TabControl-->
+   <SolidColorBrush x:Key="{x:Static defaults:Brushes.TabControlBorderBrushKey}" Color="{DynamicResource {x:Static defaults:Colors.AccentColorKey}}" Opacity=".5"/>
+
+</ResourceDictionary>

@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+   <PropertyGroup>
+      <TargetFrameworks>netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <IsTestProject>false</IsTestProject>
+      <UseWPF>true</UseWPF>
+
+      <IsSnijdermanPublishedPackage>true</IsSnijdermanPublishedPackage>
+      <Version>1.1.11</Version>
+      <Title>Snijderman.Common.Wpf</Title>
+      <Description>Library with common WPF markup, themes, extensions and utilities</Description>
+      <Summary>Library with common WPF markup, themes, extensions and utilities</Summary>
+      <PackageProjectUrl>https://github.com/Snijderman/Snijderman.Wpf</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/Snijderman/Snijderman.Wpf</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <PackageTags>WPF;.NET Core</PackageTags>
+      <Copyright>Copyright © 2020 Snijderman</Copyright>
+      <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <ProjectReference Include="..\Snijderman.Common\Snijderman.Common.csproj" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+      <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <Folder Include="Converters\" />
+      <Folder Include="Themes\Default\Converters\" />
+      <Folder Include="Themes\Default\Helpers\" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <Page Update="Themes\Light.xaml">
+         <SubType>Designer</SubType>
+      </Page>
+   </ItemGroup>
+</Project>
