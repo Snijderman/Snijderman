@@ -4,18 +4,18 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Snijderman.Common.Mvvm
 {
-   public abstract class NavigationServiceBase : INavigationService
+   public class NavigationService : INavigationService
    {
       protected readonly IMvvmControlService _mvvmControlService;
       protected readonly IServiceProvider _services;
 
-      public NavigationServiceBase(IMvvmControlService mvvmControlService, IServiceProvider services)
+      public NavigationService(IMvvmControlService mvvmControlService, IServiceProvider services)
       {
          this._mvvmControlService = mvvmControlService;
          this._services = services;
       }
 
-      public async Task NavigateToAsync<VM>(Func<VM, IMvvmControl<VM>, Task> handleNavigation) where VM : IMvvmViewModel
+      public virtual async Task NavigateToAsync<VM>(Func<VM, IMvvmControl<VM>, Task> handleNavigation) where VM : IMvvmViewModel
       {
          var controlToShow = this._mvvmControlService.GetControl<VM>();
          if (controlToShow == default)

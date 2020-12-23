@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+   <PropertyGroup>
+      <TargetFrameworks>net5.0</TargetFrameworks>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Blazorise.Icons.Material" Version="0.9.2.4" />
+      <PackageReference Include="Blazorise.Material" Version="0.9.2.4" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.1" PrivateAssets="all" />
+      <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <ProjectReference Include="..\Snijderman.Samples.Blazor.Mvvm.Components\Snijderman.Samples.Blazor.Mvvm.Components.csproj" />
+   </ItemGroup>
+
+</Project>

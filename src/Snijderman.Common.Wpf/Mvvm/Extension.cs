@@ -12,7 +12,7 @@ namespace Snijderman.Common.Wpf.Mvvm
          services.AddHostedService<ApplicationHostService>();
 
          // Services
-         services.AddSingleton<INavigationService, NavigationServiceBase>();
+         services.AddSingleton<INavigationService, NavigationService>();
          services.AddSingleton<IMvvmControlService, MvvmControlService>();
          services.AddSingleton<IMessageService, MessageService>();
          services.AddTransient<IDialogService, DialogService>();

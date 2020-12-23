@@ -26,7 +26,6 @@ namespace Snijderman.Wpf.MVVM.Example.Services
                var contentControl = viewControl.GetViewModel().VmContentControl;
                contentControl.Content = controlToShow;
                await viewModel?.LoadAsync();
-               //contentControl.InvokeIfRequired(() => contentControl.Content = controlToShow);
             });
          }
       }

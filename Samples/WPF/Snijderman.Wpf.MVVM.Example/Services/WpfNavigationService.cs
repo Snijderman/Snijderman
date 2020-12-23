@@ -5,7 +5,7 @@ using Snijderman.Wpf.MVVM.Example.ViewModels;
 
 namespace Snijderman.Wpf.MVVM.Example.Services
 {
-   public class WpfNavigationService : NavigationServiceBase//, IWpfNavigationService
+   public class WpfNavigationService : NavigationService
    {
       public WpfNavigationService(IMvvmControlService mvvmControlService, IServiceProvider services) : base(mvvmControlService, services)
       {

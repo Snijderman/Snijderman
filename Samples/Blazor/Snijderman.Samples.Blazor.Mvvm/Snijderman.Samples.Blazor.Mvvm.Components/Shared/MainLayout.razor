@@ -1,0 +1,36 @@
+@using Blazorise
+@inherits MvvmComponentBase
+@using Snijderman.Samples.Blazor.Mvvm.ViewModels
+
+@inject ClockViewModel viewModel
+
+@*<div class="page">
+   Hallo
+   <div class="main">
+      <div class="content px-4">
+         @Body
+      </div>
+   </div>
+</div>
+*@
+
+<Layout>
+   <LayoutHeader Fixed="true" Class="mainheader">
+      <Heading Size="HeadingSize.Is5" Transform="TextTransform.Uppercase" Alignment="TextAlignment.Center" Margin="Margin.Is4.FromRight.Is2.FromTop">Snijderman MVVM with Blazor</Heading>
+   </LayoutHeader>
+   <LayoutContent>
+      @Body
+   </LayoutContent>
+   <LayoutFooter Fixed="true" Class="mainfooter">
+      <Row Margin="Margin.Is0">
+         <Column Margin="Margin.Is0"><Text Alignment="TextAlignment.Left">@this._copyright</Text></Column>
+         <Column Margin="Margin.Is0"><Text Alignment="TextAlignment.Right">Current time: @Bind(this.viewModel, x => x.DisplayDateTime) (# times instantiated @Bind(this.viewModel, x => x.Counter))</Text></Column>
+      </Row>
+   </LayoutFooter>
+</Layout>
+
+@code{
+   
+   private string _copyright = $"Copyright {DateTime.Now.Year} (c) Snijderman. All rights reserved.";
+
+}

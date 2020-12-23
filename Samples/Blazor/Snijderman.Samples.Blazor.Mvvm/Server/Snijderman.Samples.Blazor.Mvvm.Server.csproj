@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+   <PropertyGroup>
+      <TargetFrameworks>net5.0</TargetFrameworks>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.1" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <ProjectReference Include="..\Client\Snijderman.Samples.Blazor.Mvvm.Client.csproj" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Folder Include="Controllers\" />
+   </ItemGroup>
+
+
+</Project>
