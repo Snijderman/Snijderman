@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Snijderman.Common.Mvvm;
+using Snijderman.Common.Mvvm.Services;
 using Snijderman.Common.Wpf.Mvvm.Services;
 
 namespace Snijderman.Common.Wpf.Mvvm

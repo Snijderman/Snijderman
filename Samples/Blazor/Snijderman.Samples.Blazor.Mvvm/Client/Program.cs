@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Blazorise.Icons.Material;
 using Snijderman.Samples.Blazor.Mvvm.ViewModels;
 using Snijderman.Common.Blazor.Extensions;
+using Snijderman.Samples.Common.ExtensionMethods;
+using Snijderman.Common.Mvvm.Services;
+using Snijderman.Common.Mvvm;
 
 namespace Snijderman.Samples.Blazor.Mvvm.Client
 {
@@ -31,6 +34,12 @@ namespace Snijderman.Samples.Blazor.Mvvm.Client
 
          builder.Services.AddBlazorMvvm();
          builder.Services.AddTransient<ClockViewModel>();
+         builder.Services.AddTransient<DashboardViewModel>();
+         builder.Services.AddTransient<CustomerViewModel>();
+         builder.Services.RegisterSampleCommonServices();
+         builder.Services.AddSingleton<IMessageService, MessageService>();
+         builder.Services.AddSingleton<IMvvmControlService, MvvmControlService>();
+         builder.Services.AddSingleton<INavigationService, NavigationService>();
 
          builder.RootComponents.Add<App>("#app");
 

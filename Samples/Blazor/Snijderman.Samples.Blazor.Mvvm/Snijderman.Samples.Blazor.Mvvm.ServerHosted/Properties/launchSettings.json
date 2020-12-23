@@ -1,0 +1,13 @@
+{
+   "profiles": {
+      "Snijderman.Samples.Blazor.Mvvm.ServerHosted": {
+         "commandName": "Project",
+         "dotnetRunMessages": "true",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:1512",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      }
+   }
+}

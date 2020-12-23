@@ -1,6 +1,6 @@
 using System;
 
-namespace Snijderman.Common.Wpf.Mvvm.Services
+namespace Snijderman.Common.Mvvm.Services
 {
    public interface IMessageService
    {

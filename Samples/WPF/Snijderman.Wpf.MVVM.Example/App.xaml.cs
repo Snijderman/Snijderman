@@ -15,6 +15,7 @@ using Snijderman.Samples.Common.ExtensionMethods;
 using Snijderman.Wpf.MVVM.Example.Services;
 using Snijderman.Wpf.MVVM.Example.Views;
 using Snijderman.Wpf.MVVM.Example.ViewModels;
+using Snijderman.Common.Mvvm.Services;
 
 namespace Snijderman.Wpf.MVVM.Example
 {

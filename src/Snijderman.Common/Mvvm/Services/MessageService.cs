@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Snijderman.Common.Mvvm.Services;
 
-namespace Snijderman.Common.Wpf.Mvvm.Services
+namespace Snijderman.Common.Mvvm.Services
 {
    public class MessageService : IMessageService
    {

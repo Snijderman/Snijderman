@@ -12,9 +12,13 @@ html, body {
 }
 
 .sk-cube-grid {
+   position: absolute;
+   top: 25%;
+   left: 50%;
+   margin-top: -50px;
+   margin-left: -50px;
    width: 80px;
    height: 80px;
-   margin: 100px auto;
 }
 
    .sk-cube-grid .sk-cube {

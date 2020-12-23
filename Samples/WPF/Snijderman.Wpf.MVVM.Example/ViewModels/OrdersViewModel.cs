@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Snijderman.Common.Mvvm;
-using Snijderman.Common.Wpf.Mvvm.Services;
+using Snijderman.Common.Mvvm.Services;
 using Snijderman.Samples.Common.Model;
 using Snijderman.Samples.Common.Services;
 

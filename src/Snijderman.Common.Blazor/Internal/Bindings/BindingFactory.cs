@@ -11,7 +11,6 @@ namespace Snijderman.Common.Blazor.Internal.Bindings
 
    internal class BindingFactory : IBindingFactory
    {
-      public IBinding Create(INotifyPropertyChanged source, PropertyInfo propertyInfo,
-          IWeakEventManager weakEventManager) => new Binding(source, propertyInfo, weakEventManager);
+      public IBinding Create(INotifyPropertyChanged source, PropertyInfo propertyInfo, IWeakEventManager weakEventManager) => new Binding(source, propertyInfo, weakEventManager);
    }
 }

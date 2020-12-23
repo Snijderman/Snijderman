@@ -1,5 +1,5 @@
 using Snijderman.Common.Mvvm;
-using Snijderman.Common.Wpf.Mvvm.Services;
+using Snijderman.Common.Mvvm.Services;
 
 namespace Snijderman.Wpf.MVVM.Example.ViewModels
 {

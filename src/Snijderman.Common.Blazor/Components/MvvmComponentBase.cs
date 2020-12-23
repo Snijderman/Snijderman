@@ -10,15 +10,14 @@ using Snijderman.Common.Mvvm;
 
 namespace Snijderman.Common.Blazor.Components
 {
-   public abstract class MvvmComponentBase : LayoutComponentBase, IDisposable
+   public abstract class MvvmComponentBase : ComponentBase, IDisposable
    {
       private readonly HashSet<IBinding> _bindings = new();
       private IBindingFactory _bindingFactory;
       private IWeakEventManager _weakEventManager;
       private IWeakEventManagerFactory _weakEventManagerFactory;
 
-      [Inject]
-      protected IServiceProvider ServiceProvider { get; set; }
+      [Inject] protected IServiceProvider ServiceProvider { get; set; }
 
       protected override void OnInitialized() => this.InitializeDependencies();
 

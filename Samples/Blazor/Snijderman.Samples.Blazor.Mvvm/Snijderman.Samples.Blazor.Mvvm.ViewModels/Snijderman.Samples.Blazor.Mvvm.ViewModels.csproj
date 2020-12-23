@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
    <ItemGroup>
       <ProjectReference Include="..\..\..\..\src\Snijderman.Common\Snijderman.Common.csproj" />
+      <ProjectReference Include="..\..\..\Common\Snijderman.Samples.Common\Snijderman.Samples.Common.csproj" />
    </ItemGroup>
 </Project>

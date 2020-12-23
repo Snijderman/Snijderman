@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Snijderman.Common.Mvvm.Services;
 using Snijderman.Common.Wpf.Commands;
 using Snijderman.Common.Wpf.Mvvm.Services;
 using Snijderman.Samples.Common.Model;

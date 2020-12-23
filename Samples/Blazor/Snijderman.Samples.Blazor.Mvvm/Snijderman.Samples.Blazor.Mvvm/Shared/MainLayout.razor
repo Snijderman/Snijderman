@@ -4,16 +4,6 @@
 
 @inject ClockViewModel viewModel
 
-@*<div class="page">
-   Hallo
-   <div class="main">
-      <div class="content px-4">
-         @Body
-      </div>
-   </div>
-</div>
-*@
-
 <Layout>
    <LayoutHeader Fixed="true" Class="mainheader">
       <Heading Size="HeadingSize.Is5" Transform="TextTransform.Uppercase" Alignment="TextAlignment.Center" Margin="Margin.Is4.FromRight.Is2.FromTop">Snijderman MVVM with Blazor</Heading>
@@ -30,7 +20,10 @@
 </Layout>
 
 @code{
-   
+
+   [Parameter]
+   public RenderFragment? Body { get; set; }
+
    private string _copyright = $"Copyright {DateTime.Now.Year} (c) Snijderman. All rights reserved.";
 
 }

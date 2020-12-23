@@ -20,7 +20,7 @@ namespace Snijderman.Common.Mvvm
          }
       }
 
-      protected void OnSelectedItemChanged(T selectedItem)
+      protected virtual void OnSelectedItemChanged(T selectedItem)
       {
          this.SelectedItemChanged?.Invoke(selectedItem);
       }
