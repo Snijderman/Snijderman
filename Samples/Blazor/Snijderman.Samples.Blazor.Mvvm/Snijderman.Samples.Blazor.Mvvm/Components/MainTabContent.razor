@@ -9,7 +9,7 @@
          <LayoutSiderContent Style="width: 150px; background-color: white;">
             @foreach (var order in this.ViewModel.Orders)
             {
-               <Button Color="Color.Secondary" Block="true" @onclick="@(() => this.SelectOrderAsync(order.OrderId))">@order.OrderId</Button>
+               <Button Color="Color.Dark" Block="true" @onclick="@(() => this.SelectOrderAsync(order.OrderId))">@order.OrderId</Button>
             }
          </LayoutSiderContent>
       </LayoutSider>

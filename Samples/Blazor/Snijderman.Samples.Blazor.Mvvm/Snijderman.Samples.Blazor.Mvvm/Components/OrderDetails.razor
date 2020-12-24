@@ -14,35 +14,50 @@ else if (this.ViewModel == default || !this.ViewModel.IsLoaded)
 else
 {
    <Row>
-      <Card Margin="Margin.Is4.OnY" ColumnSize="ColumnSize.Is12">
-         <CardHeader>
-            <CardTitle>Details for order @Bind(x => x.OrderId), shipped by @Bind(x => x.ShipperName)</CardTitle>
-         </CardHeader>
-         <CardBody>
-            <Fields>
-               <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
-                  <Field>
+      <Column>
+         <Card Margin="Margin.Is4.OnY.Is4.OnX">
+            <CardHeader Style="background-color: #e0e0e0">
+               <CardTitle>Details for order @Bind(x => x.OrderId), shipped by @Bind(x => x.ShipperName)</CardTitle>
+            </CardHeader>
+            <CardBody>
+               <Fields>
+                  <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
                      <FieldLabel>Order ID</FieldLabel>
                      <FieldBody>
                         <TextEdit Text="@this.ViewModel.OrderId.ToString()" @oninput="@((e) => this.ViewModel.OrderId = Convert.ToInt64(e.Value))" />
                      </FieldBody>
                   </Field>
-               </Field>
-               <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
-                  <Field>
+                  <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
                      <FieldLabel>Shipper</FieldLabel>
                      <FieldBody>
                         <TextEdit @bind-Text="@this.ViewModel.ShipperName" />
                      </FieldBody>
                   </Field>
-               </Field>
-            </Fields>
-         </CardBody>
-      </Card>
+               </Fields>
+            </CardBody>
+         </Card>
+      </Column>
    </Row>
    <Row>
-      <Button Disabled="@Bind(x => x.DisableSave)">Hi there</Button>
+      <Column Margin="Margin.Is4.OnY.Is4.OnX">
+         <Fields>
+            <Field ColumnSize="ColumnSize.Is2" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" Clicked="@this.HiThereClicked">Hi there</Button>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+               <Text>@this._sayHello</Text>
+            </Field>
+         </Fields>
+      </Column>
    </Row>
 }
 
+@code{
+   private string _sayHello;
+   private void HiThereClicked()
+   {
+      this._sayHello = $"Hello at {DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")}";
+   }
 
+
+}
