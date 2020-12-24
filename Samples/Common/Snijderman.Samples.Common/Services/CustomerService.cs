@@ -12,6 +12,6 @@ namespace Snijderman.Samples.Common.Services
       {
          this._sampleDataService = sampleDataService;
       }
-      public Task<IEnumerable<Customer>> GetCustomers() => this._sampleDataService.GetCustomers();
+      public Task<IEnumerable<Customer>> GetCustomers() => this._sampleDataService.GetCustomersAsync();
    }
 }

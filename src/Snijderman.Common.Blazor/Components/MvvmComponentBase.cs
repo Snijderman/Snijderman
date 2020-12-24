@@ -16,6 +16,9 @@ namespace Snijderman.Common.Blazor.Components
       private IBindingFactory _bindingFactory;
       private IWeakEventManager _weakEventManager;
       private IWeakEventManagerFactory _weakEventManagerFactory;
+      private readonly Guid _id = Guid.NewGuid();
+
+      protected Guid Id => this._id;
 
       [Inject] protected IServiceProvider ServiceProvider { get; set; }
 
@@ -28,7 +31,9 @@ namespace Snijderman.Common.Blazor.Components
          this._weakEventManager = this._weakEventManagerFactory.Create();
       }
 
-      internal virtual void BindingOnBindingValueChanged(object sender, EventArgs e) => this.InvokeAsync(this.StateHasChanged);
+      protected void HandleStateChanges(object sender, EventArgs e) => this.InvokeAsync(this.StateHasChanged);
+
+      internal virtual void BindingOnBindingValueChanged(object sender, EventArgs e) => this.HandleStateChanges(sender, e);
 
       protected internal TValue Bind<TViewModel, TValue>(TViewModel viewModel, Expression<Func<TViewModel, TValue>> property) where TViewModel : ViewModelBase => this.AddBinding(viewModel, property);
 

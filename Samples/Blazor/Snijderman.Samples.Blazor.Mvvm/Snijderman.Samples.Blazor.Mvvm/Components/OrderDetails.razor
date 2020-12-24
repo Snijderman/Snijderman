@@ -1,0 +1,48 @@
+@inherits MvvmViewModelComponentBase<ViewModels.OrderViewModel>
+
+<Text>@this.Id - @this.ViewModel?.OrderId</Text>
+
+
+@if (this.SelectedOrderId < 0)
+{
+   <Heading Size="HeadingSize.Is5" Alignment="TextAlignment.Center" Italic="true">Select an order to see the details</Heading>
+}
+else if (this.ViewModel == default || !this.ViewModel.IsLoaded)
+{
+   <WaitingCube />
+}
+else
+{
+   <Row>
+      <Card Margin="Margin.Is4.OnY" ColumnSize="ColumnSize.Is12">
+         <CardHeader>
+            <CardTitle>Details for order @Bind(x => x.OrderId), shipped by @Bind(x => x.ShipperName)</CardTitle>
+         </CardHeader>
+         <CardBody>
+            <Fields>
+               <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+                  <Field>
+                     <FieldLabel>Order ID</FieldLabel>
+                     <FieldBody>
+                        <TextEdit Text="@this.ViewModel.OrderId.ToString()" @oninput="@((e) => this.ViewModel.OrderId = Convert.ToInt64(e.Value))" />
+                     </FieldBody>
+                  </Field>
+               </Field>
+               <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+                  <Field>
+                     <FieldLabel>Shipper</FieldLabel>
+                     <FieldBody>
+                        <TextEdit @bind-Text="@this.ViewModel.ShipperName" />
+                     </FieldBody>
+                  </Field>
+               </Field>
+            </Fields>
+         </CardBody>
+      </Card>
+   </Row>
+   <Row>
+      <Button Disabled="@Bind(x => x.DisableSave)">Hi there</Button>
+   </Row>
+}
+
+

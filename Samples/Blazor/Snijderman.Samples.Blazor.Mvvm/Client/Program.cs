@@ -33,9 +33,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.Client
          });
 
          builder.Services.AddBlazorMvvm();
-         builder.Services.AddTransient<ClockViewModel>();
-         builder.Services.AddTransient<DashboardViewModel>();
-         builder.Services.AddTransient<CustomerViewModel>();
+         builder.Services.AddMvvmViewModels();
          builder.Services.RegisterSampleCommonServices();
          builder.Services.AddSingleton<IMessageService, MessageService>();
          builder.Services.AddSingleton<IMvvmControlService, MvvmControlService>();

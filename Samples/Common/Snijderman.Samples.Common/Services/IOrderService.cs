@@ -6,6 +6,8 @@ namespace Snijderman.Samples.Common.Services
 {
    public interface IOrderService
    {
-      public Task<IEnumerable<Order>> GetOrders(string companyId);
+      public Task<IEnumerable<Order>> GetOrdersAsync(string companyId);
+
+      public Task<Order> GetOrderAsync(string companyId, long orderId);
    }
 }

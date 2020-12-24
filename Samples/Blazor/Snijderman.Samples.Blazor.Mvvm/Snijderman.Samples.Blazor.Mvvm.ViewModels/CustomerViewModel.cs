@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Snijderman.Common.Mvvm;
 using Snijderman.Samples.Common.Model;
@@ -8,25 +9,29 @@ using Snijderman.Samples.Common.Services;
 
 namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
 {
-   public class CustomerViewModel : ItemSelectedViewModelBase<Order>
+   public class CustomerViewModel : ItemSelectedViewModelBase<OrderViewModel>
    {
+      private readonly IOrderService _orderService;
+      private readonly IServiceProvider _serviceProvider;
+
       public delegate Task CustomerSelectedEventHandler();
       public event CustomerSelectedEventHandler CustomerSelected;
 
       public delegate Task OrdersLoadedEventHandler();
       public event OrdersLoadedEventHandler OrdersLoaded;
 
-      public CustomerViewModel(IOrderService orderService)
+      public CustomerViewModel(IOrderService orderService, IServiceProvider serviceProvider)
       {
          this._orderService = orderService;
+         this._serviceProvider = serviceProvider;
          this.CustomerSelected += this.OnCustomerSelected;
       }
 
-      private string _companyID;
-      public string CompanyID
+      private string _companyId;
+      public string CompanyId
       {
-         get => this._companyID;
-         set => this.Set(ref this._companyID, value);
+         get => this._companyId;
+         set => this.Set(ref this._companyId, value);
       }
 
       private string _companyName;
@@ -36,8 +41,8 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
          set => this.Set(ref this._companyName, value);
       }
 
-      private ObservableCollection<Order> _orders;
-      public ObservableCollection<Order> Orders
+      private ObservableCollection<OrderViewModel> _orders = new();
+      public ObservableCollection<OrderViewModel> Orders
       {
          get => this._orders;
          set => this.Set(ref this._orders, value);
@@ -48,8 +53,6 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
       public bool IsVisible { get; set; } = true;
 
       private Guid _uniqueId = Guid.NewGuid();
-      private readonly IOrderService _orderService;
-
       public Guid UniqueId
       {
          get => this._uniqueId;
@@ -92,17 +95,17 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
       {
          if (!this.IsLoaded)
          {
-            await Task.Delay(TimeSpan.FromSeconds(2.5));
+            await Task.Delay(TimeSpan.FromSeconds(1.5));
             await this.LoadAsync();
             this.IsLoaded = true;
          }
       }
 
-      public override async Task LoadAsync() => this.Orders = this.GetCustomerOrders(await this._orderService.GetOrders(this.CompanyID));
+      public override async Task LoadAsync() => this.Orders = this.GetCustomerOrders(await this._orderService.GetOrdersAsync(this.CompanyId));
 
-      private ObservableCollection<Order> GetCustomerOrders(IEnumerable<Order> orders)
+      private ObservableCollection<OrderViewModel> GetCustomerOrders(IEnumerable<Order> orders)
       {
-         return new ObservableCollection<Order>(orders);
+         return new ObservableCollection<OrderViewModel>(orders.Select(x => this._serviceProvider.CreateAndFillViewModelProperties<OrderViewModel, Order>(x, Helper.SetOrderViewModelProperties)));
       }
    }
 }

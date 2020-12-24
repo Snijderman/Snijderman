@@ -26,7 +26,7 @@ namespace Snijderman.Common.Wpf.Helpers
          }
          return (from @group in VisualStateManager.GetVisualStateGroups(root).OfType<VisualStateGroup>()
                  where string.CompareOrdinal(groupName, @group.Name) == 0
-                 select @group).FirstOrDefault<VisualStateGroup>();
+                 select @group).FirstOrDefault();
       }
 
       /// <summary>

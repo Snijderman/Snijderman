@@ -29,7 +29,7 @@ namespace Snijderman.Wpf.MVVM.Example.ViewModels
          {
             throw new ArgumentException("No valid customer ID provided");
          }
-         this._orders = new ObservableCollection<Order>(await this._orderService.GetOrders(customerId));
+         this._orders = new ObservableCollection<Order>(await this._orderService.GetOrdersAsync(customerId));
       }
 
       private ObservableCollection<Order> _orders;

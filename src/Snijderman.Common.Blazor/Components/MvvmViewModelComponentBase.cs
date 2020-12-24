@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Snijderman.Common.Mvvm;
 
@@ -8,40 +8,37 @@ namespace Snijderman.Common.Blazor.Components
 {
    public abstract class MvvmViewModelComponentBase<T> : MvvmComponentBase, IMvvmControl<T> where T : ViewModelBase
    {
-      protected internal T ViewModel { get; set; }
+      private T _viewModel;
+      protected internal T ViewModel
+      {
+         get => this._viewModel;
+         set
+         {
+            if (this.ViewModel != default && !EqualityComparer<T>.Default.Equals(this._viewModel, value))
+            {
+               this.ViewModel.PropertyChanged -= this.HandleStateChanges;
+            }
+            this._viewModel = value;
+            this.ViewModel.PropertyChanged += this.HandleStateChanges;
+         }
+      }
 
       public virtual T GetViewModel() => this.ViewModel;
 
       protected internal TValue Bind<TValue>(Expression<Func<T, TValue>> property) => base.AddBinding(this.ViewModel, property);
 
-      protected void SetBindingContext() => this.ViewModel ??= this.ServiceProvider.GetRequiredService<T>();
-
-      protected override async Task OnAfterRenderAsync(bool firstRender)
+      protected void SetBindingContext()
       {
-         await this.OnHandleViewModelLoadAsync(firstRender);
-         await base.OnAfterRenderAsync(firstRender);
+         this.ViewModel ??= this.ServiceProvider.GetRequiredService<T>();
       }
 
-      protected virtual async Task OnHandleViewModelLoadAsync(bool firstRender)
+      protected override void Dispose(bool disposing)
       {
-         // by default, only execute view model load on the first time rendering
-         if (!firstRender)
+         if (disposing)
          {
-            return;
-         }
-
-         this.SetBindingContext();
-         if (await this.ExecuteViewModelLoadAsync(firstRender))
-         {
-            await this.InvokeAsync(this.StateHasChanged);
+            this.ViewModel.PropertyChanged -= this.HandleStateChanges;
+            base.Dispose(disposing);
          }
       }
-
-      /// <summary>
-      /// Handle loading the viewmodel
-      /// </summary>
-      /// <param name="firstRender"></param>
-      /// <returns>A boolean, indicating the state of the viewmodel has changed</returns>
-      protected abstract Task<bool> ExecuteViewModelLoadAsync(bool firstRender);
    }
 }

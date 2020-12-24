@@ -340,7 +340,7 @@ namespace Snijderman.Common.Wpf.Controls
       /// Handles the Completed event of the transition storyboard.
       /// </summary>
       /// <param name="sender">The source of the event.</param>
-      /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+      /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
       private void OnTransitionCompleted(object sender, EventArgs e)
       {
          this.AbortTransition();

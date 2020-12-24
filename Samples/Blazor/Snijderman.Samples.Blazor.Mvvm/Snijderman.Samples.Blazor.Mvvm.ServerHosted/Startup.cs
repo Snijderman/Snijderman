@@ -38,9 +38,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.ServerHosted
          services.AddServerSideBlazor();
 
          services.AddBlazorMvvm();
-         services.AddTransient<ClockViewModel>();
-         services.AddTransient<DashboardViewModel>();
-         services.AddTransient<CustomerViewModel>();
+         services.AddMvvmViewModels();
          services.RegisterSampleCommonServices();
          services.AddSingleton<IMessageService, MessageService>();
          services.AddSingleton<IMvvmControlService, MvvmControlService>();
@@ -66,7 +64,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.ServerHosted
             //app.UseHsts();
          }
 
-         app.UseHttpsRedirection();
+         //app.UseHttpsRedirection();
          app.UseStaticFiles();
 
          app.UseRouting();

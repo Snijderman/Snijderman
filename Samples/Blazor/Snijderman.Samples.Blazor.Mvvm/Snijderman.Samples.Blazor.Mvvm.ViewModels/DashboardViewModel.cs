@@ -32,17 +32,19 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
       {
          foreach (var customer in customers)
          {
-            yield return this.CreateCustomerViewModel(customer.CompanyID, customer.CompanyName);
+            yield return this._serviceProvider.CreateAndFillViewModelProperties<CustomerViewModel, Customer>(customer, Helper.SetCustomerViewModelProperties);
+            //yield return this.CreateCustomerViewModel(customer.CompanyID, customer.CompanyName);
          }
       }
 
-      private CustomerViewModel CreateCustomerViewModel(string companyId, string companyName)
-      {
-         var customer = this._serviceProvider.GetRequiredService<CustomerViewModel>();
-         customer.CompanyID = companyId;
-         customer.CompanyName = companyName;
-         return customer;
-      }
+      //private CustomerViewModel CreateCustomerViewModel(string companyId, string companyName)
+      //{
+      //   this._serviceProvider.CreateAndFillViewModelProperties<CustomerViewModel, Customer>(default, Helper.SetCustomerViewModelProperties);
+      //   //var customer = this._serviceProvider.GetRequiredService<CustomerViewModel>();
+      //   //customer.CompanyId = companyId;
+      //   //customer.CompanyName = companyName;
+      //   //return customer;
+      //}
 
       private ObservableCollection<CustomerViewModel> _customers;
       public ObservableCollection<CustomerViewModel> Customers
@@ -53,10 +55,10 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
 
       protected override void OnSelectedItemChanged(CustomerViewModel selectedItem)
       {
-         this.SelectedItem = selectedItem?.CompanyID;
+         this.SelectedItem = selectedItem?.CompanyId;
          foreach (var customer in this.Customers)
          {
-            customer.IsSelected = customer.CompanyID == selectedItem?.CompanyID;
+            customer.IsSelected = customer.CompanyId == selectedItem?.CompanyId;
          }
          base.OnSelectedItemChanged(selectedItem);
       }
@@ -68,7 +70,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
          set => this.Set(ref this._selectedItem, value);
       }
 
-      public void SetSelectedTab(string id) => this.Selected = this.Customers.FirstOrDefault(x => string.Equals(x.CompanyID, id, StringComparison.OrdinalIgnoreCase));
+      public void SetSelectedTab(string id) => this.Selected = this.Customers.FirstOrDefault(x => string.Equals(x.CompanyId, id, StringComparison.OrdinalIgnoreCase));
 
       private async Task LoadCustomerOrders(CustomerViewModel customer)
       {
@@ -78,7 +80,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
             return;
          }
 
-         this._messageService.Send(this, MessageConstants.StatusMessage, $"Customer '{customer.CompanyID}' selected");
+         this._messageService.Send(this, MessageConstants.StatusMessage, $"Customer '{customer.CompanyId}' selected");
          await Task.CompletedTask;
          //await this._navigationService.NavigateToAsync<OrdersViewModel>(async (viewModel, controlToShow) =>
          //{

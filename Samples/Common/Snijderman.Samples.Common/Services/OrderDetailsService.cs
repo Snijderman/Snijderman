@@ -13,6 +13,6 @@ namespace Snijderman.Samples.Common.Services
          this._sampleDataService = sampleDataService;
       }
 
-      public Task<IEnumerable<OrderDetail>> GetOrderDetails(long orderId) => this._sampleDataService.GetOrderDetails(orderId);
+      public Task<IEnumerable<OrderDetail>> GetOrderDetails(long orderId) => this._sampleDataService.GetOrderDetailsAsync(orderId);
    }
 }

@@ -9,33 +9,28 @@
          <LayoutSiderContent Style="width: 150px; background-color: white;">
             @foreach (var order in this.ViewModel.Orders)
             {
-               <Button Color="Color.Secondary" Block="true">@order.OrderID</Button>
+               <Button Color="Color.Secondary" Block="true" @onclick="@(() => this.SelectOrderAsync(order.OrderId))">@order.OrderId</Button>
             }
          </LayoutSiderContent>
       </LayoutSider>
       <Layout>
          <LayoutContent>
-            Content voor ID: @this.Id.ToString()
+            <OrderDetails @ref="this._orderDetails" Customer="@this.ViewModel" />
          </LayoutContent>
       </Layout>
    </Layout>
 }
 else
 {
-   <div class="sk-cube-grid">
-      <div class="sk-cube sk-cube1"></div>
-      <div class="sk-cube sk-cube2"></div>
-      <div class="sk-cube sk-cube3"></div>
-      <div class="sk-cube sk-cube4"></div>
-      <div class="sk-cube sk-cube5"></div>
-      <div class="sk-cube sk-cube6"></div>
-      <div class="sk-cube sk-cube7"></div>
-      <div class="sk-cube sk-cube8"></div>
-      <div class="sk-cube sk-cube9"></div>
-   </div>
-
+   <WaitingCube />
 }
 
 @code {
+   private OrderDetails _orderDetails;
 
+   private async Task SelectOrderAsync(long orderId)
+   {
+      //this._selectedOrderId = orderId;
+      await this._orderDetails.SetOrderViewModelAsync(orderId);
+   }
 }

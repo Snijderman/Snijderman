@@ -6,10 +6,12 @@ namespace Snijderman.Samples.Common.Services
 {
    public interface ISampleDataService
    {
-      public Task<IEnumerable<Customer>> GetCustomers();
+      public Task<IEnumerable<Customer>> GetCustomersAsync();
 
-      public Task<IEnumerable<Order>> GetOrders(string companyId);
+      public Task<IEnumerable<Order>> GetOrdersAsync(string companyId);
 
-      public Task<IEnumerable<OrderDetail>> GetOrderDetails(long orderId);
+      public Task<Order> GetOrderAsync(string companyId, long orderId);
+
+      public Task<IEnumerable<OrderDetail>> GetOrderDetailsAsync(long orderId);
    }
 }
