@@ -127,7 +127,9 @@ namespace Snijderman.Common.Wpf.Controls
       /// <summary>
       /// Gets or sets the storyboard that is used to transition old and new content.
       /// </summary>
+#pragma warning disable IDE0052 // Remove unread private members
       private Storyboard CurrentTransition
+#pragma warning restore IDE0052 // Remove unread private members
       {
          get => this._currentTransition;
          set
