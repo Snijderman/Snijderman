@@ -7,7 +7,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
    public class ClockViewModel : ViewModelBase, IDisposable
    {
       private readonly Timer _timer;
-      private bool disposedValue;
+      private bool _disposedValue;
       private static int _counter;
 
       public ClockViewModel()
@@ -31,14 +31,14 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
 
       protected virtual void Dispose(bool disposing)
       {
-         if (!this.disposedValue)
+         if (!this._disposedValue)
          {
             if (disposing)
             {
                this._timer.Dispose();
             }
 
-            this.disposedValue = true;
+            this._disposedValue = true;
          }
       }
 

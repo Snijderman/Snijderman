@@ -21,19 +21,19 @@ namespace Snijderman.Common.Wpf.Mvvm.Services
       public virtual async Task StartAsync(CancellationToken cancellationToken)
       {
          // Initialize services that you need before app activation
-         await this.InitializeAsync();
+         await this.InitializeAsync().ConfigureAwait(false);
 
-         await this.HandleActivationAsync();
+         await this.HandleActivationAsync().ConfigureAwait(false);
 
          // Tasks after activation
-         await this.StartupAsync();
+         await this.StartupAsync().ConfigureAwait(false);
       }
 
-      public virtual async Task StopAsync(CancellationToken cancellationToken) => await Task.CompletedTask;
+      public virtual async Task StopAsync(CancellationToken cancellationToken) => await Task.CompletedTask.ConfigureAwait(false);
 
-      public virtual async Task InitializeAsync() => await Task.CompletedTask;
+      public virtual async Task InitializeAsync() => await Task.CompletedTask.ConfigureAwait(false);
 
-      public virtual async Task StartupAsync() => await Task.CompletedTask;
+      public virtual async Task StartupAsync() => await Task.CompletedTask.ConfigureAwait(false);
 
       public virtual async Task HandleActivationAsync()
       {
@@ -48,7 +48,7 @@ namespace Snijderman.Common.Wpf.Mvvm.Services
 
             this._shellWindow.ShowWindow();
 
-            await Task.CompletedTask;
+            await Task.CompletedTask.ConfigureAwait(false);
          }
       }
    }

@@ -29,7 +29,7 @@ namespace Snijderman.Wpf.MVVM.Example.ViewModels
          {
             throw new ArgumentException("No valid customer ID provided");
          }
-         this._orders = new ObservableCollection<Order>(await this._orderService.GetOrdersAsync(customerId));
+         this._orders = new ObservableCollection<Order>(await this._orderService.GetOrdersAsync(customerId).ConfigureAwait(false));
       }
 
       private ObservableCollection<Order> _orders;
@@ -53,8 +53,8 @@ namespace Snijderman.Wpf.MVVM.Example.ViewModels
          await this._navigationService.NavigateToAsync<OrderDetailsViewModel>(async (viewModel, controlToShow) =>
          {
             this.VmContentControl.Content = controlToShow;
-            await viewModel.LoadAsync(new object[] { order.OrderID });
-         });
+            await viewModel.LoadAsync(new object[] { order.OrderID }).ConfigureAwait(false);
+         }).ConfigureAwait(false);
       }
    }
 }

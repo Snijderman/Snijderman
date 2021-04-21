@@ -95,13 +95,13 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
       {
          if (!this.IsLoaded)
          {
-            await Task.Delay(TimeSpan.FromSeconds(1.5));
-            await this.LoadAsync();
+            await Task.Delay(TimeSpan.FromSeconds(1.5)).ConfigureAwait(false);
+            await this.LoadAsync().ConfigureAwait(false);
             this.IsLoaded = true;
          }
       }
 
-      public override async Task LoadAsync() => this.Orders = this.GetCustomerOrders(await this._orderService.GetOrdersAsync(this.CompanyId));
+      public override async Task LoadAsync() => this.Orders = this.GetCustomerOrders(await this._orderService.GetOrdersAsync(this.CompanyId).ConfigureAwait(false));
 
       private ObservableCollection<OrderViewModel> GetCustomerOrders(IEnumerable<Order> orders)
       {

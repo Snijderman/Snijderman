@@ -29,7 +29,7 @@ namespace Snijderman.Common.Mvvm
             viewModel = this._services.GetRequiredService<VM>();
          }
 
-         await handleNavigation(vm ?? viewModel, controlToShow);
+         await handleNavigation(vm ?? viewModel, controlToShow).ConfigureAwait(false);
       }
    }
 }

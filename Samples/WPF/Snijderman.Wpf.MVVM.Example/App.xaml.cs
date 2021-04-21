@@ -48,7 +48,7 @@ namespace Snijderman.Wpf.MVVM.Example
                     .ConfigureServices(this.ConfigureServices)
                     .Build();
 
-            await this.Host.StartAsync();
+            await this.Host.StartAsync().ConfigureAwait(false);
          }
          catch (Exception exc)
          {
@@ -115,7 +115,7 @@ namespace Snijderman.Wpf.MVVM.Example
 
       private async void OnExit(object sender, ExitEventArgs e)
       {
-         await this.Host?.StopAsync();
+         await (this.Host?.StopAsync()).ConfigureAwait(false);
          this.Host?.Dispose();
          this.Host = null;
       }

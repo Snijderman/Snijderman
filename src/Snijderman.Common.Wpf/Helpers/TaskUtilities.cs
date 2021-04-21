@@ -11,7 +11,7 @@ namespace Snijderman.Common.Wpf.Helpers
       {
          try
          {
-            await task;
+            await task.ConfigureAwait(false);
          }
          catch (Exception ex)
          {

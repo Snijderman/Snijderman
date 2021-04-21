@@ -34,7 +34,7 @@
       <!-- Authoring information -->
       <Company>Snijderman</Company>
       <Authors>$(Company)</Authors>
-      <Copyright>Copyright 2020 (c) $(Company). All rights reserved.</Copyright>
+      <Copyright>Copyright $([System.DateTime]::Now.ToString(yyyy)) (c) $(Company). All rights reserved.</Copyright>
    </PropertyGroup>
 
 </Project>

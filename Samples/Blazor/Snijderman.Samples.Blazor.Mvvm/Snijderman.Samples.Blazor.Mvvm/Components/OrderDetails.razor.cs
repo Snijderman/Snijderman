@@ -22,8 +22,8 @@ namespace Snijderman.Samples.Blazor.Mvvm.Components
          }
          this._selectedOrderId = orderId;
          this.ViewModel = this.Customer.Orders.FirstOrDefault(x => x.OrderId == orderId);
-         await Task.Delay(TimeSpan.FromSeconds(1.5));
-         await this.ViewModel.LoadAsync();
+         await Task.Delay(TimeSpan.FromSeconds(1.5)).ConfigureAwait(false);
+         await this.ViewModel.LoadAsync().ConfigureAwait(false);
       }
    }
 }
