@@ -23,7 +23,7 @@ namespace Snijderman.Wpf.MVVM.Example.ViewModels
          this.SelectedItemChanged += this.LoadCustomerOrders;
       }
 
-      public override async Task LoadAsync() => this._customers = new ObservableCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomers()));
+      public override async Task LoadAsync() => this._customers = new ObservableCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomers().ConfigureAwait(false)));
       private IEnumerable<CustomerViewModel> GetCustomers(IEnumerable<Customer> customers)
       {
          foreach (var customer in customers)
@@ -58,8 +58,8 @@ namespace Snijderman.Wpf.MVVM.Example.ViewModels
          await this._navigationService.NavigateToAsync<OrdersViewModel>(async (viewModel, controlToShow) =>
          {
             customer.VmContentControl.Content = controlToShow;//.GetViewModel().VmContentControl;
-            await viewModel.LoadAsync(new object[] { customer.CompanyID });
-         });
+            await viewModel.LoadAsync(new object[] { customer.CompanyID }).ConfigureAwait(false);
+         }).ConfigureAwait(false);
       }
    }
 }

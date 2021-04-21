@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
 using Snijderman.Common.Mvvm;
 using Snijderman.Common.Mvvm.Services;
 using Snijderman.Samples.Common.Model;
@@ -15,19 +14,17 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
    {
       private readonly ICustomerService _customerService;
       private readonly IMessageService _messageService;
-      private readonly INavigationService _navigationService;
       private readonly IServiceProvider _serviceProvider;
 
-      public DashboardViewModel(ICustomerService customerService, IMessageService messageService, INavigationService navigationService, IServiceProvider serviceProvider)
+      public DashboardViewModel(ICustomerService customerService, IMessageService messageService, IServiceProvider serviceProvider)
       {
          this._customerService = customerService;
          this._messageService = messageService;
-         this._navigationService = navigationService;
          this._serviceProvider = serviceProvider;
          this.SelectedItemChanged += this.LoadCustomerOrders;
       }
 
-      public override async Task LoadAsync() => this._customers = new ObservableCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomers()));
+      public override async Task LoadAsync() => this._customers = new ObservableCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomers().ConfigureAwait(false)));
       private IEnumerable<CustomerViewModel> GetCustomers(IEnumerable<Customer> customers)
       {
          foreach (var customer in customers)
@@ -81,7 +78,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.ViewModels
          }
 
          this._messageService.Send(this, MessageConstants.StatusMessage, $"Customer '{customer.CompanyId}' selected");
-         await Task.CompletedTask;
+         await Task.CompletedTask.ConfigureAwait(false);
          //await this._navigationService.NavigateToAsync<OrdersViewModel>(async (viewModel, controlToShow) =>
          //{
          //   customer.VmContentControl.Content = controlToShow;//.GetViewModel().VmContentControl;

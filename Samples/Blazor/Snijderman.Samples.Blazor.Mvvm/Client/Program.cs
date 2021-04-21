@@ -46,7 +46,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.Client
          host.Services.UseMaterialProviders()
                       .UseMaterialIcons();
 
-         await host.RunAsync();
+         await host.RunAsync().ConfigureAwait(false);
       }
    }
 }

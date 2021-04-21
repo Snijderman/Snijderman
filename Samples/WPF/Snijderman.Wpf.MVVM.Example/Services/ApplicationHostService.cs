@@ -17,7 +17,7 @@ namespace Snijderman.Wpf.MVVM.Example.Services
 
       public override async Task HandleActivationAsync()
       {
-         await base.HandleActivationAsync();
+         await base.HandleActivationAsync().ConfigureAwait(false);
 
          if (this._shellWindow is IWpfMvvmControl viewControl)
          {
@@ -25,8 +25,8 @@ namespace Snijderman.Wpf.MVVM.Example.Services
             {
                var contentControl = viewControl.GetViewModel().VmContentControl;
                contentControl.Content = controlToShow;
-               await viewModel?.LoadAsync();
-            });
+               await (viewModel?.LoadAsync()).ConfigureAwait(false);
+            }).ConfigureAwait(false);
          }
       }
    }

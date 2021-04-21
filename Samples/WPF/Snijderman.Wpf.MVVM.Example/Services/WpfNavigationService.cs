@@ -12,6 +12,6 @@ namespace Snijderman.Wpf.MVVM.Example.Services
 
       }
 
-      public new async Task NavigateToAsync<VM>(Func<VM, IMvvmControl<VM>, Task> handleNavigation) where VM : IWpfMvvmViewModel => await base.NavigateToAsync(handleNavigation);
+      public new async Task NavigateToAsync<VM>(Func<VM, IMvvmControl<VM>, Task> handleNavigation) where VM : IWpfMvvmViewModel => await base.NavigateToAsync(handleNavigation).ConfigureAwait(false);
    }
 }

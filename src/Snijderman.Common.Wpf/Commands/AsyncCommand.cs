@@ -27,7 +27,7 @@ namespace Snijderman.Common.Wpf.Commands
 
       protected override void OnExecute(object parameter) => this.ExecuteAsync((T)parameter).FireAndForgetSafeAsync(this._errorHandler);
 
-      public async Task ExecuteAsync(T parameter) => await this._execute(parameter);
+      public async Task ExecuteAsync(T parameter) => await this._execute(parameter).ConfigureAwait(false);
    }
 
    public class AsyncCommand : CommandBase, IAsyncCommand
@@ -52,6 +52,6 @@ namespace Snijderman.Common.Wpf.Commands
 
       protected override void OnExecute(object parameter) => this.ExecuteAsync().FireAndForgetSafeAsync(this._errorHandler);
 
-      public async Task ExecuteAsync() => await this._execute();
+      public async Task ExecuteAsync() => await this._execute().ConfigureAwait(false);
    }
 }
