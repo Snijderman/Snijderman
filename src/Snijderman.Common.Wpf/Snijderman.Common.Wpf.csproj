@@ -1,9 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
    <PropertyGroup>
-      <TargetFrameworks>netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks>net6.0-windows</TargetFrameworks>
       <IsTestProject>false</IsTestProject>
       <UseWPF>true</UseWPF>
+
+      <!-- Deze zijn nodig in WPF, anders krijg je gedoe tijdens het builden... -->
+      <AssemblyName>Snijderman.Common.Wpf</AssemblyName>
+      <RootNamespace>Snijderman.Common.Wpf</RootNamespace>
 
       <IsSnijdermanPublishedPackage>true</IsSnijdermanPublishedPackage>
       <Version>1.1.11</Version>
@@ -23,8 +27,8 @@
    </ItemGroup>
 
    <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
-      <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+      <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
       <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
    </ItemGroup>
 

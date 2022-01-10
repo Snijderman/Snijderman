@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
    <PropertyGroup>
-      <ClassLibTargetFrameworks>netstandard2.1;net5.0</ClassLibTargetFrameworks>
+      <ClassLibTargetFrameworks>net6.0</ClassLibTargetFrameworks>
       <OutputType>Library</OutputType>
       <RazorLangVersion>3.0</RazorLangVersion>
       <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
