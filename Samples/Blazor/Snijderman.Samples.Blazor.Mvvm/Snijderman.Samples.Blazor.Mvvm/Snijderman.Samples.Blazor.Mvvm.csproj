@@ -3,13 +3,17 @@
    <PropertyGroup>
       <ClassLibTargetFrameworks>net6.0</ClassLibTargetFrameworks>
       <OutputType>Library</OutputType>
-      <RazorLangVersion>3.0</RazorLangVersion>
+      <!--<RazorLangVersion>3.0</RazorLangVersion>-->
       <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
    </PropertyGroup>
 
    <ItemGroup>
-      <PackageReference Include="Blazorise.Icons.Material" Version="0.9.2.4" />
-      <PackageReference Include="Blazorise.Material" Version="0.9.2.4" />
+      <PackageReference Include="Blazorise.Icons.Material" Version="0.9.5.4" />
+      <PackageReference Include="Blazorise.Material" Version="0.9.5.4" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
    </ItemGroup>
 
    <ItemGroup>
