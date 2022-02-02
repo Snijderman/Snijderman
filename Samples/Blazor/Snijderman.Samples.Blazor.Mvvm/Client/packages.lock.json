@@ -4,25 +4,27 @@
     "net6.0": {
       "Blazorise.Icons.Material": {
         "type": "Direct",
-        "requested": "[0.9.2.4, )",
-        "resolved": "0.9.2.4",
-        "contentHash": "cQ7Nf/BUPitLIBB64CDag4Okdu0jg7s8EZDgEWYgAKcnZbOvoMZu6a2a7irjDY/qLD2DfElDU92gMY+Dz4eG2Q==",
+        "requested": "[0.9.5.4, )",
+        "resolved": "0.9.5.4",
+        "contentHash": "kHVzZUhvaIoq40EoBrnxXhEt1dKOw//62dHzGl+CzHP+t4ihB0TncdZjhiBjIzljQzsBcI8TJxfQAP/TZDspJQ==",
         "dependencies": {
-          "Blazorise": "0.9.2.4",
-          "Microsoft.AspNetCore.Components": "5.0.0",
-          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+          "Blazorise": "0.9.5.4",
+          "Microsoft.AspNetCore.Components": "6.0.0",
+          "Microsoft.AspNetCore.Components.Web": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         }
       },
       "Blazorise.Material": {
         "type": "Direct",
-        "requested": "[0.9.2.4, )",
-        "resolved": "0.9.2.4",
-        "contentHash": "aiDKVSvDLIx5ekvcbNqzXpaCibqmnQax15Nk4HkTZuX26lM4+6r0mI+vMcGJhK9gBWvu+LyZs3BXAQz5cVmYcw==",
+        "requested": "[0.9.5.4, )",
+        "resolved": "0.9.5.4",
+        "contentHash": "InyV+zJ/r79QbmA6TymAFVRYEko0vUgaeFoDuSMCe1fhlu4FulXZimLtpg9lQ5JwmI9wQ97GV5l01di5jV8Uag==",
         "dependencies": {
-          "Blazorise": "0.9.2.4",
-          "Blazorise.Bootstrap": "0.9.2.4",
-          "Microsoft.AspNetCore.Components": "5.0.0",
-          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+          "Blazorise": "0.9.5.4",
+          "Blazorise.Bootstrap": "0.9.5.4",
+          "Microsoft.AspNetCore.Components": "6.0.0",
+          "Microsoft.AspNetCore.Components.Web": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         }
       },
       "Microsoft.AspNetCore.Components.WebAssembly": {
@@ -55,21 +57,23 @@
       },
       "Blazorise": {
         "type": "Transitive",
-        "resolved": "0.9.2.4",
-        "contentHash": "8aWVxfNOays7UG1VpDYyePQVUKLSAT2LPKw4/r8VZE13Ijz0sxCWQt1KVmST+NGtUWT0PchbKqtlqGbAG9UwBg==",
+        "resolved": "0.9.5.4",
+        "contentHash": "x4lFoqe4HLYfdZHSrwk0qquOhls75T4JOSJzEvyOb8s3fJd8vohnVd7eXvqFGidNDInvIpG/FMMNOdiVXAWJPw==",
         "dependencies": {
-          "Microsoft.AspNetCore.Components": "5.0.0",
-          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+          "Microsoft.AspNetCore.Components": "6.0.0",
+          "Microsoft.AspNetCore.Components.Web": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         }
       },
       "Blazorise.Bootstrap": {
         "type": "Transitive",
-        "resolved": "0.9.2.4",
-        "contentHash": "LF+SmTh2imnfxwFLrB0tHYwY9mYNGH3lrFWwG0B+N3Fo/qwPdwFlH5aNgckl31HnIGtIfLppaaK9cyu1qcHLpg==",
+        "resolved": "0.9.5.4",
+        "contentHash": "ivKg5BAOJWQAZCQt69Zu2A1i13pI+oilmY5ORm6mG0mCNiaRvwXu84wYkCuMMVqOpgzS9R1puS0e4JdXJ3BgsQ==",
         "dependencies": {
-          "Blazorise": "0.9.2.4",
-          "Microsoft.AspNetCore.Components": "5.0.0",
-          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+          "Blazorise": "0.9.5.4",
+          "Microsoft.AspNetCore.Components": "6.0.0",
+          "Microsoft.AspNetCore.Components.Web": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         }
       },
       "Grpc.Core.Api": {
@@ -518,8 +522,8 @@
       "snijderman.samples.blazor.mvvm": {
         "type": "Project",
         "dependencies": {
-          "Blazorise.Icons.Material": "0.9.2.4",
-          "Blazorise.Material": "0.9.2.4",
+          "Blazorise.Icons.Material": "0.9.5.4",
+          "Blazorise.Material": "0.9.5.4",
           "Snijderman.Common.Blazor": "0.0.99-dev",
           "Snijderman.Samples.Blazor.Mvvm.ViewModels": "0.0.99-dev"
         }

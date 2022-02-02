@@ -84,7 +84,7 @@ namespace Snijderman.Samples.Common.Services
                         },
                         new Order()
                         {
-                            OrderID = 10835, // Symbol Music
+                            OrderID = 1512, // Symbol Music
                             OrderDate = new DateTime(1998, 1, 15),
                             RequiredDate = new DateTime(1998, 2, 12),
                             ShippedDate = new DateTime(1998, 1, 21),

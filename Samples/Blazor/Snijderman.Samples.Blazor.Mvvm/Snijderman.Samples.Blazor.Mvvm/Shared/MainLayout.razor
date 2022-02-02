@@ -5,7 +5,7 @@
 @inject ClockViewModel viewModel
 
 <Layout>
-   <LayoutHeader Fixed="true" Class="mainheader">
+   <LayoutHeader Class="mainheader">
       <Heading Size="HeadingSize.Is5" Transform="TextTransform.Uppercase" Alignment="TextAlignment.Center" Margin="Margin.Is4.FromRight.Is2.FromTop">Snijderman MVVM with Blazor</Heading>
    </LayoutHeader>
    <LayoutContent>
@@ -13,8 +13,8 @@
    </LayoutContent>
    <LayoutFooter Fixed="true" Class="mainfooter">
       <Row Margin="Margin.Is0">
-         <Column Margin="Margin.Is0"><Text Alignment="TextAlignment.Left">@this._copyright</Text></Column>
-         <Column Margin="Margin.Is0"><Text Alignment="TextAlignment.Right">Current time: @Bind(this.viewModel, x => x.DisplayDateTime) (# times instantiated @Bind(this.viewModel, x => x.Counter))</Text></Column>
+         <Column Margin="Margin.Is0"><Text Alignment="TextAlignment.Start">@this._copyright</Text></Column>
+         <Column Margin="Margin.Is0"><Text Alignment="TextAlignment.End">Current time: @Bind(this.viewModel, x => x.DisplayDateTime) (# times instantiated @Bind(this.viewModel, x => x.Counter))</Text></Column>
       </Row>
    </LayoutFooter>
 </Layout>

@@ -24,7 +24,7 @@ else
                   <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
                      <FieldLabel>Order ID</FieldLabel>
                      <FieldBody>
-                        <TextEdit Text="@this.ViewModel.OrderId.ToString()" @oninput="@((e) => this.ViewModel.OrderId = Convert.ToInt64(e.Value))" />
+                        <TextEdit Text="@this.ViewModel.OrderId.ToString()" TextChanged="@((orderId) => this.ViewModel.OrderId = Convert.ToInt64(orderId))" />
                      </FieldBody>
                   </Field>
                   <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
@@ -44,6 +44,9 @@ else
             <Field ColumnSize="ColumnSize.Is2" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
                <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" Clicked="@this.HiThereClicked">Hi there</Button>
             </Field>
+            <Field ColumnSize="ColumnSize.Is2" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" @onclick="@(()=>this.HiThereClicked())">Hi there</Button>
+            </Field>
             <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
                <Text>@this._sayHello</Text>
             </Field>
@@ -52,12 +55,16 @@ else
    </Row>
 }
 
-@code{
+@code {
    private string _sayHello;
    private void HiThereClicked()
    {
       this._sayHello = $"Hello at {DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")}";
    }
 
-
+   Task OnNameChanged(string value)
+   {
+      this._sayHello = $"Nieuwe waarde voor order ID: {value}";
+      return Task.CompletedTask;
+   }
 }

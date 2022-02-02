@@ -40,7 +40,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.ServerHosted
          services.AddBlazorMvvm();
          services.AddMvvmViewModels();
          services.RegisterSampleCommonServices();
-         services.AddSingleton<IMessageService, MessageService>();
+         services.AddSingleton<Snijderman.Common.Mvvm.Services.IMessageService, MessageService>();
          services.AddSingleton<IMvvmControlService, MvvmControlService>();
          services.AddSingleton<INavigationService, NavigationService>();
 
@@ -68,9 +68,6 @@ namespace Snijderman.Samples.Blazor.Mvvm.ServerHosted
          app.UseStaticFiles();
 
          app.UseRouting();
-
-         app.ApplicationServices.UseMaterialProviders()
-                                .UseMaterialIcons();
 
          // this is required to be here or otherwise the messages between server and client will be too large and
          // the connection will be lost.

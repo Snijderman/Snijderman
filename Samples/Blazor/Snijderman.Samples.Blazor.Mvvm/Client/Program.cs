@@ -35,7 +35,7 @@ namespace Snijderman.Samples.Blazor.Mvvm.Client
          builder.Services.AddBlazorMvvm();
          builder.Services.AddMvvmViewModels();
          builder.Services.RegisterSampleCommonServices();
-         builder.Services.AddSingleton<IMessageService, MessageService>();
+         builder.Services.AddSingleton<Snijderman.Common.Mvvm.Services.IMessageService, MessageService>();
          builder.Services.AddSingleton<IMvvmControlService, MvvmControlService>();
          builder.Services.AddSingleton<INavigationService, NavigationService>();
 
@@ -43,8 +43,8 @@ namespace Snijderman.Samples.Blazor.Mvvm.Client
 
          var host = builder.Build();
 
-         host.Services.UseMaterialProviders()
-                      .UseMaterialIcons();
+         //host.Services.UseMaterialProviders()
+         //             .UseMaterialIcons();
 
          await host.RunAsync().ConfigureAwait(false);
       }
