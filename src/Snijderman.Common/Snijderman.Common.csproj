@@ -1,4 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <IsSnijdermanPublishedPackage>true</IsSnijdermanPublishedPackage>
+      <Title>Snijderman.Common</Title>
+      <Description>Library with common functionalities like helpers, extensions, utilities, etc.</Description>
+      <Summary>Library with common functionalities</Summary>
+      <PackageProjectUrl>https://github.com/Snijderman/Snijderman</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/Snijderman/Snijderman</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <PackageTags>NET Core</PackageTags>
+      <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+   </PropertyGroup>
+
    <ItemGroup>
       <PackageReference Include="Grpc.Net.Client" Version="2.41.0" />
       <PackageReference Include="MediatR" Version="10.0.1" />

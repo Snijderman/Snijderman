@@ -10,15 +10,13 @@
       <RootNamespace>Snijderman.Common.Wpf</RootNamespace>
 
       <IsSnijdermanPublishedPackage>true</IsSnijdermanPublishedPackage>
-      <Version>1.1.11</Version>
       <Title>Snijderman.Common.Wpf</Title>
       <Description>Library with common WPF markup, themes, extensions and utilities</Description>
       <Summary>Library with common WPF markup, themes, extensions and utilities</Summary>
-      <PackageProjectUrl>https://github.com/Snijderman/Snijderman.Wpf</PackageProjectUrl>
-      <RepositoryUrl>https://github.com/Snijderman/Snijderman.Wpf</RepositoryUrl>
+      <PackageProjectUrl>https://github.com/Snijderman/Snijderman</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/Snijderman/Snijderman</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
-      <PackageTags>WPF;.NET Core</PackageTags>
-      <Copyright>Copyright © 2020 Snijderman</Copyright>
+      <PackageTags>WPF;.NET Core;MVVM</PackageTags>
       <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
    </PropertyGroup>
 

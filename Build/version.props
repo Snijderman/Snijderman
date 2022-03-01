@@ -1,13 +1,13 @@
 <Project>
    <PropertyGroup>
 
-      <!-- package version of Snijderman GPR -->
-      <SnijdermanVersion>0.0.99-dev</SnijdermanVersion>
+      <!-- package version of Snijderman -->
+      <SnijdermanVersion>6.0.0-dev</SnijdermanVersion>
 
-      <!-- assembly version of Snijderman GPR -->
+      <!-- assembly version of Snijderman -->
       <SnijdermanAssemblyVersion>0.0.99</SnijdermanAssemblyVersion>
 
-      <!-- file version of all Snijderman GPR -->
+      <!-- file version of all Snijderman -->
       <SnijdermanFileVersion>0.0.99.99</SnijdermanFileVersion>
 
    </PropertyGroup>
