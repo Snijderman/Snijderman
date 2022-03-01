@@ -1,12 +1,11 @@
 using MediatR;
 
-namespace Snijderman.Common.MediatR
-{
-   public interface ICommand : IRequest
-   {
-   }
+namespace Snijderman.Common.MediatR;
 
-   public interface ICommand<out TResult> : IRequest<TResult>
-   {
-   }
+public interface ICommand : IRequest
+{
+}
+
+public interface ICommand<out TResult> : IRequest<TResult>
+{
 }

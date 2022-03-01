@@ -12,41 +12,40 @@ using Snijderman.Samples.Common.ExtensionMethods;
 using Snijderman.Common.Mvvm.Services;
 using Snijderman.Common.Mvvm;
 
-namespace Snijderman.Samples.Blazor.Mvvm.Client
+namespace Snijderman.Samples.Blazor.Mvvm.Client;
+
+public class Program
 {
-   public class Program
+   public static async Task Main(string[] args)
    {
-      public static async Task Main(string[] args)
+      var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+      builder.Services.AddBlazorise(options =>
+                       {
+                          options.ChangeTextOnKeyPress = true;
+                       })
+                       .AddMaterialProviders()
+                       .AddMaterialIcons();
+
+      builder.Services.AddSingleton(new HttpClient
       {
-         var builder = WebAssemblyHostBuilder.CreateDefault(args);
+         BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+      });
 
-         builder.Services.AddBlazorise(options =>
-                          {
-                             options.ChangeTextOnKeyPress = true;
-                          })
-                          .AddMaterialProviders()
-                          .AddMaterialIcons();
+      builder.Services.AddBlazorMvvm();
+      builder.Services.AddMvvmViewModels();
+      builder.Services.RegisterSampleCommonServices();
+      builder.Services.AddSingleton<Snijderman.Common.Mvvm.Services.IMessageService, MessageService>();
+      builder.Services.AddSingleton<IMvvmControlService, MvvmControlService>();
+      builder.Services.AddSingleton<INavigationService, NavigationService>();
 
-         builder.Services.AddSingleton(new HttpClient
-         {
-            BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
-         });
+      builder.RootComponents.Add<App>("#app");
 
-         builder.Services.AddBlazorMvvm();
-         builder.Services.AddMvvmViewModels();
-         builder.Services.RegisterSampleCommonServices();
-         builder.Services.AddSingleton<Snijderman.Common.Mvvm.Services.IMessageService, MessageService>();
-         builder.Services.AddSingleton<IMvvmControlService, MvvmControlService>();
-         builder.Services.AddSingleton<INavigationService, NavigationService>();
+      var host = builder.Build();
 
-         builder.RootComponents.Add<App>("#app");
+      //host.Services.UseMaterialProviders()
+      //             .UseMaterialIcons();
 
-         var host = builder.Build();
-
-         //host.Services.UseMaterialProviders()
-         //             .UseMaterialIcons();
-
-         await host.RunAsync().ConfigureAwait(false);
-      }
+      await host.RunAsync().ConfigureAwait(false);
    }
 }

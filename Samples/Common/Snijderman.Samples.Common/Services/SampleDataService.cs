@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Snijderman.Samples.Common.Model;
 
-namespace Snijderman.Samples.Common.Services
-{
-   public class SampleDataService : ISampleDataService
-   {
-      private static readonly IEnumerable<Customer> _allCompaniesOrdersAndOrderDetails = GetAllCompaniesOrdersAndOrderDetails();
+namespace Snijderman.Samples.Common.Services;
 
-      private static IEnumerable<Customer> GetAllCompaniesOrdersAndOrderDetails()
-      {
-         return new List<Customer>()
+public class SampleDataService : ISampleDataService
+{
+   private static readonly IEnumerable<Customer> _allCompaniesOrdersAndOrderDetails = GetAllCompaniesOrdersAndOrderDetails();
+
+   private static IEnumerable<Customer> GetAllCompaniesOrdersAndOrderDetails()
+   {
+      return new List<Customer>()
             {
                 new Customer()
                 {
@@ -471,14 +471,13 @@ namespace Snijderman.Samples.Common.Services
                     }
                 }
             };
-      }
-
-      public Task<IEnumerable<Customer>> GetCustomersAsync() => Task.FromResult(_allCompaniesOrdersAndOrderDetails);
-
-      public Task<IEnumerable<Order>> GetOrdersAsync(string companyId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.AsEnumerable());
-
-      public Task<Order> GetOrderAsync(string companyId, long orderId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.FirstOrDefault(x => x.OrderID == orderId));
-
-      public Task<IEnumerable<OrderDetail>> GetOrderDetailsAsync(long orderId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.SelectMany(x => x.Orders).FirstOrDefault(x => x.OrderID == orderId)?.Details.AsEnumerable());
    }
+
+   public Task<IEnumerable<Customer>> GetCustomersAsync() => Task.FromResult(_allCompaniesOrdersAndOrderDetails);
+
+   public Task<IEnumerable<Order>> GetOrdersAsync(string companyId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.AsEnumerable());
+
+   public Task<Order> GetOrderAsync(string companyId, long orderId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.FirstOrDefault(x => x.OrderID == orderId));
+
+   public Task<IEnumerable<OrderDetail>> GetOrderDetailsAsync(long orderId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.SelectMany(x => x.Orders).FirstOrDefault(x => x.OrderID == orderId)?.Details.AsEnumerable());
 }

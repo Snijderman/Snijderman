@@ -3,97 +3,96 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Threading;
 
-namespace Snijderman.Common.Wpf.Extensions
+namespace Snijderman.Common.Wpf.Extensions;
+
+public static class DispatcherObjectExtensions
 {
-   public static class DispatcherObjectExtensions
+   public static void InvokeIfRequired(this DispatcherObject control, Action methodcall, DispatcherPriority priorityForCall = DispatcherPriority.Normal)
    {
-      public static void InvokeIfRequired(this DispatcherObject control, Action methodcall, DispatcherPriority priorityForCall = DispatcherPriority.Normal)
+      if (control == null)
       {
-         if (control == null)
-         {
-            throw new ArgumentNullException(nameof(control));
-         }
-
-         if (methodcall == null)
-         {
-            throw new ArgumentNullException(nameof(methodcall));
-         }
-
-         //see if we need to Invoke call to Dispatcher thread
-         if (control.Dispatcher != null && control.Dispatcher.Thread != Thread.CurrentThread)
-         {
-            control.Dispatcher.Invoke(priorityForCall, methodcall);
-         }
-         else
-         {
-            methodcall();
-         }
+         throw new ArgumentNullException(nameof(control));
       }
 
-      public static T InvokeIfRequired<T>(this DispatcherObject control, Func<T> methodcall, DispatcherPriority priorityForCall = DispatcherPriority.Normal)
+      if (methodcall == null)
       {
-         if (control == null)
-         {
-            throw new ArgumentNullException(nameof(control));
-         }
-
-         if (methodcall == null)
-         {
-            throw new ArgumentNullException(nameof(methodcall));
-         }
-
-
-         //see if we need to Invoke call to Dispatcher thread
-         if (control.Dispatcher != null && control.Dispatcher.Thread != Thread.CurrentThread)
-         {
-            return control.Dispatcher.Invoke(methodcall, priorityForCall);
-         }
-         else
-         {
-            return methodcall();
-         }
+         throw new ArgumentNullException(nameof(methodcall));
       }
 
-      public static T InvokeIfRequired<T>(this Dispatcher dispatcher, Func<T> methodcall, DispatcherPriority priorityForCall = DispatcherPriority.Normal)
+      //see if we need to Invoke call to Dispatcher thread
+      if (control.Dispatcher != null && control.Dispatcher.Thread != Thread.CurrentThread)
       {
-         if (dispatcher == null)
-         {
-            throw new ArgumentNullException(nameof(dispatcher));
-         }
+         control.Dispatcher.Invoke(priorityForCall, methodcall);
+      }
+      else
+      {
+         methodcall();
+      }
+   }
 
-         if (methodcall == null)
-         {
-            throw new ArgumentNullException(nameof(methodcall));
-         }
+   public static T InvokeIfRequired<T>(this DispatcherObject control, Func<T> methodcall, DispatcherPriority priorityForCall = DispatcherPriority.Normal)
+   {
+      if (control == null)
+      {
+         throw new ArgumentNullException(nameof(control));
+      }
 
-         if (!dispatcher.CheckAccess() || dispatcher.Thread != Thread.CurrentThread)
-         {
-            return dispatcher.Invoke(methodcall, priorityForCall);
-         }
+      if (methodcall == null)
+      {
+         throw new ArgumentNullException(nameof(methodcall));
+      }
 
+
+      //see if we need to Invoke call to Dispatcher thread
+      if (control.Dispatcher != null && control.Dispatcher.Thread != Thread.CurrentThread)
+      {
+         return control.Dispatcher.Invoke(methodcall, priorityForCall);
+      }
+      else
+      {
          return methodcall();
       }
+   }
 
-      public static SwitchToUiAwaitable SwitchToUi(this Dispatcher dispatcher) => new(dispatcher);
-
-      public struct SwitchToUiAwaitable : INotifyCompletion
+   public static T InvokeIfRequired<T>(this Dispatcher dispatcher, Func<T> methodcall, DispatcherPriority priorityForCall = DispatcherPriority.Normal)
+   {
+      if (dispatcher == null)
       {
-         private readonly Dispatcher _dispatcher;
-
-         public SwitchToUiAwaitable(Dispatcher dispatcher)
-         {
-            this._dispatcher = dispatcher;
-         }
-
-         public SwitchToUiAwaitable GetAwaiter() => this;
-
-         public void GetResult()
-         {
-         }
-
-         public bool IsCompleted => this._dispatcher.CheckAccess();
-
-         public void OnCompleted(Action continuation) => this._dispatcher.BeginInvoke(continuation);
+         throw new ArgumentNullException(nameof(dispatcher));
       }
+
+      if (methodcall == null)
+      {
+         throw new ArgumentNullException(nameof(methodcall));
+      }
+
+      if (!dispatcher.CheckAccess() || dispatcher.Thread != Thread.CurrentThread)
+      {
+         return dispatcher.Invoke(methodcall, priorityForCall);
+      }
+
+      return methodcall();
+   }
+
+   public static SwitchToUiAwaitable SwitchToUi(this Dispatcher dispatcher) => new(dispatcher);
+
+   public struct SwitchToUiAwaitable : INotifyCompletion
+   {
+      private readonly Dispatcher _dispatcher;
+
+      public SwitchToUiAwaitable(Dispatcher dispatcher)
+      {
+         this._dispatcher = dispatcher;
+      }
+
+      public SwitchToUiAwaitable GetAwaiter() => this;
+
+      public void GetResult()
+      {
+      }
+
+      public bool IsCompleted => this._dispatcher.CheckAccess();
+
+      public void OnCompleted(Action continuation) => this._dispatcher.BeginInvoke(continuation);
    }
 }

@@ -1,7 +1,6 @@
-namespace Snijderman.Common.Wpf.Mvvm.Services
+namespace Snijderman.Common.Wpf.Mvvm.Services;
+
+public interface IDialogService
 {
-   public interface IDialogService
-   {
-      void Show(string title, string content);
-   }
+   void Show(string title, string content);
 }

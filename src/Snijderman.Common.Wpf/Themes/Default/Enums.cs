@@ -1,14 +1,13 @@
-namespace Snijderman.Common.Wpf.Themes.Default
+namespace Snijderman.Common.Wpf.Themes.Default;
+
+public enum FontSize
 {
-   public enum FontSize
-   {
-      /// <summary>
-      /// Large fonts.
-      /// </summary>
-      Large,
-      /// <summary>
-      /// Small fonts.
-      /// </summary>
-      Small
-   }
+   /// <summary>
+   /// Large fonts.
+   /// </summary>
+   Large,
+   /// <summary>
+   /// Small fonts.
+   /// </summary>
+   Small
 }

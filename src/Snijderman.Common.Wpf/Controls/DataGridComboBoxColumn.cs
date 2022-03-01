@@ -1,18 +1,17 @@
 using System.Windows;
 
-namespace Snijderman.Common.Wpf.Controls
+namespace Snijderman.Common.Wpf.Controls;
+
+/// <summary>
+/// A DataGrid checkbox column using default Modern UI element styles.
+/// </summary>
+public class DataGridComboBoxColumn : System.Windows.Controls.DataGridComboBoxColumn
 {
    /// <summary>
-   /// A DataGrid checkbox column using default Modern UI element styles.
+   /// Initializes a new instance of the <see cref="DataGridComboBoxColumn"/> class.
    /// </summary>
-   public class DataGridComboBoxColumn : System.Windows.Controls.DataGridComboBoxColumn
+   public DataGridComboBoxColumn()
    {
-      /// <summary>
-      /// Initializes a new instance of the <see cref="DataGridComboBoxColumn"/> class.
-      /// </summary>
-      public DataGridComboBoxColumn()
-      {
-         this.EditingElementStyle = Application.Current.Resources["DataGridEditingComboBoxStyle"] as Style;
-      }
+      this.EditingElementStyle = Application.Current.Resources["DataGridEditingComboBoxStyle"] as Style;
    }
 }

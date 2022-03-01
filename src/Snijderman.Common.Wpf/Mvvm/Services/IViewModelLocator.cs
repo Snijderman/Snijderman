@@ -1,9 +1,8 @@
 using Snijderman.Common.Mvvm;
 
-namespace Snijderman.Common.Wpf.Mvvm.Services
+namespace Snijderman.Common.Wpf.Mvvm.Services;
+
+public interface IViewModelLocator
 {
-   public interface IViewModelLocator
-   {
-      T GetPageViewModel<T>() where T : class, IMvvmViewModel;
-   }
+   T GetPageViewModel<T>() where T : class, IMvvmViewModel;
 }

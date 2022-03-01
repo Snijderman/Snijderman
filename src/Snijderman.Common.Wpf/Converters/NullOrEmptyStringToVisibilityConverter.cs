@@ -3,55 +3,54 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Snijderman.Common.Wpf.Converters
+namespace Snijderman.Common.Wpf.Converters;
+
+/// <summary>
+/// Converts a null or empty string value to Visibility.Visible and any other value to Visibility.Collapsed
+/// </summary>
+public class NullOrEmptyStringToVisibilityConverter : IValueConverter
 {
    /// <summary>
-   /// Converts a null or empty string value to Visibility.Visible and any other value to Visibility.Collapsed
+   /// Converts a value.
    /// </summary>
-   public class NullOrEmptyStringToVisibilityConverter : IValueConverter
+   /// <param name="value">The value produced by the binding source.</param>
+   /// <param name="targetType">The type of the binding target property.</param>
+   /// <param name="parameter">The converter parameter to use.</param>
+   /// <param name="culture">The culture to use in the converter.</param>
+   /// <returns>
+   /// A converted value. If the method returns null, the valid null value is used.
+   /// </returns>
+   public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
    {
-      /// <summary>
-      /// Converts a value.
-      /// </summary>
-      /// <param name="value">The value produced by the binding source.</param>
-      /// <param name="targetType">The type of the binding target property.</param>
-      /// <param name="parameter">The converter parameter to use.</param>
-      /// <param name="culture">The culture to use in the converter.</param>
-      /// <returns>
-      /// A converted value. If the method returns null, the valid null value is used.
-      /// </returns>
-      public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+      var flag = value == null;
+      if (value is string stringValue)
       {
-         var flag = value == null;
-         if (value is string stringValue)
-         {
-            flag = string.IsNullOrEmpty(stringValue);
-         }
-         var inverse = (parameter as string) == "inverse";
-
-         if (inverse)
-         {
-            return (flag ? Visibility.Collapsed : Visibility.Visible);
-         }
-         else
-         {
-            return (flag ? Visibility.Visible : Visibility.Collapsed);
-         }
+         flag = string.IsNullOrEmpty(stringValue);
       }
+      var inverse = (parameter as string) == "inverse";
 
-      /// <summary>
-      /// Converts a value.
-      /// </summary>
-      /// <param name="value">The value that is produced by the binding target.</param>
-      /// <param name="targetType">The type to convert to.</param>
-      /// <param name="parameter">The converter parameter to use.</param>
-      /// <param name="culture">The culture to use in the converter.</param>
-      /// <returns>
-      /// A converted value. If the method returns null, the valid null value is used.
-      /// </returns>
-      public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+      if (inverse)
       {
-         throw new NotSupportedException();
+         return (flag ? Visibility.Collapsed : Visibility.Visible);
       }
+      else
+      {
+         return (flag ? Visibility.Visible : Visibility.Collapsed);
+      }
+   }
+
+   /// <summary>
+   /// Converts a value.
+   /// </summary>
+   /// <param name="value">The value that is produced by the binding target.</param>
+   /// <param name="targetType">The type to convert to.</param>
+   /// <param name="parameter">The converter parameter to use.</param>
+   /// <param name="culture">The culture to use in the converter.</param>
+   /// <returns>
+   /// A converted value. If the method returns null, the valid null value is used.
+   /// </returns>
+   public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+   {
+      throw new NotSupportedException();
    }
 }

@@ -1,61 +1,60 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Snijderman.Common.Wpf.Controls
+namespace Snijderman.Common.Wpf.Controls;
+
+/// <summary>
+/// Represents a control that indicates that an operation is ongoing. 
+/// </summary>
+[TemplateVisualState(GroupName = GroupActiveStates, Name = StateInactive)]
+[TemplateVisualState(GroupName = GroupActiveStates, Name = StateActive)]
+public class ModernProgress : Control
 {
+   private const string GroupActiveStates = "ActiveStates";
+   private const string StateInactive = "Inactive";
+   private const string StateActive = "Active";
+
    /// <summary>
-   /// Represents a control that indicates that an operation is ongoing. 
+   /// Identifies the IsActive property.
    /// </summary>
-   [TemplateVisualState(GroupName = GroupActiveStates, Name = StateInactive)]
-   [TemplateVisualState(GroupName = GroupActiveStates, Name = StateActive)]
-   public class ModernProgress : Control
+   public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register("IsActive", typeof(bool), typeof(ModernProgress), new PropertyMetadata(false, OnIsActiveChanged));
+
+   /// <summary>
+   /// Initializes a new instance of the <see cref="ModernProgress"/> class.
+   /// </summary>
+   public ModernProgress()
    {
-      private const string GroupActiveStates = "ActiveStates";
-      private const string StateInactive = "Inactive";
-      private const string StateActive = "Active";
+      this.DefaultStyleKey = typeof(ModernProgress);
+   }
 
-      /// <summary>
-      /// Identifies the IsActive property.
-      /// </summary>
-      public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register("IsActive", typeof(bool), typeof(ModernProgress), new PropertyMetadata(false, OnIsActiveChanged));
+   private void GotoCurrentState(bool animate)
+   {
+      var state = this.IsActive ? StateActive : StateInactive;
 
-      /// <summary>
-      /// Initializes a new instance of the <see cref="ModernProgress"/> class.
-      /// </summary>
-      public ModernProgress()
-      {
-         this.DefaultStyleKey = typeof(ModernProgress);
-      }
+      VisualStateManager.GoToState(this, state, animate);
+   }
 
-      private void GotoCurrentState(bool animate)
-      {
-         var state = this.IsActive ? StateActive : StateInactive;
+   /// <summary>
+   /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate" />.
+   /// </summary>
+   public override void OnApplyTemplate()
+   {
+      base.OnApplyTemplate();
 
-         VisualStateManager.GoToState(this, state, animate);
-      }
+      this.GotoCurrentState(false);
+   }
 
-      /// <summary>
-      /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate" />.
-      /// </summary>
-      public override void OnApplyTemplate()
-      {
-         base.OnApplyTemplate();
+   private static void OnIsActiveChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+   {
+      ((ModernProgress)o).GotoCurrentState(true);
+   }
 
-         this.GotoCurrentState(false);
-      }
-
-      private static void OnIsActiveChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-      {
-         ((ModernProgress)o).GotoCurrentState(true);
-      }
-
-      /// <summary>
-      /// Gets or sets a value that indicates whether the <see cref="ModernProgress"/> is showing progress.
-      /// </summary>
-      public bool IsActive
-      {
-         get => (bool)this.GetValue(IsActiveProperty);
-         set => this.SetValue(IsActiveProperty, value);
-      }
+   /// <summary>
+   /// Gets or sets a value that indicates whether the <see cref="ModernProgress"/> is showing progress.
+   /// </summary>
+   public bool IsActive
+   {
+      get => (bool)this.GetValue(IsActiveProperty);
+      set => this.SetValue(IsActiveProperty, value);
    }
 }

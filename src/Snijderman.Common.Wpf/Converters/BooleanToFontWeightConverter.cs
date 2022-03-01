@@ -2,47 +2,46 @@ using System;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Snijderman.Common.Wpf.Converters
+namespace Snijderman.Common.Wpf.Converters;
+
+/// <summary>
+/// Converts a boolean value to a font weight (false: normal, true: bold)
+/// </summary>
+public class BooleanToFontWeightConverter : IValueConverter
 {
    /// <summary>
-   /// Converts a boolean value to a font weight (false: normal, true: bold)
+   /// Converts a value.
    /// </summary>
-   public class BooleanToFontWeightConverter : IValueConverter
+   /// <param name="value">The value produced by the binding source.</param>
+   /// <param name="targetType">The type of the binding target property.</param>
+   /// <param name="parameter">The converter parameter to use.</param>
+   /// <param name="culture">The culture to use in the converter.</param>
+   /// <returns>
+   /// A converted value. If the method returns null, the valid null value is used.
+   /// </returns>
+   public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
    {
-      /// <summary>
-      /// Converts a value.
-      /// </summary>
-      /// <param name="value">The value produced by the binding source.</param>
-      /// <param name="targetType">The type of the binding target property.</param>
-      /// <param name="parameter">The converter parameter to use.</param>
-      /// <param name="culture">The culture to use in the converter.</param>
-      /// <returns>
-      /// A converted value. If the method returns null, the valid null value is used.
-      /// </returns>
-      public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-      {
-         var inverse = (parameter as string) == "inverse";
+      var inverse = (parameter as string) == "inverse";
 
-         if (value is bool bold && bold)
-         {
-            return inverse ? FontWeights.Normal : FontWeights.Bold;
-         }
-         return inverse ? FontWeights.Bold : FontWeights.Normal;
-      }
-
-      /// <summary>
-      /// Converts a value.
-      /// </summary>
-      /// <param name="value">The value that is produced by the binding target.</param>
-      /// <param name="targetType">The type to convert to.</param>
-      /// <param name="parameter">The converter parameter to use.</param>
-      /// <param name="culture">The culture to use in the converter.</param>
-      /// <returns>
-      /// A converted value. If the method returns null, the valid null value is used.
-      /// </returns>
-      public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+      if (value is bool bold && bold)
       {
-         throw new NotSupportedException();
+         return inverse ? FontWeights.Normal : FontWeights.Bold;
       }
+      return inverse ? FontWeights.Bold : FontWeights.Normal;
+   }
+
+   /// <summary>
+   /// Converts a value.
+   /// </summary>
+   /// <param name="value">The value that is produced by the binding target.</param>
+   /// <param name="targetType">The type to convert to.</param>
+   /// <param name="parameter">The converter parameter to use.</param>
+   /// <param name="culture">The culture to use in the converter.</param>
+   /// <returns>
+   /// A converted value. If the method returns null, the valid null value is used.
+   /// </returns>
+   public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+   {
+      throw new NotSupportedException();
    }
 }

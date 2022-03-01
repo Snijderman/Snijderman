@@ -1,22 +1,21 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Snijderman.Common.Wpf.Helpers
+namespace Snijderman.Common.Wpf.Helpers;
+
+public static class TaskUtilities
 {
-   public static class TaskUtilities
-   {
 #pragma warning disable RECS0165 // Asynchronous methods should return a Task instead of void
-      public static async void FireAndForgetSafeAsync(this Task task, IErrorHandler handler = null)
+   public static async void FireAndForgetSafeAsync(this Task task, IErrorHandler handler = null)
 #pragma warning restore RECS0165 // Asynchronous methods should return a Task instead of void
+   {
+      try
       {
-         try
-         {
-            await task.ConfigureAwait(false);
-         }
-         catch (Exception ex)
-         {
-            handler?.HandleError(ex);
-         }
+         await task.ConfigureAwait(false);
+      }
+      catch (Exception ex)
+      {
+         handler?.HandleError(ex);
       }
    }
 }

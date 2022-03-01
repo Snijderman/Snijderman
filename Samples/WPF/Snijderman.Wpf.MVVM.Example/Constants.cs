@@ -1,8 +1,7 @@
-namespace Snijderman.Wpf.MVVM.Example
+namespace Snijderman.Wpf.MVVM.Example;
+
+public static class MessageConstants
 {
-   public static class MessageConstants
-   {
-      public const string StatusMessage = "StatusMessage";
-      public const string DisplayWaiting = "DisplayWaiting";
-   }
+   public const string StatusMessage = "StatusMessage";
+   public const string DisplayWaiting = "DisplayWaiting";
 }

@@ -2,34 +2,33 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Snijderman.Common.Wpf.Helpers
+namespace Snijderman.Common.Wpf.Helpers;
+
+public static class ImagesHelper
 {
-   public static class ImagesHelper
+   public static byte[] ImageSourceToBytes(BitmapEncoder encoder, ImageSource imageSource)
    {
-      public static byte[] ImageSourceToBytes(BitmapEncoder encoder, ImageSource imageSource)
+      if (!(imageSource is BitmapSource))
       {
-         if (!(imageSource is BitmapSource))
-         {
-            return default;
-         }
-
-         using var stream = ImageSourceToStream(encoder, imageSource);
-         return stream.ToArray();
+         return default;
       }
 
-      public static MemoryStream ImageSourceToStream(BitmapEncoder encoder, ImageSource imageSource)
+      using var stream = ImageSourceToStream(encoder, imageSource);
+      return stream.ToArray();
+   }
+
+   public static MemoryStream ImageSourceToStream(BitmapEncoder encoder, ImageSource imageSource)
+   {
+      if (imageSource is not BitmapSource bitmapSource)
       {
-         if (imageSource is not BitmapSource bitmapSource)
-         {
-            return default;
-         }
-
-         encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-
-         var stream = new MemoryStream();
-         encoder.Save(stream);
-
-         return stream;
+         return default;
       }
+
+      encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+
+      var stream = new MemoryStream();
+      encoder.Save(stream);
+
+      return stream;
    }
 }

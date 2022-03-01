@@ -5,25 +5,24 @@ using Microsoft.AspNetCore.Components;
 using Snijderman.Common.Blazor.Components;
 using Snijderman.Samples.Blazor.Mvvm.ViewModels;
 
-namespace Snijderman.Samples.Blazor.Mvvm.Components
+namespace Snijderman.Samples.Blazor.Mvvm.Components;
+
+public partial class OrderDetails : MvvmViewModelComponentBase<OrderViewModel>
 {
-   public partial class OrderDetails : MvvmViewModelComponentBase<OrderViewModel>
+   [Parameter] public CustomerViewModel Customer { get; set; }
+
+   private long _selectedOrderId = -1;
+   protected long SelectedOrderId => this._selectedOrderId;
+
+   public async Task SetOrderViewModelAsync(long orderId)
    {
-      [Parameter] public CustomerViewModel Customer { get; set; }
-
-      private long _selectedOrderId = -1;
-      protected long SelectedOrderId => this._selectedOrderId;
-
-      public async Task SetOrderViewModelAsync(long orderId)
+      if (this.Customer == default)
       {
-         if (this.Customer == default)
-         {
-            return;
-         }
-         this._selectedOrderId = orderId;
-         this.ViewModel = this.Customer.Orders.FirstOrDefault(x => x.OrderId == orderId);
-         await Task.Delay(TimeSpan.FromSeconds(1.5)).ConfigureAwait(false);
-         await this.ViewModel.LoadAsync().ConfigureAwait(false);
+         return;
       }
+      this._selectedOrderId = orderId;
+      this.ViewModel = this.Customer.Orders.FirstOrDefault(x => x.OrderId == orderId);
+      await Task.Delay(TimeSpan.FromSeconds(1.5)).ConfigureAwait(false);
+      await this.ViewModel.LoadAsync().ConfigureAwait(false);
    }
 }

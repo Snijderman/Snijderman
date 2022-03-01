@@ -1,9 +1,8 @@
 using System;
 
-namespace Snijderman.Common.Wpf
+namespace Snijderman.Common.Wpf;
+
+public interface IErrorHandler
 {
-   public interface IErrorHandler
-   {
-      void HandleError(Exception exc);
-   }
+   void HandleError(Exception exc);
 }

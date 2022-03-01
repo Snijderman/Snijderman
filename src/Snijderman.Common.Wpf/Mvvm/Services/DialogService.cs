@@ -1,13 +1,12 @@
 using Snijderman.Common.Wpf.Controls;
 using System.Windows;
 
-namespace Snijderman.Common.Wpf.Mvvm.Services
+namespace Snijderman.Common.Wpf.Mvvm.Services;
+
+public class DialogService : IDialogService
 {
-   public class DialogService : IDialogService
+   public void Show(string title, string content)
    {
-      public void Show(string title, string content)
-      {
-         ModernDialog.ShowMessage(content, title, MessageBoxButton.OK);
-      }
+      ModernDialog.ShowMessage(content, title, MessageBoxButton.OK);
    }
 }

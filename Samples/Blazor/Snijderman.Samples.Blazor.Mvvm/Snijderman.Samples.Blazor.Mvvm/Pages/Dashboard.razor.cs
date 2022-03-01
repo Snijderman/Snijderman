@@ -4,23 +4,22 @@ using System.Threading.Tasks;
 using Snijderman.Common.Blazor.Components;
 using Snijderman.Samples.Blazor.Mvvm.ViewModels;
 
-namespace Snijderman.Samples.Blazor.Mvvm.Pages
+namespace Snijderman.Samples.Blazor.Mvvm.Pages;
+
+public partial class Dashboard : MvvmViewModelComponentBase<DashboardViewModel>
 {
-   public partial class Dashboard : MvvmViewModelComponentBase<DashboardViewModel>
+   protected override async Task OnAfterRenderAsync(bool firstRender)
    {
-      protected override async Task OnAfterRenderAsync(bool firstRender)
+      if (firstRender)
       {
-         if (firstRender)
+         this.SetBindingContext();
+         await Task.Delay(TimeSpan.FromSeconds(1.5)).ConfigureAwait(false);
+         await this.ViewModel.LoadAsync().ConfigureAwait(false);
+         if (this.ViewModel.Customers?.Count > 0)
          {
-            this.SetBindingContext();
-            await Task.Delay(TimeSpan.FromSeconds(1.5)).ConfigureAwait(false);
-            await this.ViewModel.LoadAsync().ConfigureAwait(false);
-            if (this.ViewModel.Customers?.Count > 0)
-            {
-               this.ViewModel.Selected = this.ViewModel.Customers.FirstOrDefault();
-            }
+            this.ViewModel.Selected = this.ViewModel.Customers.FirstOrDefault();
          }
-         await base.OnAfterRenderAsync(firstRender).ConfigureAwait(false);
       }
+      await base.OnAfterRenderAsync(firstRender).ConfigureAwait(false);
    }
 }

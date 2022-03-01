@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Grpc.Core;
 
-namespace Snijderman.Common.ExtensionMethods
+namespace Snijderman.Common.ExtensionMethods;
+
+public static class AsyncServerStreamingCallExtensions
 {
-   public static class AsyncServerStreamingCallExtensions
+   public static Task<IEnumerable<T>> GetAsEnumerable<T>(this AsyncServerStreamingCall<T> serverStreamingCall)
    {
-      public static Task<IEnumerable<T>> GetAsEnumerable<T>(this AsyncServerStreamingCall<T> serverStreamingCall)
-      {
-         return serverStreamingCall.ResponseStream.ReadAllAsync().GetAsEnumerable();
-      }
+      return serverStreamingCall.ResponseStream.ReadAllAsync().GetAsEnumerable();
    }
 }

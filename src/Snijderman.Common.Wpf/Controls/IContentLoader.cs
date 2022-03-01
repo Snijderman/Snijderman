@@ -2,19 +2,18 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Snijderman.Common.Wpf.Controls
+namespace Snijderman.Common.Wpf.Controls;
+
+/// <summary>
+/// The contract for loading content.
+/// </summary>
+public interface IContentLoader
 {
    /// <summary>
-   /// The contract for loading content.
+   /// Asynchronously loads content from specified uri.
    /// </summary>
-   public interface IContentLoader
-   {
-      /// <summary>
-      /// Asynchronously loads content from specified uri.
-      /// </summary>
-      /// <param name="uri">The content uri.</param>
-      /// <param name="cancellationToken">The token used to cancel the load content task.</param>
-      /// <returns>The loaded content.</returns>
-      Task<object> LoadContentAsync(Uri uri, CancellationToken cancellationToken);
-   }
+   /// <param name="uri">The content uri.</param>
+   /// <param name="cancellationToken">The token used to cancel the load content task.</param>
+   /// <returns>The loaded content.</returns>
+   Task<object> LoadContentAsync(Uri uri, CancellationToken cancellationToken);
 }

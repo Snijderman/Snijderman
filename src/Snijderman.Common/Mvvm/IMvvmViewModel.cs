@@ -1,13 +1,12 @@
 using System.Threading.Tasks;
 
-namespace Snijderman.Common.Mvvm
+namespace Snijderman.Common.Mvvm;
+
+public interface IMvvmViewModel
 {
-   public interface IMvvmViewModel
-   {
-      Task LoadAsync();
+   Task LoadAsync();
 
-      Task LoadAsync(object[] args);
+   Task LoadAsync(object[] args);
 
-      Task<bool> UnloadAsync();
-   }
+   Task<bool> UnloadAsync();
 }

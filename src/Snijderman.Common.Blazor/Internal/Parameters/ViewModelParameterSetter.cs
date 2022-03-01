@@ -2,52 +2,51 @@ using System;
 using Microsoft.AspNetCore.Components;
 using Snijderman.Common.Mvvm;
 
-namespace Snijderman.Common.Blazor.Internal.Parameters
+namespace Snijderman.Common.Blazor.Internal.Parameters;
+
+internal interface IViewModelParameterSetter
 {
-   internal interface IViewModelParameterSetter
+   void ResolveAndSet(ComponentBase component, ViewModelBase viewModel);
+}
+
+internal class ViewModelParameterSetter : IViewModelParameterSetter
+{
+   private readonly IParameterCache _parameterCache;
+   private readonly IParameterResolver _parameterResolver;
+
+   public ViewModelParameterSetter(IParameterResolver parameterResolver, IParameterCache parameterCache)
    {
-      void ResolveAndSet(ComponentBase component, ViewModelBase viewModel);
+      this._parameterResolver = parameterResolver ?? throw new ArgumentNullException(nameof(parameterResolver));
+      this._parameterCache = parameterCache ?? throw new ArgumentNullException(nameof(parameterCache));
    }
 
-   internal class ViewModelParameterSetter : IViewModelParameterSetter
+   public void ResolveAndSet(ComponentBase component, ViewModelBase viewModel)
    {
-      private readonly IParameterCache _parameterCache;
-      private readonly IParameterResolver _parameterResolver;
-
-      public ViewModelParameterSetter(IParameterResolver parameterResolver, IParameterCache parameterCache)
+      if (component == null)
       {
-         this._parameterResolver = parameterResolver ?? throw new ArgumentNullException(nameof(parameterResolver));
-         this._parameterCache = parameterCache ?? throw new ArgumentNullException(nameof(parameterCache));
+         throw new ArgumentNullException(nameof(component));
       }
 
-      public void ResolveAndSet(ComponentBase component, ViewModelBase viewModel)
+      if (viewModel == null)
       {
-         if (component == null)
-         {
-            throw new ArgumentNullException(nameof(component));
-         }
+         throw new ArgumentNullException(nameof(viewModel));
+      }
 
-         if (viewModel == null)
-         {
-            throw new ArgumentNullException(nameof(viewModel));
-         }
+      var componentType = component.GetType();
 
-         var componentType = component.GetType();
+      var parameterInfo = this._parameterCache.Get(componentType);
+      if (parameterInfo == null)
+      {
+         var componentParameters = this._parameterResolver.ResolveParameters(componentType);
+         var viewModelParameters = this._parameterResolver.ResolveParameters(viewModel.GetType());
+         parameterInfo = new ParameterInfo(componentParameters, viewModelParameters);
+         this._parameterCache.Set(componentType, parameterInfo);
+      }
 
-         var parameterInfo = this._parameterCache.Get(componentType);
-         if (parameterInfo == null)
-         {
-            var componentParameters = this._parameterResolver.ResolveParameters(componentType);
-            var viewModelParameters = this._parameterResolver.ResolveParameters(viewModel.GetType());
-            parameterInfo = new ParameterInfo(componentParameters, viewModelParameters);
-            this._parameterCache.Set(componentType, parameterInfo);
-         }
-
-         foreach ((var componentProperty, var viewModelProperty) in parameterInfo.Parameters)
-         {
-            var value = componentProperty.GetValue(component);
-            viewModelProperty.SetValue(viewModel, value);
-         }
+      foreach ((var componentProperty, var viewModelProperty) in parameterInfo.Parameters)
+      {
+         var value = componentProperty.GetValue(component);
+         viewModelProperty.SetValue(viewModel, value);
       }
    }
 }

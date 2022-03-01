@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Snijderman.Samples.Common.Model;
 
-namespace Snijderman.Samples.Common.Services
+namespace Snijderman.Samples.Common.Services;
+
+public interface ICustomerService
 {
-   public interface ICustomerService
-   {
-      public Task<IEnumerable<Customer>> GetCustomers();
-   }
+   public Task<IEnumerable<Customer>> GetCustomers();
 }

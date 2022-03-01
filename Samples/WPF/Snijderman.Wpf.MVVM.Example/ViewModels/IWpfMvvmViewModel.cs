@@ -1,10 +1,9 @@
 using System.Windows.Controls;
 using Snijderman.Common.Mvvm;
 
-namespace Snijderman.Wpf.MVVM.Example.ViewModels
+namespace Snijderman.Wpf.MVVM.Example.ViewModels;
+
+public interface IWpfMvvmViewModel : IMvvmViewModel
 {
-   public interface IWpfMvvmViewModel : IMvvmViewModel
-   {
-      public ContentControl VmContentControl { get; set; }
-   }
+   public ContentControl VmContentControl { get; set; }
 }

@@ -1,9 +1,8 @@
-namespace Snijderman.Common.Data.Paging
-{
-   public class SelectOption
-   {
-      public string Id { get; set; }
+namespace Snijderman.Common.Data.Paging;
 
-      public string Name { get; set; }
-   }
+public class SelectOption
+{
+   public string Id { get; set; }
+
+   public string Name { get; set; }
 }
