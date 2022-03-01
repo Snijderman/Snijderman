@@ -1,0 +1,14 @@
+<UserControl x:Class="Snijderman.Common.Wpf.Controls.UcWaiting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Snijderman.Common.Wpf.Controls"
+             xmlns:controls="clr-namespace:Snijderman.Common.Wpf.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="450">
+    <Grid>
+      <controls:ModernProgress IsActive="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Style="{StaticResource PulseProgress}"></controls:ModernProgress>
+      <TextBlock x:Name="UiWaitingTextTxtbl" Style="{StaticResource Heading2}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+   </Grid>
+</UserControl>

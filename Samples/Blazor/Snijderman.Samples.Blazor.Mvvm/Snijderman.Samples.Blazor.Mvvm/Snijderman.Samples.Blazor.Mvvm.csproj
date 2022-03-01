@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+   <PropertyGroup>
+      <ClassLibTargetFrameworks>net6.0</ClassLibTargetFrameworks>
+      <OutputType>Library</OutputType>
+      <RazorLangVersion>3.0</RazorLangVersion>
+      <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+      <LangVersion>latest</LangVersion>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Blazorise.Icons.Material" Version="0.9.5.4" />
+      <PackageReference Include="Blazorise.Material" Version="0.9.5.4" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <ProjectReference Include="..\..\..\..\src\Snijderman.Common.Blazor\Snijderman.Common.Blazor.csproj" />
+      <ProjectReference Include="..\Snijderman.Samples.Blazor.Mvvm.ViewModels\Snijderman.Samples.Blazor.Mvvm.ViewModels.csproj" />
+   </ItemGroup>
+
+</Project>

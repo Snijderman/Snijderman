@@ -1,0 +1,36 @@
+@inherits MvvmViewModelComponentBase<CustomerViewModel>
+
+<Heading Size="HeadingSize.Is6" Style="margin-left: 40px;">Orders</Heading>
+
+@if (this.ViewModel.IsLoaded)
+{
+   <Layout Sider="true">
+      <LayoutSider Margin="Margin.Is2">
+         <LayoutSiderContent Style="width: 150px; background-color: white;">
+            @foreach (var order in this.ViewModel.Orders)
+            {
+               <Button Color="Color.Dark" Block="true" @onclick="@(() => this.SelectOrderAsync(order.OrderId))">@order.OrderId</Button>
+            }
+         </LayoutSiderContent>
+      </LayoutSider>
+      <Layout>
+         <LayoutContent>
+            <OrderDetails @ref="this._orderDetails" Customer="@this.ViewModel" />
+         </LayoutContent>
+      </Layout>
+   </Layout>
+}
+else
+{
+   <WaitingCube />
+}
+
+@code {
+   private OrderDetails _orderDetails;
+
+   private async Task SelectOrderAsync(long orderId)
+   {
+      //this._selectedOrderId = orderId;
+      await this._orderDetails.SetOrderViewModelAsync(orderId);
+   }
+}

@@ -1,0 +1,43 @@
+<UserControl x:Class="Snijderman.Wpf.MVVM.Example.Views.UcOrderDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Snijderman.Wpf.MVVM.Example.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+   <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="*" />
+         <RowDefinition Height="50" />
+      </Grid.RowDefinitions>
+      <DataGrid Name="UiUnsentDeclarationsDataGrid"
+                   ItemsSource="{Binding OrderDetails}"
+                   SelectedItem="{Binding Selected}"
+                   AutoGenerateColumns="False"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   xmlns:snijdermanControls="clr-namespace:Snijderman.Common.Wpf.Controls;assembly=Snijderman.Common.Wpf"
+                   SelectionMode="Single"
+                   Margin="10, 25, 10, 10">
+         <DataGrid.Columns>
+            <snijdermanControls:DataGridTextColumn Header="ProductID" Binding="{Binding ProductID}"/>
+            <snijdermanControls:DataGridTextColumn Header="ProductName"  Binding="{Binding ProductName}"/>
+            <snijdermanControls:DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+            <snijdermanControls:DataGridTextColumn Header="QuantityPerUnit" Binding="{Binding QuantityPerUnit}"/>
+            <snijdermanControls:DataGridTextColumn Header="UnitPrice" Binding="{Binding UnitPrice}"/>
+            <snijdermanControls:DataGridTextColumn Header="Total" Binding="{Binding Total}" />
+         </DataGrid.Columns>
+      </DataGrid>
+      <Button x:Name="UiTestBindButton"
+              Command="{Binding ShowFullOrderDetailsCommand}"
+              CommandParameter="{Binding Selected}"
+              Grid.Row="1"
+              Height="25"
+              Content="Test me"
+              HorizontalAlignment="Right"
+              Margin="0, 0, 2, 2" />
+   </Grid>
+
+</UserControl>

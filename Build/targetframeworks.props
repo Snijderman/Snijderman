@@ -1,0 +1,9 @@
+<Project>
+   <PropertyGroup>
+
+      <ClassLibTargetFrameworks>net6.0</ClassLibTargetFrameworks>
+
+      <ApplicationTargetFrameworks>net6.0</ApplicationTargetFrameworks>
+
+   </PropertyGroup>
+</Project>

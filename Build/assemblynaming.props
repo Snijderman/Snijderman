@@ -1,0 +1,20 @@
+<Project>
+
+   <PropertyGroup Label="Set Snijderman solution name">
+      <SnijdermanSolutionName>Snijderman</SnijdermanSolutionName>
+   </PropertyGroup>
+
+   <PropertyGroup Label="Set inital Snijderman project identifier">
+      <SnijdermanProjectIdentifier>$(MSBuildProjectName)</SnijdermanProjectIdentifier>
+   </PropertyGroup>
+
+   <PropertyGroup Label="Finalize Snijderman project identifier" Condition="!$(MSBuildProjectName.StartsWith($(SnijdermanSolutionName)))">
+      <SnijdermanProjectIdentifier>$(SnijdermanSolutionName).$(MSBuildProjectName)</SnijdermanProjectIdentifier>
+   </PropertyGroup>
+
+   <PropertyGroup Label="Set assembly name and root namespace">
+      <AssemblyName>$(SnijdermanProjectIdentifier)</AssemblyName>
+      <RootNamespace>$(AssemblyName)</RootNamespace>
+   </PropertyGroup>
+
+</Project>

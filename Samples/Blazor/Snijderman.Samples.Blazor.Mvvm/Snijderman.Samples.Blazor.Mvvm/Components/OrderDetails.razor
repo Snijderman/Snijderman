@@ -1,0 +1,70 @@
+@inherits MvvmViewModelComponentBase<ViewModels.OrderViewModel>
+
+<Text>@this.Id - @this.ViewModel?.OrderId</Text>
+
+
+@if (this.SelectedOrderId < 0)
+{
+   <Heading Size="HeadingSize.Is5" Alignment="TextAlignment.Center" Italic="true">Select an order to see the details</Heading>
+}
+else if (this.ViewModel == default || !this.ViewModel.IsLoaded)
+{
+   <WaitingCube />
+}
+else
+{
+   <Row>
+      <Column>
+         <Card Margin="Margin.Is4.OnY.Is4.OnX">
+            <CardHeader Style="background-color: #e0e0e0">
+               <CardTitle>Details for order @Bind(x => x.OrderId), shipped by @Bind(x => x.ShipperName)</CardTitle>
+            </CardHeader>
+            <CardBody>
+               <Fields>
+                  <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+                     <FieldLabel>Order ID</FieldLabel>
+                     <FieldBody>
+                        <TextEdit Text="@this.ViewModel.OrderId.ToString()" TextChanged="@((orderId) => this.ViewModel.OrderId = Convert.ToInt64(orderId))" />
+                     </FieldBody>
+                  </Field>
+                  <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+                     <FieldLabel>Shipper</FieldLabel>
+                     <FieldBody>
+                        <TextEdit @bind-Text="@this.ViewModel.ShipperName" />
+                     </FieldBody>
+                  </Field>
+               </Fields>
+            </CardBody>
+         </Card>
+      </Column>
+   </Row>
+   <Row>
+      <Column Margin="Margin.Is4.OnY.Is4.OnX">
+         <Fields>
+            <Field ColumnSize="ColumnSize.Is2" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" Clicked="@this.HiThereClicked">Hi there</Button>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is2" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" @onclick="@(()=>this.HiThereClicked())">Hi there</Button>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+               <Text>@this._sayHello</Text>
+            </Field>
+         </Fields>
+      </Column>
+   </Row>
+}
+
+@code {
+   private string _sayHello;
+   private void HiThereClicked()
+   {
+      this._sayHello = $"Hello at {DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")}";
+   }
+
+   Task OnNameChanged(string value)
+   {
+      this._sayHello = $"Nieuwe waarde voor order ID: {value}";
+      return Task.CompletedTask;
+   }
+}

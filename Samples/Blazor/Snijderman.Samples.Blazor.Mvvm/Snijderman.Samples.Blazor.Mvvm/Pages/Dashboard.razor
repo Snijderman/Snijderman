@@ -1,0 +1,26 @@
+@page "/"
+@inherits MvvmViewModelComponentBase<DashboardViewModel>
+
+@if (this.ViewModel?.Customers == default)
+{
+   <WaitingCube />
+}
+else
+{
+   <Tabs SelectedTab="@Bind(x => x.SelectedItem)" SelectedTabChanged="@ViewModel.SetSelectedTab">
+      <Items>
+         @foreach (var customer in this.ViewModel.Customers)
+         {
+            <Tab Name="@customer.CompanyId" @key=customer>@customer.CompanyName</Tab>
+         }
+      </Items>
+      <Content>
+         @foreach (var customer in this.ViewModel.Customers)
+         {
+            <TabPanel Name="@customer.CompanyId">
+               <Snijderman.Samples.Blazor.Mvvm.Components.MainTabContent ViewModelInput="@customer" />
+            </TabPanel>
+         }
+      </Content>
+   </Tabs>
+}

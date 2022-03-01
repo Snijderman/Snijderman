@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <ClassLibTargetFrameworks>net6.0</ClassLibTargetFrameworks>
+   </PropertyGroup>
+
+   <ItemGroup>
+     <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.1" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <ProjectReference Include="..\Snijderman.Common\Snijderman.Common.csproj" />
+   </ItemGroup>
+
+</Project>
