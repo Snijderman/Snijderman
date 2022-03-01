@@ -1,8 +1,0 @@
-<snijdermanWpf:SnijdermanWpfApplication x:Class="Snijderman.Wpf.MVVM.Example.WithCustomApplication.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:snijdermanWpf="clr-namespace:Snijderman.Common.Wpf">
-   <Application.Resources>
-         
-    </Application.Resources>
-</snijdermanWpf:SnijdermanWpfApplication>
