@@ -2,13 +2,13 @@
    <PropertyGroup>
 
       <!-- package version of Snijderman -->
-      <SnijdermanVersion>6.0.0-dev</SnijdermanVersion>
+      <SnijdermanVersion>6.0.0</SnijdermanVersion>
 
       <!-- assembly version of Snijderman -->
-      <SnijdermanAssemblyVersion>0.0.99</SnijdermanAssemblyVersion>
+      <SnijdermanAssemblyVersion>6.0.0</SnijdermanAssemblyVersion>
 
       <!-- file version of all Snijderman -->
-      <SnijdermanFileVersion>0.0.99.99</SnijdermanFileVersion>
+      <SnijdermanFileVersion>6.0.0</SnijdermanFileVersion>
 
    </PropertyGroup>
 </Project>
