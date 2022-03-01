@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snijderman.Samples.Blazor.M
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{9674FE9A-3B02-46D0-9E49-D02B1E07B55E}"
 	ProjectSection(SolutionItems) = preProject
-		ReadMeWpf.md = ReadMeWpf.md
+		ReadMe\ReadMeWpf.md = ReadMe\ReadMeWpf.md
 	EndProjectSection
 EndProject
 Global
