@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30803.129
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snijderman.Common", "src\Snijderman.Common\Snijderman.Common.csproj", "{D82380D6-A8B2-4F56-99A6-8B7652B33D19}"
 EndProject
@@ -56,6 +56,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snijderman.Samples.Blazor.Mvvm.ViewModels", "Samples\Blazor\Snijderman.Samples.Blazor.Mvvm\Snijderman.Samples.Blazor.Mvvm.ViewModels\Snijderman.Samples.Blazor.Mvvm.ViewModels.csproj", "{ED0F29AC-0ABB-4BEB-B3F6-6539FE70BDDF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snijderman.Samples.Blazor.Mvvm.ServerHosted", "Samples\Blazor\Snijderman.Samples.Blazor.Mvvm\Snijderman.Samples.Blazor.Mvvm.ServerHosted\Snijderman.Samples.Blazor.Mvvm.ServerHosted.csproj", "{633246D8-7464-4E09-A3BE-35DA5BB4FE77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{9674FE9A-3B02-46D0-9E49-D02B1E07B55E}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMeWpf.md = ReadMeWpf.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

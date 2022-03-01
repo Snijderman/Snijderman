@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
    <PropertyGroup>
       <TargetFrameworks>net6.0-windows</TargetFrameworks>
@@ -21,10 +21,11 @@
    </PropertyGroup>
 
    <ItemGroup>
-     <Compile Remove="Themes\Default\Converters\**" />
-     <EmbeddedResource Remove="Themes\Default\Converters\**" />
-     <None Remove="Themes\Default\Converters\**" />
-     <Page Remove="Themes\Default\Converters\**" />
+      <None Include=".\..\..\ReadMe\ReadMeWpf.md" Pack="true" PackagePath="\README.md"/>
+      <Compile Remove="Themes\Default\Converters\**" />
+      <EmbeddedResource Remove="Themes\Default\Converters\**" />
+      <None Remove="Themes\Default\Converters\**" />
+      <Page Remove="Themes\Default\Converters\**" />
    </ItemGroup>
 
    <ItemGroup>
