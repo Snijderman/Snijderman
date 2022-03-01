@@ -34,7 +34,9 @@ namespace Snijderman.Common.Wpf.Themes.Default.Helpers
       [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
       public static extern bool GetCursorPos([In, Out] POINT pt);
 
+#pragma warning disable CS0649
       public static HandleRef NullHandleRef;
+#pragma warning restore CS0649
 
       public delegate bool MonitorEnumProc(IntPtr monitor);
 

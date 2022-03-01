@@ -72,10 +72,7 @@ namespace Snijderman.Common.Utils
          return HashBytesToHashValue(algorithm.ComputeHash(stream));
       }
 
-      private static HashAlgorithm GetHashAlgorithm()
-      {
-         return new SHA256Managed();
-      }
+      private static HashAlgorithm GetHashAlgorithm() => SHA256.Create();
 
       #region Creating stream
       public static CryptoStream CreateHashingStream(System.IO.Stream stream, HashAlgorithm transform)

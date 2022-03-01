@@ -23,6 +23,13 @@
    </PropertyGroup>
 
    <ItemGroup>
+     <Compile Remove="Themes\Default\Converters\**" />
+     <EmbeddedResource Remove="Themes\Default\Converters\**" />
+     <None Remove="Themes\Default\Converters\**" />
+     <Page Remove="Themes\Default\Converters\**" />
+   </ItemGroup>
+
+   <ItemGroup>
       <ProjectReference Include="..\Snijderman.Common\Snijderman.Common.csproj" />
    </ItemGroup>
 
@@ -34,7 +41,6 @@
 
    <ItemGroup>
       <Folder Include="Converters\" />
-      <Folder Include="Themes\Default\Converters\" />
       <Folder Include="Themes\Default\Helpers\" />
    </ItemGroup>
 

@@ -62,7 +62,9 @@ namespace Snijderman.Common.Utils
       {
          var stream = new MemoryStream();
          IFormatter formatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
          formatter.Serialize(stream, objectType);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
          return stream;
       }
 

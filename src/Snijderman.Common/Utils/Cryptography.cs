@@ -24,14 +24,8 @@ namespace Snijderman.Common.Utils
       {
          var data = new byte[byteCount];
 
-         using (var rng = new RNGCryptoServiceProvider())
-         {
-            for (var i = 0; i < 10; i++)
-            {
-               // Fille the buffer with the generated data
-               rng.GetBytes(data);
-            }
-         }
+         Random rnd = new();
+         rnd.NextBytes(data);
 
          return data;
       }
@@ -41,26 +35,25 @@ namespace Snijderman.Common.Utils
          return new Rfc2898DeriveBytes(password, salt, 1512);
       }
 
-      public static RijndaelManaged CreateRijndaelManaged(Rfc2898DeriveBytes cryptoKey)
+      public static Aes CreateAesCryptography(Rfc2898DeriveBytes cryptoKey)
       {
          if (cryptoKey == null)
          {
             throw new ArgumentNullException(nameof(cryptoKey));
          }
 
-         var rijndaelManaged = new RijndaelManaged
-         {
-            Mode = CipherMode.CBC,
-            KeySize = 256,
-            BlockSize = 128
-         };
+         var aesCryptography = Aes.Create();
+         aesCryptography.Mode = CipherMode.CBC;
+         aesCryptography.KeySize = 256;
+         aesCryptography.BlockSize = 128;
+
          // do not use this, because then a decrypted hash probably will not be the same as the original, since the sizes are different
-         //rijndaelManaged.Padding = PaddingMode.Zeros;
+         //rijndaelManaged.Padding = PaddingMode.Zeros
 
-         rijndaelManaged.Key = cryptoKey.GetBytes(rijndaelManaged.KeySize / 8); ;
-         rijndaelManaged.IV = cryptoKey.GetBytes(rijndaelManaged.BlockSize / 8); ;
+         aesCryptography.Key = cryptoKey.GetBytes(aesCryptography.KeySize / 8);
+         aesCryptography.IV = cryptoKey.GetBytes(aesCryptography.BlockSize / 8);
 
-         return rijndaelManaged;
+         return aesCryptography;
       }
 
       #region Encryption
@@ -206,15 +199,14 @@ namespace Snijderman.Common.Utils
       /// <param name="algorithm">The cryptographic transformation that is to be performed on the stream.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, Func<CryptoStream, Task> callback)
+      public static Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var writeCryptoStream = CreateEncryptionStream(stream, algorithm);
-         await callback(writeCryptoStream).ConfigureAwait(false);
+         return EncryptStreamInternalAsync(stream, algorithm, callback);
       }
 
       /// <summary>
@@ -225,15 +217,14 @@ namespace Snijderman.Common.Utils
       /// <param name="leaveOpen">true to not close the underlying stream when the System.Security.Cryptography.CryptoStream object is disposed; otherwise, false.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, bool leaveOpen, Func<CryptoStream, Task> callback)
+      public static Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, bool leaveOpen, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var writeCryptoStream = CreateEncryptionStream(stream, algorithm, leaveOpen);
-         await callback(writeCryptoStream).ConfigureAwait(false);
+         return EncryptStreamInternalAsync(stream, algorithm, leaveOpen, callback);
       }
 
       /// <summary>
@@ -244,15 +235,14 @@ namespace Snijderman.Common.Utils
       /// <param name="mode">The mode of the stream.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, Func<CryptoStream, Task> callback)
+      public static Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var writeCryptoStream = CreateEncryptionStream(stream, algorithm, mode);
-         await callback(writeCryptoStream).ConfigureAwait(false);
+         return EncryptStreamInternalAsync(stream, algorithm, mode, callback);
       }
 
       /// <summary>
@@ -264,16 +254,41 @@ namespace Snijderman.Common.Utils
       /// <param name="leaveOpen">true to not close the underlying stream when the System.Security.Cryptography.CryptoStream object is disposed; otherwise, false.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, bool leaveOpen, Func<CryptoStream, Task> callback)
+      public static Task EncryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, bool leaveOpen, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var writeCryptoStream = CreateEncryptionStream(stream, algorithm, mode, leaveOpen);
+         return EncryptStreamInternalAsync(stream, algorithm, mode, leaveOpen, callback);
+      }
+
+#pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
+      private static async Task EncryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, Func<CryptoStream, Task> callback)
+      {
+         await using var writeCryptoStream = CreateEncryptionStream(stream, algorithm, mode);
          await callback(writeCryptoStream).ConfigureAwait(false);
       }
+
+      private static async Task EncryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, Func<CryptoStream, Task> callback)
+      {
+         await using var writeCryptoStream = CreateEncryptionStream(stream, algorithm);
+         await callback(writeCryptoStream).ConfigureAwait(false);
+      }
+
+      private static async Task EncryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, bool leaveOpen, Func<CryptoStream, Task> callback)
+      {
+         await using var writeCryptoStream = CreateEncryptionStream(stream, algorithm, leaveOpen);
+         await callback(writeCryptoStream).ConfigureAwait(false);
+      }
+
+      private static async Task EncryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, bool leaveOpen, Func<CryptoStream, Task> callback)
+      {
+         await using var writeCryptoStream = CreateEncryptionStream(stream, algorithm, mode, leaveOpen);
+         await callback(writeCryptoStream).ConfigureAwait(false);
+      }
+#pragma warning restore CA2007 // Consider calling ConfigureAwait on the awaited task
       #endregion
 
       #region Decryption
@@ -419,15 +434,14 @@ namespace Snijderman.Common.Utils
       /// <param name="algorithm">The cryptographic transformation that is to be performed on the stream.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, Func<CryptoStream, Task> callback)
+      public static Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var readCryptoStream = CreateDecryptionStream(stream, algorithm);
-         await callback(readCryptoStream).ConfigureAwait(false);
+         return DecryptStreamInternalAsync(stream, algorithm, callback);
       }
 
       /// <summary>
@@ -438,15 +452,14 @@ namespace Snijderman.Common.Utils
       /// <param name="leaveOpen">true to not close the underlying stream when the System.Security.Cryptography.CryptoStream object is disposed; otherwise, false.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, bool leaveOpen, Func<CryptoStream, Task> callback)
+      public static Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, bool leaveOpen, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var readCryptoStream = CreateDecryptionStream(stream, algorithm, leaveOpen);
-         await callback(readCryptoStream).ConfigureAwait(false);
+         return DecryptStreamInternalAsync(stream, algorithm, leaveOpen, callback);
       }
 
       /// <summary>
@@ -457,15 +470,14 @@ namespace Snijderman.Common.Utils
       /// <param name="mode">The mode of the stream.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, Func<CryptoStream, Task> callback)
+      public static Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var readCryptoStream = CreateDecryptionStream(stream, algorithm, mode);
-         await callback(readCryptoStream).ConfigureAwait(false);
+         return DecryptStreamInternalAsync(stream, algorithm, mode, callback);
       }
 
       /// <summary>
@@ -477,17 +489,41 @@ namespace Snijderman.Common.Utils
       /// <param name="leaveOpen">true to not close the underlying stream when the System.Security.Cryptography.CryptoStream object is disposed; otherwise, false.</param>
       /// <param name="callback">Callback function to process the stream</param>
       /// <returns></returns>
-      public static async Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, bool leaveOpen, Func<CryptoStream, Task> callback)
+      public static Task DecryptStreamAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, bool leaveOpen, Func<CryptoStream, Task> callback)
       {
          if (callback == null)
          {
             throw new ArgumentNullException(nameof(callback));
          }
 
-         using var readCryptoStream = CreateDecryptionStream(stream, algorithm, mode, leaveOpen);
+         return DecryptStreamInternalAsync(stream, algorithm, mode, leaveOpen, callback);
+      }
+
+#pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
+      private static async Task DecryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, Func<CryptoStream, Task> callback)
+      {
+         await using var readCryptoStream = CreateDecryptionStream(stream, algorithm);
          await callback(readCryptoStream).ConfigureAwait(false);
       }
 
+      private static async Task DecryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, bool leaveOpen, Func<CryptoStream, Task> callback)
+      {
+         await using var readCryptoStream = CreateDecryptionStream(stream, algorithm, leaveOpen);
+         await callback(readCryptoStream).ConfigureAwait(false);
+      }
+
+      private static async Task DecryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, Func<CryptoStream, Task> callback)
+      {
+         await using var readCryptoStream = CreateDecryptionStream(stream, algorithm, mode);
+         await callback(readCryptoStream).ConfigureAwait(false);
+      }
+
+      private static async Task DecryptStreamInternalAsync(System.IO.Stream stream, SymmetricAlgorithm algorithm, CryptoStreamMode mode, bool leaveOpen, Func<CryptoStream, Task> callback)
+      {
+         await using var readCryptoStream = CreateDecryptionStream(stream, algorithm, mode, leaveOpen);
+         await callback(readCryptoStream).ConfigureAwait(false);
+      }
+#pragma warning restore CA2007 // Consider calling ConfigureAwait on the awaited task
       #endregion
    }
 }
