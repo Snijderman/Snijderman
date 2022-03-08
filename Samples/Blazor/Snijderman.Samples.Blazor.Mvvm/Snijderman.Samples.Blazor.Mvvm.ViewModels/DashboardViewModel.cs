@@ -24,7 +24,7 @@ public class DashboardViewModel : ItemSelectedViewModelBase<CustomerViewModel>
       this.SelectedItemChanged += this.LoadCustomerOrders;
    }
 
-   public override async Task LoadAsync() => this._customers = new ObservableCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomers().ConfigureAwait(false)));
+   public override async Task LoadAsync() => this._customers = new ObservableCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomersAsync().ConfigureAwait(false)));
    private IEnumerable<CustomerViewModel> GetCustomers(IEnumerable<Customer> customers)
    {
       foreach (var customer in customers)

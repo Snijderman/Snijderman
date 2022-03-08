@@ -15,7 +15,7 @@
          <RowDefinition Height="*" />
          <RowDefinition Height="25" />
       </Grid.RowDefinitions>
-      <ContentControl x:Name="UiMainContent" />
+      <ContentControl x:Name="UiMainContent" Visibility="{Binding ShowContent, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
       <StatusBar x:Name="UiMainStatusBar" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
          <StatusBar.ItemsPanel>

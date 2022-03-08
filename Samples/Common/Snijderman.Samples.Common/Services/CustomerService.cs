@@ -12,5 +12,5 @@ public class CustomerService : ICustomerService
    {
       this._sampleDataService = sampleDataService;
    }
-   public Task<IEnumerable<Customer>> GetCustomers() => this._sampleDataService.GetCustomersAsync();
+   public Task<IEnumerable<Customer>> GetCustomersAsync() => this._sampleDataService.GetCustomersAsync();
 }

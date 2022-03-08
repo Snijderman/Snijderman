@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using Snijderman.Common.Mvvm;
 using Snijderman.Common.Mvvm.Services;
+using Snijderman.Common.Wpf.Extensions;
 using Snijderman.Samples.Common.Model;
 using Snijderman.Samples.Common.Services;
 
@@ -29,7 +30,8 @@ public class OrdersViewModel : ItemSelectedViewModelBase<Order>, IWpfMvvmViewMod
       {
          throw new ArgumentException("No valid customer ID provided");
       }
-      this._orders = new ObservableCollection<Order>(await this._orderService.GetOrdersAsync(customerId).ConfigureAwait(false));
+
+      this.Orders = new ObservableCollection<Order>(await this._orderService.GetOrdersAsync(customerId).ConfigureAwait(false));
    }
 
    private ObservableCollection<Order> _orders;

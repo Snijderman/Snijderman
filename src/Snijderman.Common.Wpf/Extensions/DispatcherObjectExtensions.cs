@@ -74,6 +74,7 @@ public static class DispatcherObjectExtensions
       return methodcall();
    }
 
+   // https://medium.com/@kevingosse/switching-back-to-the-ui-thread-in-wpf-uwp-in-modern-c-5dc1cc8efa5e
    public static SwitchToUiAwaitable SwitchToUi(this Dispatcher dispatcher) => new(dispatcher);
 
    public struct SwitchToUiAwaitable : INotifyCompletion

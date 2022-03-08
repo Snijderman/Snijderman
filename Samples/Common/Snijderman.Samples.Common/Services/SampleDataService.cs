@@ -473,11 +473,28 @@ public class SampleDataService : ISampleDataService
             };
    }
 
-   public Task<IEnumerable<Customer>> GetCustomersAsync() => Task.FromResult(_allCompaniesOrdersAndOrderDetails);
+   public async Task<IEnumerable<Customer>> GetCustomersAsync()
+   {
+      await Task.Delay(750).ConfigureAwait(false);
+      return _allCompaniesOrdersAndOrderDetails;
+   }
 
-   public Task<IEnumerable<Order>> GetOrdersAsync(string companyId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.AsEnumerable());
+   public async Task<IEnumerable<Order>> GetOrdersAsync(string companyId)
+   {
+      await Task.Delay(750).ConfigureAwait(false);
+      System.Diagnostics.Debug.WriteLine("GetOrdersAsync");
+      return _allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.AsEnumerable();
+   }
 
-   public Task<Order> GetOrderAsync(string companyId, long orderId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.FirstOrDefault(x => x.OrderID == orderId));
+   public async Task<Order> GetOrderAsync(string companyId, long orderId)
+   {
+      await Task.Delay(750).ConfigureAwait(false);
+      return _allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.FirstOrDefault(x => x.OrderID == orderId);
+   }
 
-   public Task<IEnumerable<OrderDetail>> GetOrderDetailsAsync(long orderId) => Task.FromResult(_allCompaniesOrdersAndOrderDetails.SelectMany(x => x.Orders).FirstOrDefault(x => x.OrderID == orderId)?.Details.AsEnumerable());
+   public async Task<IEnumerable<OrderDetail>> GetOrderDetailsAsync(long orderId)
+   {
+      await Task.Delay(750).ConfigureAwait(false);
+      return _allCompaniesOrdersAndOrderDetails.SelectMany(x => x.Orders).FirstOrDefault(x => x.OrderID == orderId)?.Details.AsEnumerable();
+   }
 }

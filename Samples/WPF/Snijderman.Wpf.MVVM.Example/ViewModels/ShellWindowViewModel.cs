@@ -1,5 +1,6 @@
 using Snijderman.Common.Mvvm;
 using Snijderman.Common.Mvvm.Services;
+using Snijderman.Wpf.MVVM.Example.Services;
 
 namespace Snijderman.Wpf.MVVM.Example.ViewModels;
 
@@ -10,13 +11,21 @@ public class ShellWindowViewModel : WpfMvvmViewModelBase
       this._messageService = messageService;
       this._messageService.Subscribe<ViewModelBase, string>(this, this.OnStringMessage);
       this._messageService.Subscribe<ViewModelBase, bool>(this, this.OnBooleanMessage);
+      this._messageService.Subscribe<ApplicationHostService, bool>(this, this.OnApplicationLoaded);
    }
 
-   private bool _showWaiting;
+   private bool _showWaiting = true;
    public bool ShowWaiting
    {
       get => this._showWaiting;
       set => this.Set(ref this._showWaiting, value);
+   }
+
+   private bool _showContent = false;
+   public bool ShowContent
+   {
+      get => this._showContent;
+      set => this.Set(ref this._showContent, value);
    }
 
    private string _statusText;
@@ -51,6 +60,17 @@ public class ShellWindowViewModel : WpfMvvmViewModelBase
       {
          case MessageConstants.DisplayWaiting:
             this.ShowWaiting = value;
+            break;
+      }
+   }
+
+   private void OnApplicationLoaded(ApplicationHostService arg1, string message, bool value)
+   {
+      switch (message)
+      {
+         case MessageConstants.DisplayWaiting:
+            this.ShowWaiting = value;
+            this.ShowContent = !value;
             break;
       }
    }

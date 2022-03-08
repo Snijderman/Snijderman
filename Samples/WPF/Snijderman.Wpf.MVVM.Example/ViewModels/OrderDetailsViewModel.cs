@@ -29,7 +29,7 @@ public class OrderDetailsViewModel : WpfMvvmViewModelBase
       {
          throw new ArgumentException("No valid customer ID provided");
       }
-      this._orderDetails = new ObservableCollection<OrderDetail>(await this._orderDetailsService.GetOrderDetails(orderId).ConfigureAwait(false));
+      this.OrderDetails = new ObservableCollection<OrderDetail>(await this._orderDetailsService.GetOrderDetails(orderId).ConfigureAwait(false));
    }
 
    private ObservableCollection<OrderDetail> _orderDetails;

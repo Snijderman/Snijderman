@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Snijderman.Common.Mvvm;
 using Snijderman.Common.Mvvm.Services;
+using Snijderman.Common.Wpf.Extensions;
 using Snijderman.Samples.Common.Model;
 using Snijderman.Samples.Common.Services;
 
@@ -23,7 +25,7 @@ public class CustomersViewModel : ItemSelectedViewModelBase<CustomerViewModel>, 
       this.SelectedItemChanged += this.LoadCustomerOrders;
    }
 
-   public override async Task LoadAsync() => this._customers = new ObservableCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomers().ConfigureAwait(false)));
+   public override async Task LoadAsync() => this.Customers = new ReadOnlyCollection<CustomerViewModel>(this.GetCustomers(await this._customerService.GetCustomersAsync().ConfigureAwait(false)).ToList());
    private IEnumerable<CustomerViewModel> GetCustomers(IEnumerable<Customer> customers)
    {
       foreach (var customer in customers)
@@ -37,12 +39,13 @@ public class CustomersViewModel : ItemSelectedViewModelBase<CustomerViewModel>, 
       }
    }
 
-   private ObservableCollection<CustomerViewModel> _customers;
-   public ObservableCollection<CustomerViewModel> Customers
+   private ReadOnlyCollection<CustomerViewModel> _customers;
+   public ReadOnlyCollection<CustomerViewModel> Customers
    {
       get => this._customers;
       set => this.Set(ref this._customers, value);
    }
+
    public ContentControl VmContentControl { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
    private async Task LoadCustomerOrders(CustomerViewModel customer)
@@ -53,6 +56,8 @@ public class CustomersViewModel : ItemSelectedViewModelBase<CustomerViewModel>, 
          return;
       }
 
+      this._messageService.Send(this, MessageConstants.DisplayWaiting, true);
+
       this._messageService.Send(this, MessageConstants.StatusMessage, $"Customer '{customer.CompanyID}' selected");
 
       await this._navigationService.NavigateToAsync<OrdersViewModel>(async (viewModel, controlToShow) =>
@@ -60,5 +65,6 @@ public class CustomersViewModel : ItemSelectedViewModelBase<CustomerViewModel>, 
          customer.VmContentControl.Content = controlToShow;//.GetViewModel().VmContentControl;
          await viewModel.LoadAsync(new object[] { customer.CompanyID }).ConfigureAwait(false);
       }).ConfigureAwait(false);
+      this._messageService.Send(this, MessageConstants.DisplayWaiting, false);
    }
 }

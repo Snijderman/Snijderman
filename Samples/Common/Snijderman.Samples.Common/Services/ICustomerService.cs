@@ -6,5 +6,5 @@ namespace Snijderman.Samples.Common.Services;
 
 public interface ICustomerService
 {
-   public Task<IEnumerable<Customer>> GetCustomers();
+   public Task<IEnumerable<Customer>> GetCustomersAsync();
 }
