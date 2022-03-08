@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Snijderman.Common.Mvvm;
-using Snijderman.Common.Wpf.Extensions;
 using Snijderman.Wpf.MVVM.Example.ViewModels;
 
 namespace Snijderman.Wpf.MVVM.Example.Services;

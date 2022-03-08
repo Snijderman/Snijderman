@@ -2,7 +2,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Snijderman.Common.Mvvm;
-using Snijderman.Samples.Common.Model;
 
 namespace Snijderman.Samples.Blazor.Mvvm.ViewModels;
 
