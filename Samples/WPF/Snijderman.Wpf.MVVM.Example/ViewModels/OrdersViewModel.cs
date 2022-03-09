@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using Snijderman.Common.Mvvm;
 using Snijderman.Common.Mvvm.Services;
-using Snijderman.Common.Wpf.Extensions;
 using Snijderman.Samples.Common.Model;
 using Snijderman.Samples.Common.Services;
 
