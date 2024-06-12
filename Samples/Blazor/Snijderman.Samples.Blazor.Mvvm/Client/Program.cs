@@ -22,7 +22,7 @@ public class Program
 
       builder.Services.AddBlazorise(options =>
                        {
-                          options.ChangeTextOnKeyPress = true;
+                          options.Immediate = true;
                        })
                        .AddMaterialProviders()
                        .AddMaterialIcons();

@@ -24,9 +24,5 @@ public class ProducerConsumerException : Exception
       this.InnerExceptions = innerExceptions;
    }
 
-   protected ProducerConsumerException(SerializationInfo info, StreamingContext context) : base(info, context)
-   {
-   }
-
    public IList<Exception> InnerExceptions { get; private set; } = new List<Exception>();
 }

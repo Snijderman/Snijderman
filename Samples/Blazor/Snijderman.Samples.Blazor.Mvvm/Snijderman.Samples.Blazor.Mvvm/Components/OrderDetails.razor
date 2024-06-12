@@ -5,9 +5,9 @@
 
 @if (this.SelectedOrderId < 0)
 {
-   <Heading Size="HeadingSize.Is5" Alignment="TextAlignment.Center" Italic="true">Select an order to see the details</Heading>
+   <Heading Size="HeadingSize.Is5" TextAlignment="TextAlignment.Center" Italic="true">Select an order to see the details</Heading>
 }
-else if (this.ViewModel == default || !this.ViewModel.IsLoaded)
+else if (this.ViewModel is not { IsLoaded: true })
 {
    <WaitingCube />
 }
