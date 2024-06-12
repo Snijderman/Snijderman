@@ -11,10 +11,10 @@ namespace Snijderman.Common.Wpf.Themes.Default.Helpers;
 public class HwndInterop
 {
    [DllImport("user32.dll")]
-   public static extern IntPtr SendMessage(IntPtr hwnd, uint Msg, IntPtr wParam, IntPtr lParam);
+   public static extern IntPtr SendMessage(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
 
    [StructLayout(LayoutKind.Sequential)]
-   public struct WINDOWPOS
+   public struct Windowpos
    {
       public IntPtr hwndInsertAfter;
       public IntPtr hwnd;
@@ -25,23 +25,23 @@ public class HwndInterop
       public uint flags;
    }
 
-   private const int WM_SYSCOMMAND = 0x112;
-   private const int WM_SIZE = 0x0005;
-   private const int WM_WINDOWPOSCHANGING = 0x0046;
+   private const int WmSyscommand = 0x112;
+   private const int WmSize = 0x0005;
+   private const int WmWindowposchanging = 0x0046;
 
-   private const int SC_MAXIMIZE = 0xF030;
-   private const int SC_RESTORE = 0xF120;
-   private const int SC_MINIMIZE = 0xF020;
+   private const int ScMaximize = 0xF030;
+   private const int ScRestore = 0xF120;
+   private const int ScMinimize = 0xF020;
 
    private readonly IntPtr _handle;
 
    /// <summary>
-   /// Is raised when the <see cref="WM_SIZE"/> is occuring.
+   /// Is raised when the <see cref="WmSize"/> is occuring.
    /// </summary>
    public event EventHandler<HwndInteropSizeChangedEventArgs> SizeChanged;
 
    /// <summary>
-   /// Is raised when the <see cref="WM_WINDOWPOSCHANGING"/> is occuring.
+   /// Is raised when the <see cref="WmWindowposchanging"/> is occuring.
    /// </summary>
    public event EventHandler<HwndInteropPositionChangingEventArgs> PositionChanging;
 
@@ -60,11 +60,11 @@ public class HwndInterop
    {
       switch (msg)
       {
-         case WM_SIZE:
+         case WmSize:
             this.SizeChanged?.Invoke(this, new HwndInteropSizeChangedEventArgs((HwndInteropSizeChangedEventArgs.ResizeRequestType)wParam));
             break;
-         case WM_WINDOWPOSCHANGING:
-            var windowPos = (WINDOWPOS)Marshal.PtrToStructure(lParam, typeof(WINDOWPOS));
+         case WmWindowposchanging:
+            var windowPos = (Windowpos)Marshal.PtrToStructure(lParam, typeof(Windowpos));
             this.PositionChanging?.Invoke(this, new HwndInteropPositionChangingEventArgs((HwndInteropPositionChangingEventArgs.PositionChangeType)windowPos.flags));
             break;
       }
@@ -77,7 +77,7 @@ public class HwndInterop
    /// </summary>
    public void Maximize()
    {
-      SendMessage(this._handle, WM_SYSCOMMAND, (IntPtr)SC_MAXIMIZE, IntPtr.Zero);
+      SendMessage(this._handle, WmSyscommand, ScMaximize, IntPtr.Zero);
    }
 
    /// <summary>
@@ -85,7 +85,7 @@ public class HwndInterop
    /// </summary>
    public void Restore()
    {
-      SendMessage(this._handle, WM_SYSCOMMAND, (IntPtr)SC_RESTORE, IntPtr.Zero);
+      SendMessage(this._handle, WmSyscommand, ScRestore, IntPtr.Zero);
    }
 
    /// <summary>
@@ -93,6 +93,6 @@ public class HwndInterop
    /// </summary>
    public void Minimize()
    {
-      SendMessage(this._handle, WM_SYSCOMMAND, (IntPtr)SC_MINIMIZE, IntPtr.Zero);
+      SendMessage(this._handle, WmSyscommand, ScMinimize, IntPtr.Zero);
    }
 }

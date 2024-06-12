@@ -1,6 +1,4 @@
-@using Blazorise
 @inherits MvvmComponentBase
-@using Snijderman.Samples.Blazor.Mvvm.ViewModels
 
 @inject ClockViewModel viewModel
 
@@ -13,8 +11,8 @@
    </LayoutContent>
    <LayoutFooter Fixed="true" Class="mainfooter">
       <Row Margin="Margin.Is0">
-         <Column Margin="Margin.Is0"><Text TextAlignment="TextAlignment.Start">@this._copyright</Text></Column>
-         <Column Margin="Margin.Is0"><Text TextAlignment="TextAlignment.End">Current time: @Bind(this.viewModel, x => x.DisplayDateTime) (# times instantiated @Bind(this.viewModel, x => x.Counter))</Text></Column>
+         <Column Margin="Margin.Is0"><Text TextAlignment="TextAlignment.Start">@_copyright</Text></Column>
+         <Column Margin="Margin.Is0"><Text TextAlignment="TextAlignment.End">Current time: @Bind(viewModel, x => x.DisplayDateTime) (# times instantiated @Bind(viewModel, x => x.Counter))</Text></Column>
       </Row>
    </LayoutFooter>
 </Layout>

@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Snijderman.Common.Io.File;
 
-public interface IFileIO
+public interface IFileIo
 {
    FileStream OpenFileWithoutLocking(string path);
 

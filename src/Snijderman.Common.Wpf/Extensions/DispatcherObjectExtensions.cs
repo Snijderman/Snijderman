@@ -48,10 +48,8 @@ public static class DispatcherObjectExtensions
       {
          return control.Dispatcher.Invoke(methodcall, priorityForCall);
       }
-      else
-      {
-         return methodcall();
-      }
+
+      return methodcall();
    }
 
    public static T InvokeIfRequired<T>(this Dispatcher dispatcher, Func<T> methodcall, DispatcherPriority priorityForCall = DispatcherPriority.Normal)

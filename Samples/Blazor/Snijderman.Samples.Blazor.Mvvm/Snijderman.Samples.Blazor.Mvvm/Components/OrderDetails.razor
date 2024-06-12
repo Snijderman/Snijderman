@@ -1,13 +1,13 @@
-@inherits MvvmViewModelComponentBase<ViewModels.OrderViewModel>
+@inherits MvvmViewModelComponentBase<OrderViewModel>
 
-<Text>@this.Id - @this.ViewModel?.OrderId</Text>
+<Text>@Id - @ViewModel?.OrderId</Text>
 
 
-@if (this.SelectedOrderId < 0)
+@if (SelectedOrderId < 0)
 {
    <Heading Size="HeadingSize.Is5" TextAlignment="TextAlignment.Center" Italic="true">Select an order to see the details</Heading>
 }
-else if (this.ViewModel is not { IsLoaded: true })
+else if (ViewModel is not { IsLoaded: true })
 {
    <WaitingCube />
 }
@@ -21,16 +21,16 @@ else
             </CardHeader>
             <CardBody>
                <Fields>
-                  <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+                  <Field ColumnSize="ColumnSize.Is3" Padding="Padding.Is2.OnX.Is2.OnY">
                      <FieldLabel>Order ID</FieldLabel>
                      <FieldBody>
-                        <TextEdit Text="@this.ViewModel.OrderId.ToString()" TextChanged="@((orderId) => this.ViewModel.OrderId = Convert.ToInt64(orderId))" />
+                        <TextEdit Text="@ViewModel.OrderId.ToString()" TextChanged="@(orderId => ViewModel.OrderId = Convert.ToInt64(orderId))" />
                      </FieldBody>
                   </Field>
-                  <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
+                  <Field ColumnSize="ColumnSize.Is3" Padding="Padding.Is2.OnX.Is2.OnY">
                      <FieldLabel>Shipper</FieldLabel>
                      <FieldBody>
-                        <TextEdit @bind-Text="@this.ViewModel.ShipperName" />
+                        <TextEdit @bind-Text="@ViewModel.ShipperName" />
                      </FieldBody>
                   </Field>
                </Fields>
@@ -41,14 +41,14 @@ else
    <Row>
       <Column Margin="Margin.Is4.OnY.Is4.OnX">
          <Fields>
-            <Field ColumnSize="ColumnSize.Is2" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
-               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" Clicked="@this.HiThereClicked">Hi there</Button>
+            <Field ColumnSize="ColumnSize.Is2" Padding="Padding.Is2.OnX.Is2.OnY">
+               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" Clicked="@HiThereClicked">Hi there</Button>
             </Field>
-            <Field ColumnSize="ColumnSize.Is2" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
-               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" @onclick="@(()=>this.HiThereClicked())">Hi there</Button>
+            <Field ColumnSize="ColumnSize.Is2" Padding="Padding.Is2.OnX.Is2.OnY">
+               <Button Color="Color.Secondary" Disabled="@Bind(x => x.DisableSave)" @onclick="@(()=>HiThereClicked())">Hi there</Button>
             </Field>
-            <Field ColumnSize="ColumnSize.Is3" Padding="Blazorise.Padding.Is2.OnX.Is2.OnY">
-               <Text>@this._sayHello</Text>
+            <Field ColumnSize="ColumnSize.Is3" Padding="Padding.Is2.OnX.Is2.OnY">
+               <Text>@_sayHello</Text>
             </Field>
          </Fields>
       </Column>
@@ -59,12 +59,12 @@ else
    private string _sayHello;
    private void HiThereClicked()
    {
-      this._sayHello = $"Hello at {DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")}";
+      _sayHello = $"Hello at {DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")}";
    }
 
    Task OnNameChanged(string value)
    {
-      this._sayHello = $"Nieuwe waarde voor order ID: {value}";
+      _sayHello = $"Nieuwe waarde voor order ID: {value}";
       return Task.CompletedTask;
    }
 }

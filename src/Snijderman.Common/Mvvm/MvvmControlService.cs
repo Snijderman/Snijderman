@@ -6,29 +6,29 @@ namespace Snijderman.Common.Mvvm;
 
 public class MvvmControlService : IMvvmControlService
 {
-   protected static readonly Dictionary<Type, Type> _viewModelControls = new();
-   protected readonly IServiceProvider _serviceProvider;
+   protected static readonly Dictionary<Type, Type> ViewModelControls = new();
+   protected readonly IServiceProvider ServiceProvider;
 
    public MvvmControlService(IServiceProvider serviceProvider)
    {
-      this._serviceProvider = serviceProvider;
+      this.ServiceProvider = serviceProvider;
    }
 
 
-   internal static void AddViewModelWithControl<VM, V>() where VM : IMvvmViewModel
-                                                         where V : IMvvmControl<VM> => _viewModelControls.Add(typeof(VM), typeof(V));
+   internal static void AddViewModelWithControl<TVm, TV>() where TVm : IMvvmViewModel
+                                                         where TV : IMvvmControl<TVm> => ViewModelControls.Add(typeof(TVm), typeof(TV));
 
-   public virtual IMvvmControl<VM> GetControl<VM>() where VM : IMvvmViewModel
+   public virtual IMvvmControl<TVm> GetControl<TVm>() where TVm : IMvvmViewModel
    {
-      var controlType = this.GetControlForViewModel<VM>();
-      return this._serviceProvider.GetRequiredService(controlType) as IMvvmControl<VM>;
+      var controlType = this.GetControlForViewModel<TVm>();
+      return this.ServiceProvider.GetRequiredService(controlType) as IMvvmControl<TVm>;
    }
 
-   private Type GetControlForViewModel<VM>() where VM : IMvvmViewModel
+   private Type GetControlForViewModel<TVm>() where TVm : IMvvmViewModel
    {
-      if (!_viewModelControls.TryGetValue(typeof(VM), out var controlType))
+      if (!ViewModelControls.TryGetValue(typeof(TVm), out var controlType))
       {
-         throw new ArgumentException($"Control not found for viewmodel type '{typeof(VM).FullName}'");
+         throw new ArgumentException($"Control not found for viewmodel type '{typeof(TVm).FullName}'");
       }
 
       return controlType;

@@ -62,7 +62,7 @@ public class ModernDialog : Window
          this.Close();
       });
 
-      this.Buttons = new Button[] { this.CloseButton };
+      this.Buttons = new[] { this.CloseButton };
 
       // set the default owner to the app main window (if possible)
       if (Application.Current != null && Application.Current.MainWindow != this)
@@ -205,7 +205,7 @@ public class ModernDialog : Window
       var dlg = new ModernDialog
       {
          Title = title,
-         Content = new BBCodeBlock { BBCode = text, Margin = new Thickness(0, 0, 0, 8) },
+         Content = new BbCodeBlock { BbCode = text, Margin = new Thickness(0, 0, 0, 8) },
          MinHeight = 0,
          MinWidth = 0,
          MaxHeight = 480,

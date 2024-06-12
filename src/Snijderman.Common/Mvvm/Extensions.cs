@@ -4,11 +4,11 @@ namespace Snijderman.Common.Mvvm;
 
 public static class Extensions
 {
-   public static void AddViewModelAndControl<VM, V>(this IServiceCollection services) where VM : class, IMvvmViewModel
-                                                                                      where V : class, IMvvmControl<VM>
+   public static void AddViewModelAndControl<TVm, TV>(this IServiceCollection services) where TVm : class, IMvvmViewModel
+                                                                                        where TV : class, IMvvmControl<TVm>
    {
-      services.AddTransient<VM>();
-      services.AddTransient<V>();
-      MvvmControlService.AddViewModelWithControl<VM, V>();
+      services.AddTransient<TVm>();
+      services.AddTransient<TV>();
+      MvvmControlService.AddViewModelWithControl<TVm, TV>();
    }
 }

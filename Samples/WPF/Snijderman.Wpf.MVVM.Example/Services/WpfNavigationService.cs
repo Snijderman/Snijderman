@@ -12,5 +12,5 @@ public class WpfNavigationService : NavigationService
 
    }
 
-   public new async Task NavigateToAsync<VM>(Func<VM, IMvvmControl<VM>, Task> handleNavigation) where VM : IWpfMvvmViewModel => await base.NavigateToAsync(handleNavigation).ConfigureAwait(false);
+   public new async Task NavigateToAsync<TVm>(Func<TVm, IMvvmControl<TVm>, Task> handleNavigation) where TVm : IWpfMvvmViewModel => await base.NavigateToAsync(handleNavigation).ConfigureAwait(false);
 }

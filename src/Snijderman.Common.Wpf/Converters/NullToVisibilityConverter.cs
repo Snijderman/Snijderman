@@ -29,10 +29,8 @@ public class NullToVisibilityConverter : IValueConverter
       {
          return (flag ? Visibility.Collapsed : Visibility.Visible);
       }
-      else
-      {
-         return (flag ? Visibility.Visible : Visibility.Collapsed);
-      }
+
+      return (flag ? Visibility.Visible : Visibility.Collapsed);
    }
 
    /// <summary>

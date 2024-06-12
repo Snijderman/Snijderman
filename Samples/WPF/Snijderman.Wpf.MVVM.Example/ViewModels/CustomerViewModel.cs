@@ -5,7 +5,7 @@ namespace Snijderman.Wpf.MVVM.Example.ViewModels;
 
 public class CustomerViewModel : WpfMvvmViewModelBase
 {
-   public string CompanyID { get; set; }
+   public string CompanyId { get; set; }
 
    public string CompanyName { get; set; }
 

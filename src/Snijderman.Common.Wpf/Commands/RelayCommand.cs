@@ -17,7 +17,7 @@ public class RelayCommand<T> : CommandBase
       if (canExecute == null)
       {
          // no can execute provided, then always executable
-         canExecute = (o) => true;
+         canExecute = o => true;
       }
       this._canExecute = canExecute;
    }

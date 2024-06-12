@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Snijderman.Common.Helpers;
 
 namespace Snijderman.Common.Utils;
 
@@ -32,7 +33,7 @@ public static class ObjectActivator
          return typeConstructor;
       }
       // not already present, create it
-      Helpers.Reflection.MakeGenericMethodAndInvoke(new CreateCreatorHelper(), "CreateCreatorWithDefaultConstructor", type, default);
+      Reflection.MakeGenericMethodAndInvoke(new CreateCreatorHelper(), "CreateCreatorWithDefaultConstructor", type);
       // should be present now
       return _typeWithDefaultConstructorCache[type.FullName];
    }
@@ -64,7 +65,7 @@ public static class ObjectActivator
       }
 
       // not already present, create it
-      Helpers.Reflection.MakeGenericMethodAndInvoke(new CreateCreatorHelper(), "CreateCreatorWithConstructorParameter", new[] { typeof(TArg), type }, default);
+      Reflection.MakeGenericMethodAndInvoke(new CreateCreatorHelper(), "CreateCreatorWithConstructorParameter", new[] { typeof(TArg), type });
       // should be present now
       return _typeConstructorWithParameterCache[type.FullName] as Func<TArg, object>;
    }
@@ -88,9 +89,9 @@ public static class ObjectActivator
       private Func<TArg, T> CreateCreatorWithConstructorParameter<TArg, T>()
 #pragma warning restore IDE0051 // Remove unused private members
       {
-         var constructor = typeof(T).GetConstructor(new Type[] { typeof(TArg) });
+         var constructor = typeof(T).GetConstructor(new[] { typeof(TArg) });
          var parameter = Expression.Parameter(typeof(TArg), "p");
-         var newExpression = Expression.New(constructor, new Expression[] { parameter });
+         var newExpression = Expression.New(constructor, parameter);
 
          var creatorExpression = Expression.Lambda<Func<TArg, T>>(newExpression, parameter);
 

@@ -21,9 +21,9 @@ public static class Runtime
 
    public static string SystemVersion => RuntimeEnvironment.GetSystemVersion();
 
-   public static string OSArchitecture => RuntimeInformation.OSArchitecture.ToString();
+   public static string OsArchitecture => RuntimeInformation.OSArchitecture.ToString();
 
-   public static string OSDescription => RuntimeInformation.OSDescription;
+   public static string OsDescription => RuntimeInformation.OSDescription;
 
    public static string ProcessArchitecture => RuntimeInformation.ProcessArchitecture.ToString();
 
@@ -43,7 +43,7 @@ public static class Runtime
    {
       Version = $"{GetEntryAssemblyVersion()} ({ProcessArchitecture})",
       Environment = $"{environmentService?.EnvironmentName}",
-      OSPlatform = $"{OSDescription} ({OSArchitecture})",
+      OSPlatform = $"{OsDescription} ({OsArchitecture})",
       DotnetVersion = $"{TargetFramework} ({FrameworkDescription})",
       HostingProcess = GetHostingProcess()
    };

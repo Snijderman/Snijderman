@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting.WindowsServices;
@@ -16,7 +17,7 @@ public static class ConfigurationExtensions
    {
       if (configurationBuilder is null)
       {
-         throw new System.ArgumentNullException(nameof(configurationBuilder));
+         throw new ArgumentNullException(nameof(configurationBuilder));
       }
 
       if (!IsWindowsService())

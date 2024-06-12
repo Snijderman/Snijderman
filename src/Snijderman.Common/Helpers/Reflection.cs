@@ -88,7 +88,8 @@ public static class Reflection
       {
          return true;
       }
-      else if (parameterInfoLength != parametersLength)
+
+      if (parameterInfoLength != parametersLength)
       {
          return false;
       }

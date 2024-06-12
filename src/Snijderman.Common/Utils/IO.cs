@@ -2,10 +2,11 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 
 namespace Snijderman.Common.Utils;
 
-public static class IO
+public static class Io
 {
    public static FileStream OpenFileWithoutLocking(string path)
    {
@@ -101,7 +102,7 @@ public static class IO
             return false;
          }
 
-         System.Threading.Thread.Sleep(250);
+         Thread.Sleep(250);
       }
    }
 

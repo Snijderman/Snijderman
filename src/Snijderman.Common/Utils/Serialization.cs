@@ -1,7 +1,6 @@
 using System;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -70,7 +69,7 @@ public static class Serialization
 
    private class Utf8StringWriter : StringWriter
    {
-      public override System.Text.Encoding Encoding => System.Text.Encoding.UTF8;
+      public override Encoding Encoding => Encoding.UTF8;
    }
 
 }

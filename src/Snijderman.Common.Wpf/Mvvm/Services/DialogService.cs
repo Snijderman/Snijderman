@@ -1,5 +1,5 @@
-using Snijderman.Common.Wpf.Controls;
 using System.Windows;
+using Snijderman.Common.Wpf.Controls;
 
 namespace Snijderman.Common.Wpf.Mvvm.Services;
 

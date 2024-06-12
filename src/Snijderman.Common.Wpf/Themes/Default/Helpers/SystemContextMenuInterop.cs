@@ -10,9 +10,9 @@ namespace Snijderman.Common.Wpf.Themes.Default.Helpers;
 /// </summary>
 internal static class SystemContextMenuInterop
 {
-   public static uint TPM_LEFTALIGN = 0;
+   public static uint TpmLeftalign = 0;
 
-   public static uint TPM_RETURNCMD = 256;
+   public static uint TpmReturncmd = 256;
 
    [DllImport("user32.dll", CharSet = CharSet.None, ExactSpelling = false)]
    public static extern IntPtr PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
@@ -21,7 +21,7 @@ internal static class SystemContextMenuInterop
    public static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
    [DllImport("user32.dll", CharSet = CharSet.None, ExactSpelling = false)]
-   public static extern bool EnableMenuItem(IntPtr hMenu, uint uIDEnableItem, uint uEnable);
+   public static extern bool EnableMenuItem(IntPtr hMenu, uint uIdEnableItem, uint uEnable);
 
    [DllImport("user32.dll", CharSet = CharSet.None, ExactSpelling = false)]
    public static extern int TrackPopupMenuEx(IntPtr hmenu, uint fuFlags, int x, int y, IntPtr hwnd, IntPtr lptpm);
@@ -34,7 +34,7 @@ internal static class SystemContextMenuInterop
 
       var track = TrackPopupMenuEx(
           systemMenu,
-          TPM_LEFTALIGN | TPM_RETURNCMD,
+          TpmLeftalign | TpmReturncmd,
           Convert.ToInt32(screenCoordinate.X),
           Convert.ToInt32(screenCoordinate.Y),
           windowHandle,

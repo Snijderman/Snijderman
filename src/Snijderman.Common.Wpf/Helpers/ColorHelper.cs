@@ -1,4 +1,6 @@
-using System.Windows.Media;
+using System.Drawing;
+using Color = System.Windows.Media.Color;
+using ColorConverter = System.Windows.Media.ColorConverter;
 
 namespace Snijderman.Common.Wpf.Helpers;
 
@@ -6,7 +8,7 @@ public static class ColorHelper
 {
    public static Color GetColorFromHtmlRgbCode(string rgbCode)
    {
-      return ConvertToMediaColor(System.Drawing.ColorTranslator.FromHtml(rgbCode));
+      return ConvertToMediaColor(ColorTranslator.FromHtml(rgbCode));
    }
 
    public static Color GetColorFromArgbHexCode(string argbHexCode)

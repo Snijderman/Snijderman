@@ -6,8 +6,8 @@ namespace Snijderman.Common.Mvvm;
 
 public class NavigationService : INavigationService
 {
-   protected readonly IMvvmControlService _mvvmControlService;
-   protected readonly IServiceProvider _services;
+   private readonly IMvvmControlService _mvvmControlService;
+   private readonly IServiceProvider _services;
 
    public NavigationService(IMvvmControlService mvvmControlService, IServiceProvider services)
    {
@@ -15,18 +15,18 @@ public class NavigationService : INavigationService
       this._services = services;
    }
 
-   public virtual async Task NavigateToAsync<VM>(Func<VM, IMvvmControl<VM>, Task> handleNavigation) where VM : IMvvmViewModel
+   public virtual async Task NavigateToAsync<TVm>(Func<TVm, IMvvmControl<TVm>, Task> handleNavigation) where TVm : IMvvmViewModel
    {
-      var controlToShow = this._mvvmControlService.GetControl<VM>();
+      var controlToShow = this._mvvmControlService.GetControl<TVm>();
       if (controlToShow == default)
       {
-         throw new MvvmException($"Unable to get view for viewmodel {typeof(VM).FullName}");
+         throw new MvvmException($"Unable to get view for viewmodel {typeof(TVm).FullName}");
       }
 
       var vm = controlToShow.GetViewModel();
-      if (vm is not VM viewModel)
+      if (vm is not TVm viewModel)
       {
-         viewModel = this._services.GetRequiredService<VM>();
+         viewModel = this._services.GetRequiredService<TVm>();
       }
 
       await handleNavigation(vm ?? viewModel, controlToShow).ConfigureAwait(false);

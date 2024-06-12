@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Reflection;
 
@@ -9,7 +10,7 @@ public static class ObjectHelper
    {
       if (instance is null)
       {
-         throw new System.ArgumentNullException(nameof(instance));
+         throw new ArgumentNullException(nameof(instance));
       }
 
       var property = GetPropertyInfo(instance, propertyName);
@@ -31,12 +32,12 @@ public static class ObjectHelper
    {
       if (instance is null)
       {
-         throw new System.ArgumentNullException(nameof(instance));
+         throw new ArgumentNullException(nameof(instance));
       }
 
       if (property is null)
       {
-         throw new System.ArgumentNullException(nameof(property));
+         throw new ArgumentNullException(nameof(property));
       }
 
       return property.GetValue(instance);
@@ -46,12 +47,12 @@ public static class ObjectHelper
    {
       if (instance is null)
       {
-         throw new System.ArgumentNullException(nameof(instance));
+         throw new ArgumentNullException(nameof(instance));
       }
 
       if (string.IsNullOrWhiteSpace(propertyName))
       {
-         throw new System.ArgumentException($"'{nameof(propertyName)}' cannot be null or empty.", nameof(propertyName));
+         throw new ArgumentException($"'{nameof(propertyName)}' cannot be null or empty.", nameof(propertyName));
       }
 
       return GetPropertyInfo(instance, propertyName, BindingFlags.Public | BindingFlags.Instance);
@@ -61,12 +62,12 @@ public static class ObjectHelper
    {
       if (instance is null)
       {
-         throw new System.ArgumentNullException(nameof(instance));
+         throw new ArgumentNullException(nameof(instance));
       }
 
       if (string.IsNullOrWhiteSpace(propertyName))
       {
-         throw new System.ArgumentException($"'{nameof(propertyName)}' cannot be null or empty.", nameof(propertyName));
+         throw new ArgumentException($"'{nameof(propertyName)}' cannot be null or empty.", nameof(propertyName));
       }
 
       var objectProperties = instance.GetType().GetProperties(bindingFlags);

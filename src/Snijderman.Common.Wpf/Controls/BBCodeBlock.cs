@@ -10,34 +10,34 @@ namespace Snijderman.Common.Wpf.Controls;
 /// A lighweight control for displaying small amounts of rich formatted BBCode content.
 /// </summary>
 [ContentProperty("BBCode")]
-public class BBCodeBlock : TextBlock
+public class BbCodeBlock : TextBlock
 {
    /// <summary>
    /// Identifies the BBCode dependency property.
    /// </summary>
-   public static DependencyProperty BBCodeProperty = DependencyProperty.Register("BBCode", typeof(string), typeof(BBCodeBlock), new PropertyMetadata(new PropertyChangedCallback(OnBBCodeChanged)));
+   public static DependencyProperty BbCodeProperty = DependencyProperty.Register("BbCode", typeof(string), typeof(BbCodeBlock), new PropertyMetadata(OnBBCodeChanged));
 
    ///// <summary>
    ///// Identifies the LinkNavigator dependency property.
    ///// </summary>
    //public static DependencyProperty LinkNavigatorProperty = DependencyProperty.Register("LinkNavigator", typeof(ILinkNavigator), typeof(BBCodeBlock), new PropertyMetadata(new DefaultLinkNavigator(), OnLinkNavigatorChanged));
 
-   private bool _dirty = false;
+   private bool _dirty;
 
    /// <summary>
-   /// Initializes a new instance of the <see cref="BBCodeBlock"/> class.
+   /// Initializes a new instance of the <see cref="BbCodeBlock"/> class.
    /// </summary>
-   public BBCodeBlock()
+   public BbCodeBlock()
    {
       // ensures the implicit BBCodeBlock style is used
-      this.DefaultStyleKey = typeof(BBCodeBlock);
+      this.DefaultStyleKey = typeof(BbCodeBlock);
 
       this.AddHandler(FrameworkContentElement.LoadedEvent, new RoutedEventHandler(this.OnLoaded));
    }
 
    private static void OnBBCodeChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
    {
-      ((BBCodeBlock)o).UpdateDirty();
+      ((BbCodeBlock)o).UpdateDirty();
    }
 
    //private static void OnLinkNavigatorChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
@@ -69,7 +69,7 @@ public class BBCodeBlock : TextBlock
          return;
       }
 
-      var bbcode = this.BBCode;
+      var bbcode = this.BbCode;
 
       this.Inlines.Clear();
 
@@ -99,10 +99,10 @@ public class BBCodeBlock : TextBlock
    /// Gets or sets the BB code.
    /// </summary>
    /// <value>The BB code.</value>
-   public string BBCode
+   public string BbCode
    {
-      get => (string)this.GetValue(BBCodeProperty);
-      set => this.SetValue(BBCodeProperty, value);
+      get => (string)this.GetValue(BbCodeProperty);
+      set => this.SetValue(BbCodeProperty, value);
    }
 
    ///// <summary>

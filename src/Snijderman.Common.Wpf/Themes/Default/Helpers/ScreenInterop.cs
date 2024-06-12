@@ -14,10 +14,10 @@ namespace Snijderman.Common.Wpf.Themes.Default.Helpers;
 internal class ScreenInterop
 {
    [DllImport("user32.dll", CharSet = CharSet.Auto)]
-   public static extern bool GetMonitorInfo(HandleRef hmonitor, [In, Out] MONITORINFOEX info);
+   public static extern bool GetMonitorInfo(HandleRef hmonitor, [In, Out] Monitorinfoex info);
 
    [DllImport("user32.dll", ExactSpelling = true)]
-   public static extern bool EnumDisplayMonitors(HandleRef hdc, COMRECT rcClip, MonitorEnumProc lpfnEnum, IntPtr dwData);
+   public static extern bool EnumDisplayMonitors(HandleRef hdc, Comrect rcClip, MonitorEnumProc lpfnEnum, IntPtr dwData);
 
    [DllImport("user32.dll", ExactSpelling = true)]
    public static extern IntPtr MonitorFromWindow(HandleRef handle, int flags);
@@ -26,13 +26,13 @@ internal class ScreenInterop
    public static extern int GetSystemMetrics(int nIndex);
 
    [DllImport("user32.dll", CharSet = CharSet.Auto)]
-   public static extern bool SystemParametersInfo(int nAction, int nParam, ref RECT rc, int nUpdate);
+   public static extern bool SystemParametersInfo(int nAction, int nParam, ref Rect rc, int nUpdate);
 
    [DllImport("user32.dll", ExactSpelling = true)]
-   public static extern IntPtr MonitorFromPoint(POINTSTRUCT pt, int flags);
+   public static extern IntPtr MonitorFromPoint(Pointstruct pt, int flags);
 
    [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
-   public static extern bool GetCursorPos([In, Out] POINT pt);
+   public static extern bool GetCursorPos([In, Out] Point pt);
 
 #pragma warning disable CS0649
    public static HandleRef NullHandleRef;
@@ -41,14 +41,14 @@ internal class ScreenInterop
    public delegate bool MonitorEnumProc(IntPtr monitor);
 
    [StructLayout(LayoutKind.Sequential)]
-   public struct RECT
+   public struct Rect
    {
       public int left;
       public int top;
       public int right;
       public int bottom;
 
-      public RECT(int left, int top, int right, int bottom)
+      public Rect(int left, int top, int right, int bottom)
       {
          this.left = left;
          this.top = top;
@@ -56,7 +56,7 @@ internal class ScreenInterop
          this.bottom = bottom;
       }
 
-      public RECT(Rect r)
+      public Rect(System.Windows.Rect r)
       {
          this.left = (int)r.Left;
          this.top = (int)r.Top;
@@ -64,7 +64,7 @@ internal class ScreenInterop
          this.bottom = (int)r.Bottom;
       }
 
-      public static RECT FromXYWH(int x, int y, int width, int height) => new(x, y, x + width, y + height);
+      public static Rect FromXywh(int x, int y, int width, int height) => new(x, y, x + width, y + height);
 
       public Size Size => new(this.right - this.left, this.bottom - this.top);
    }
@@ -72,11 +72,11 @@ internal class ScreenInterop
    // use this in cases where the Native API takes a POINT not a POINT*
    // classes marshal by ref.
    [StructLayout(LayoutKind.Sequential)]
-   public struct POINTSTRUCT
+   public struct Pointstruct
    {
       public int x;
       public int y;
-      public POINTSTRUCT(int x, int y)
+      public Pointstruct(int x, int y)
       {
          this.x = x;
          this.y = y;
@@ -84,16 +84,16 @@ internal class ScreenInterop
    }
 
    [StructLayout(LayoutKind.Sequential)]
-   public class POINT
+   public class Point
    {
       public int x;
       public int y;
 
-      public POINT()
+      public Point()
       {
       }
 
-      public POINT(int x, int y)
+      public Point(int x, int y)
       {
          this.x = x;
          this.y = y;
@@ -108,28 +108,28 @@ internal class ScreenInterop
    }
 
    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 4)]
-   public class MONITORINFOEX
+   public class Monitorinfoex
    {
-      internal int _cbSize = Marshal.SizeOf(typeof(MONITORINFOEX));
-      internal RECT _rcMonitor = new();
-      internal RECT _rcWork = new();
+      internal int _cbSize = Marshal.SizeOf(typeof(Monitorinfoex));
+      internal Rect _rcMonitor = new();
+      internal Rect _rcWork = new();
       internal int _dwFlags = 0;
       [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)] internal char[] _szDevice = new char[32];
    }
 
    [StructLayout(LayoutKind.Sequential)]
-   public class COMRECT
+   public class Comrect
    {
       public int left;
       public int top;
       public int right;
       public int bottom;
 
-      public COMRECT()
+      public Comrect()
       {
       }
 
-      public COMRECT(Rect r)
+      public Comrect(System.Windows.Rect r)
       {
          this.left = (int)r.X;
          this.top = (int)r.Y;
@@ -137,7 +137,7 @@ internal class ScreenInterop
          this.bottom = (int)r.Bottom;
       }
 
-      public COMRECT(int left, int top, int right, int bottom)
+      public Comrect(int left, int top, int right, int bottom)
       {
          this.left = left;
          this.top = top;
@@ -145,51 +145,51 @@ internal class ScreenInterop
          this.bottom = bottom;
       }
 
-      public static COMRECT FromXYWH(int x, int y, int width, int height) => new(x, y, x + width, y + height);
+      public static Comrect FromXywh(int x, int y, int width, int height) => new(x, y, x + width, y + height);
 
       public override string ToString() => "Left = " + this.left + " Top " + this.top + " Right = " + this.right + " Bottom = " + this.bottom;
    }
 
-   public const int SM_CMONITORS = 80;
+   public const int SmCmonitors = 80;
 
    private readonly IntPtr _hmonitor;
 
    // This identifier is just for us, so that we don't try to call the multimon
    // functions if we just need the primary monitor... this is safer for
    // non-multimon OSes.
-   private const int PRIMARY_MONITOR = unchecked((int)0xBAADF00D);
+   private const int PrimaryMonitor = unchecked((int)0xBAADF00D);
 
-   private const int MONITORINFOF_PRIMARY = 0x00000001;
+   private const int MonitorinfofPrimary = 0x00000001;
 
-   private const int MONITOR_DEFAULTTONEAREST = 0x00000002;
+   private const int MonitorDefaulttonearest = 0x00000002;
 
    private static readonly bool _multiMonitorSupport;
 
    static ScreenInterop()
    {
-      _multiMonitorSupport = GetSystemMetrics(SM_CMONITORS) != 0;
+      _multiMonitorSupport = GetSystemMetrics(SmCmonitors) != 0;
    }
 
    private ScreenInterop(IntPtr monitor)
    {
-      if (!_multiMonitorSupport || monitor == (IntPtr)PRIMARY_MONITOR)
+      if (!_multiMonitorSupport || monitor == PrimaryMonitor)
       {
-         this.Bounds = new Rect(SystemParameters.VirtualScreenLeft, SystemParameters.VirtualScreenTop, SystemParameters.VirtualScreenWidth, SystemParameters.VirtualScreenHeight);
+         this.Bounds = new System.Windows.Rect(SystemParameters.VirtualScreenLeft, SystemParameters.VirtualScreenTop, SystemParameters.VirtualScreenWidth, SystemParameters.VirtualScreenHeight);
          this.Primary = true;
          this.DeviceName = "DISPLAY";
       }
       else
       {
-         var info = new MONITORINFOEX();
+         var info = new Monitorinfoex();
 
          GetMonitorInfo(new HandleRef(null, monitor), info);
 
-         this.Bounds = new Rect(
+         this.Bounds = new System.Windows.Rect(
              info._rcMonitor.left, info._rcMonitor.top,
              info._rcMonitor.right - info._rcMonitor.left,
              info._rcMonitor.bottom - info._rcMonitor.top);
 
-         this.Primary = ((info._dwFlags & MONITORINFOF_PRIMARY) != 0);
+         this.Primary = ((info._dwFlags & MonitorinfofPrimary) != 0);
 
          this.DeviceName = new string(info._szDevice).TrimEnd((char)0);
       }
@@ -217,7 +217,7 @@ internal class ScreenInterop
             }
          }
 
-         return new[] { new ScreenInterop((IntPtr)PRIMARY_MONITOR) };
+         return new[] { new ScreenInterop(PrimaryMonitor) };
       }
    }
 
@@ -225,7 +225,7 @@ internal class ScreenInterop
    /// Gets the bounds of the display.
    /// </summary>
    /// <returns>A <see cref="T:System.Windows.Rect" />, representing the bounds of the display.</returns>
-   public Rect Bounds { get; private set; }
+   public System.Windows.Rect Bounds { get; private set; }
 
    /// <summary>
    /// Gets the device name associated with a display.
@@ -251,7 +251,7 @@ internal class ScreenInterop
          {
             return AllScreens.FirstOrDefault(t => t.Primary);
          }
-         return new ScreenInterop((IntPtr)PRIMARY_MONITOR);
+         return new ScreenInterop(PrimaryMonitor);
       }
    }
 
@@ -259,17 +259,17 @@ internal class ScreenInterop
    /// Gets the working area of the display. The working area is the desktop area of the display, excluding taskbars, docked windows, and docked tool bars.
    /// </summary>
    /// <returns>A <see cref="T:System.Windows.Rect" />, representing the working area of the display.</returns>
-   public Rect WorkingArea
+   public System.Windows.Rect WorkingArea
    {
       get
       {
-         if (!_multiMonitorSupport || this._hmonitor == (IntPtr)PRIMARY_MONITOR)
+         if (!_multiMonitorSupport || this._hmonitor == PrimaryMonitor)
          {
             return SystemParameters.WorkArea;
          }
-         var info = new MONITORINFOEX();
+         var info = new Monitorinfoex();
          GetMonitorInfo(new HandleRef(null, this._hmonitor), info);
-         return new Rect(
+         return new System.Windows.Rect(
              info._rcWork.left, info._rcWork.top,
              info._rcWork.right - info._rcWork.left,
              info._rcWork.bottom - info._rcWork.top);
@@ -287,7 +287,7 @@ internal class ScreenInterop
       {
          return new ScreenInterop(MonitorFromWindow(new HandleRef(null, hwnd), 2));
       }
-      return new ScreenInterop((IntPtr)PRIMARY_MONITOR);
+      return new ScreenInterop(PrimaryMonitor);
    }
 
    /// <summary>
@@ -295,14 +295,14 @@ internal class ScreenInterop
    /// </summary>
    /// <param name="point">A <see cref="T:System.Windows.Point" /> that specifies the location for which to retrieve a Screen.</param>
    /// <returns>A Screen for the display that contains the point. In multiple display environments where no display contains the point, the display closest to the specified point is returned.</returns>
-   public static ScreenInterop FromPoint(Point point)
+   public static ScreenInterop FromPoint(System.Windows.Point point)
    {
       if (_multiMonitorSupport)
       {
-         var pt = new POINTSTRUCT((int)point.X, (int)point.Y);
-         return new ScreenInterop(MonitorFromPoint(pt, MONITOR_DEFAULTTONEAREST));
+         var pt = new Pointstruct((int)point.X, (int)point.Y);
+         return new ScreenInterop(MonitorFromPoint(pt, MonitorDefaulttonearest));
       }
-      return new ScreenInterop((IntPtr)PRIMARY_MONITOR);
+      return new ScreenInterop(PrimaryMonitor);
    }
 
    /// <summary>

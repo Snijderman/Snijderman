@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -31,7 +32,7 @@ public class CustomersViewModel : ItemSelectedViewModelBase<CustomerViewModel>, 
       {
          yield return new CustomerViewModel
          {
-            CompanyID = customer.CompanyID,
+            CompanyId = customer.CompanyId,
             CompanyName = customer.CompanyName,
             Orders = customer.Orders
          };
@@ -45,24 +46,24 @@ public class CustomersViewModel : ItemSelectedViewModelBase<CustomerViewModel>, 
       set => this.Set(ref this._customers, value);
    }
 
-   public ContentControl VmContentControl { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+   public ContentControl VmContentControl { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
    private async Task LoadCustomerOrders(CustomerViewModel customer)
    {
       if (customer == default)
       {
-         this._messageService.Send(this, MessageConstants.StatusMessage, $"No customer selected");
+         this._messageService.Send(this, MessageConstants.StatusMessage, "No customer selected");
          return;
       }
 
       this._messageService.Send(this, MessageConstants.DisplayWaiting, true);
 
-      this._messageService.Send(this, MessageConstants.StatusMessage, $"Customer '{customer.CompanyID}' selected");
+      this._messageService.Send(this, MessageConstants.StatusMessage, $"Customer '{customer.CompanyId}' selected");
 
       await this._navigationService.NavigateToAsync<OrdersViewModel>(async (viewModel, controlToShow) =>
       {
          customer.VmContentControl.Content = controlToShow;//.GetViewModel().VmContentControl;
-         await viewModel.LoadAsync(new object[] { customer.CompanyID }).ConfigureAwait(false);
+         await viewModel.LoadAsync(new object[] { customer.CompanyId }).ConfigureAwait(false);
       }).ConfigureAwait(false);
       this._messageService.Send(this, MessageConstants.DisplayWaiting, false);
    }

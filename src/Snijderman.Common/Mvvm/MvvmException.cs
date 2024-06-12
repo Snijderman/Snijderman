@@ -4,7 +4,7 @@ namespace Snijderman.Common.Mvvm;
 
 public class MvvmException : Exception
 {
-   public MvvmException() : base()
+   public MvvmException()
    { }
 
    public MvvmException(string message) : base(message)

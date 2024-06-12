@@ -21,7 +21,7 @@ public class ApplicationHostService : Common.Wpf.Mvvm.Services.ApplicationHostSe
    {
       await base.HandleActivationAsync().ConfigureAwait(false);
 
-      if (this._shellWindow is IWpfMvvmControl viewControl)
+      if (this.ShellWindow is IWpfMvvmControl viewControl)
       {
          await this._navigationService.NavigateToAsync<CustomersViewModel>(async (viewModel, controlToShow) =>
          {

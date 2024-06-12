@@ -62,8 +62,8 @@ public abstract class SnijdermanWpfApplication : Application
    private void LoadResources()
    {
       var foo = new Uri("pack://application:,,,/Snijderman.Common.Wpf;component/Themes/Dark.xaml", UriKind.RelativeOrAbsolute);
-      Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = foo });
-      return;
+      Current.Resources.MergedDictionaries.Add(new ResourceDictionary
+                                                  { Source = foo });
 
       //var assembly = Assembly.GetAssembly(typeof(Common.Wpf.Themes.Default.AppearanceManager));
       //var manifestEntries = assembly.GetManifestResourceNames().ToList();
@@ -113,12 +113,12 @@ public abstract class SnijdermanWpfApplication : Application
          var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
          this.Host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(e.Args)
-                 .ConfigureAppConfiguration(c =>
-                 {
-                    c.SetBasePath(appLocation);
-                 })
-                 .ConfigureServices(this.ConfigureServices)
-                 .Build();
+                              .ConfigureAppConfiguration(c =>
+                              {
+                                 c.SetBasePath(appLocation);
+                              })
+                              .ConfigureServices(this.ConfigureServices)
+                              .Build();
 
          await this.Host.StartAsync().ConfigureAwait(false);
       }

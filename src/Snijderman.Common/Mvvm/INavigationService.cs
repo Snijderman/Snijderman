@@ -5,5 +5,5 @@ namespace Snijderman.Common.Mvvm;
 
 public interface INavigationService
 {
-   Task NavigateToAsync<VM>(Func<VM, IMvvmControl<VM>, Task> handleNavigation) where VM : IMvvmViewModel;
+   Task NavigateToAsync<TVm>(Func<TVm, IMvvmControl<TVm>, Task> handleNavigation) where TVm : IMvvmViewModel;
 }

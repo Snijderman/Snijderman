@@ -11,6 +11,7 @@ using Snijderman.Common.Mvvm;
 using Snijderman.Common.Mvvm.Services;
 using Snijderman.Samples.Blazor.Mvvm.ViewModels;
 using Snijderman.Samples.Common.ExtensionMethods;
+using IMessageService = Snijderman.Common.Mvvm.Services.IMessageService;
 
 namespace Snijderman.Samples.Blazor.Mvvm.ServerHosted;
 
@@ -40,11 +41,11 @@ public class Startup
       services.AddBlazorMvvm();
       services.AddMvvmViewModels();
       services.RegisterSampleCommonServices();
-      services.AddSingleton<Snijderman.Common.Mvvm.Services.IMessageService, MessageService>();
+      services.AddSingleton<IMessageService, MessageService>();
       services.AddSingleton<IMvvmControlService, MvvmControlService>();
       services.AddSingleton<INavigationService, NavigationService>();
 
-      services.AddServerSideBlazor().AddHubOptions((o) =>
+      services.AddServerSideBlazor().AddHubOptions(o =>
       {
          o.MaximumReceiveMessageSize = 1024 * 1024 * 100;
       });

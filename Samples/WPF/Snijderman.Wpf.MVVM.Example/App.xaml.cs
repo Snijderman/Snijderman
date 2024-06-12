@@ -8,14 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Snijderman.Common.Mvvm;
+using Snijderman.Common.Mvvm.Services;
 using Snijderman.Common.Wpf;
 using Snijderman.Common.Wpf.Mvvm.Services;
 using Snijderman.Common.Wpf.Mvvm.Views;
 using Snijderman.Samples.Common.ExtensionMethods;
 using Snijderman.Wpf.MVVM.Example.Services;
-using Snijderman.Wpf.MVVM.Example.Views;
 using Snijderman.Wpf.MVVM.Example.ViewModels;
-using Snijderman.Common.Mvvm.Services;
+using Snijderman.Wpf.MVVM.Example.Views;
+using ApplicationHostService = Snijderman.Wpf.MVVM.Example.Services.ApplicationHostService;
 
 namespace Snijderman.Wpf.MVVM.Example;
 
@@ -41,12 +42,12 @@ public partial class App : Application
 
          // For more information about .NET generic host see  https://docs.microsoft.com/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
          this.Host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(e.Args)
-                 .ConfigureAppConfiguration(c =>
-                 {
-                    c.SetBasePath(appLocation);
-                 })
-                 .ConfigureServices(this.ConfigureServices)
-                 .Build();
+                              .ConfigureAppConfiguration(c =>
+                              {
+                                 c.SetBasePath(appLocation);
+                              })
+                              .ConfigureServices(this.ConfigureServices)
+                              .Build();
 
          await this.Host.StartAsync().ConfigureAwait(false);
       }
@@ -93,7 +94,7 @@ public partial class App : Application
       this.Configuration = context.Configuration;
 
       // App Host
-      services.AddHostedService<Services.ApplicationHostService>();
+      services.AddHostedService<ApplicationHostService>();
       //// Business services
       services.RegisterSampleCommonServices();
       //// register views

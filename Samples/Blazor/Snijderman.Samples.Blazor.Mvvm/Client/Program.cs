@@ -1,16 +1,17 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Blazorise.Material;
 using Blazorise;
+using Blazorise.Icons.Material;
+using Blazorise.Material;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Blazorise.Icons.Material;
-using Snijderman.Samples.Blazor.Mvvm.ViewModels;
 using Snijderman.Common.Blazor.Extensions;
-using Snijderman.Samples.Common.ExtensionMethods;
-using Snijderman.Common.Mvvm.Services;
 using Snijderman.Common.Mvvm;
+using Snijderman.Common.Mvvm.Services;
+using Snijderman.Samples.Blazor.Mvvm.ViewModels;
+using Snijderman.Samples.Common.ExtensionMethods;
+using IMessageService = Snijderman.Common.Mvvm.Services.IMessageService;
 
 namespace Snijderman.Samples.Blazor.Mvvm.Client;
 
@@ -35,7 +36,7 @@ public class Program
       builder.Services.AddBlazorMvvm();
       builder.Services.AddMvvmViewModels();
       builder.Services.RegisterSampleCommonServices();
-      builder.Services.AddSingleton<Snijderman.Common.Mvvm.Services.IMessageService, MessageService>();
+      builder.Services.AddSingleton<IMessageService, MessageService>();
       builder.Services.AddSingleton<IMvvmControlService, MvvmControlService>();
       builder.Services.AddSingleton<INavigationService, NavigationService>();
 

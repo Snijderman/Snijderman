@@ -7,11 +7,11 @@ namespace Snijderman.Common.Io.File;
 
 public abstract class FileHandling : IFileHandling
 {
-   protected readonly IFileIO _fileIO;
+   protected readonly IFileIo FileIo;
 
-   public FileHandling(IFileIO fileIO)
+   public FileHandling(IFileIo fileIo)
    {
-      this._fileIO = fileIO;
+      this.FileIo = fileIo;
    }
 
    public FileHandlingSettings Settings { get; set; }
@@ -36,7 +36,7 @@ public abstract class FileHandling : IFileHandling
    {
       if (this.Settings == null)
       {
-         throw new InvalidOperationException($"No file handling settings specified");
+         throw new InvalidOperationException("No file handling settings specified");
       }
 
       this.ValidateFolder(this.Settings.Folder);
@@ -58,15 +58,15 @@ public abstract class FileHandling : IFileHandling
 
    public virtual void MoveFileToProcessedFolder(string file)
    {
-      this._fileIO.WaitForFileReady(file);
+      this.FileIo.WaitForFileReady(file);
       this.MoveFile(file, Path.Combine(this.ProcessedFolderForDay, Path.GetFileName(file)));
    }
 
    public virtual void MoveFileToFailedFolder(string file)
    {
-      this._fileIO.WaitForFileReady(file);
+      this.FileIo.WaitForFileReady(file);
       this.MoveFile(file, Path.Combine(this.FailedFolder, Path.GetFileName(file)));
    }
 
-   public virtual void MoveFile(string inputFile, string outputFile) => this._fileIO.MoveFile(inputFile, outputFile, true);
+   public virtual void MoveFile(string inputFile, string outputFile) => this.FileIo.MoveFile(inputFile, outputFile, true);
 }

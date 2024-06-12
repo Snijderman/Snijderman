@@ -1,10 +1,11 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace Snijderman.Common.Io.File;
 
-public class FileIO : IFileIO
+public class FileIo : IFileIo
 {
    public FileStream OpenFileWithoutLocking(string path) => this.OpenFileWithoutLocking(path, 4096);
 
@@ -88,7 +89,7 @@ public class FileIO : IFileIO
             return false;
          }
 
-         System.Threading.Thread.Sleep(250);
+         Thread.Sleep(250);
       }
    }
 
