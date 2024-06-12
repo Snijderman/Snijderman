@@ -23,7 +23,7 @@ public static class PagingUtils
 
          if (first)
          {
-            whereString.Append($"WHERE " + condition);
+            whereString.Append("WHERE " + condition);
             first = false;
          }
          else

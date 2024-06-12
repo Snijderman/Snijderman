@@ -29,10 +29,8 @@ public abstract class ObservableObject : INotifyPropertyChanged
          {
             throw new Exception(msg);
          }
-         else
-         {
-            Debug.Fail(msg);
-         }
+
+         Debug.Fail(msg);
       }
    }
 

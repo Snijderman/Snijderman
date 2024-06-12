@@ -2,5 +2,5 @@ namespace Snijderman.Common.Mvvm;
 
 public interface IMvvmControlService
 {
-   public IMvvmControl<VM> GetControl<VM>() where VM : IMvvmViewModel;
+   public IMvvmControl<TVm> GetControl<TVm>() where TVm : IMvvmViewModel;
 }

@@ -46,15 +46,15 @@ public class OrdersViewModel : ItemSelectedViewModelBase<Order>, IWpfMvvmViewMod
    {
       if (order == default)
       {
-         this._messageService.Send(this, MessageConstants.StatusMessage, $"No order selected");
+         this._messageService.Send(this, MessageConstants.StatusMessage, "No order selected");
          return;
       }
 
-      this._messageService.Send(this, MessageConstants.StatusMessage, $"Order '{order.OrderID}' selected");
+      this._messageService.Send(this, MessageConstants.StatusMessage, $"Order '{order.OrderId}' selected");
       await this._navigationService.NavigateToAsync<OrderDetailsViewModel>(async (viewModel, controlToShow) =>
       {
          this.VmContentControl.Content = controlToShow;
-         await viewModel.LoadAsync(new object[] { order.OrderID }).ConfigureAwait(false);
+         await viewModel.LoadAsync(new object[] { order.OrderId }).ConfigureAwait(false);
       }).ConfigureAwait(false);
    }
 }

@@ -2,7 +2,7 @@ namespace Snijderman.Samples.Common.Model;
 
 public class OrderDetail
 {
-   public long ProductID { get; set; }
+   public long ProductId { get; set; }
 
    public string ProductName { get; set; }
 
@@ -20,5 +20,5 @@ public class OrderDetail
 
    public double Total { get; set; }
 
-   public string ShortDescription => $"Product ID: {this.ProductID} - {this.ProductName}";
+   public string ShortDescription => $"Product ID: {this.ProductId} - {this.ProductName}";
 }

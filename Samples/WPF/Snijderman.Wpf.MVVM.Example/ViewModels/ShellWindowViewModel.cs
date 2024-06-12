@@ -21,7 +21,7 @@ public class ShellWindowViewModel : WpfMvvmViewModelBase
       set => this.Set(ref this._showWaiting, value);
    }
 
-   private bool _showContent = false;
+   private bool _showContent;
    public bool ShowContent
    {
       get => this._showContent;

@@ -40,7 +40,7 @@ public static class Hashing
       byte[] hashBytes;
       using (var hash = GetHashAlgorithm())
       {
-         using var stream = IO.OpenFileWithoutLocking(file, Convert.KilobytesFromMegabytes(16));
+         using var stream = Io.OpenFileWithoutLocking(file, Convert.KilobytesFromMegabytes(16));
          hashBytes = hash.ComputeHash(stream);
       }
 

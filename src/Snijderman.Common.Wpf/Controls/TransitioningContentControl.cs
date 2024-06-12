@@ -193,7 +193,7 @@ public class TransitioningContentControl : ContentControl
       if (newStoryboard == null)
       {
          // could be during initialization of xaml that presentationgroups was not yet defined
-         if (VisualTreeHelperEx.TryGetVisualStateGroup(source, PresentationGroup) == null)
+         if (source.TryGetVisualStateGroup(PresentationGroup) == null)
          {
             // will delay check
             source.CurrentTransition = null;
@@ -371,7 +371,7 @@ public class TransitioningContentControl : ContentControl
    /// <returns>A storyboard or null, if no storyboard was found.</returns>
    private Storyboard GetStoryboard(string newTransition)
    {
-      var presentationGroup = VisualTreeHelperEx.TryGetVisualStateGroup(this, PresentationGroup);
+      var presentationGroup = this.TryGetVisualStateGroup(PresentationGroup);
       Storyboard newStoryboard = null;
       if (presentationGroup != null)
       {

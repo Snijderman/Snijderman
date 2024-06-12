@@ -73,7 +73,7 @@ public class DashboardViewModel : ItemSelectedViewModelBase<CustomerViewModel>
    {
       if (customer == default)
       {
-         this._messageService.Send(this, MessageConstants.StatusMessage, $"No customer selected");
+         this._messageService.Send(this, MessageConstants.StatusMessage, "No customer selected");
          return;
       }
 

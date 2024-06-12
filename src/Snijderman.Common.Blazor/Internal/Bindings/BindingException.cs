@@ -1,13 +1,10 @@
 using System;
-using System.Runtime.Serialization;
 
 namespace Snijderman.Common.Blazor.Internal.Bindings;
 
 public class BindingException : Exception
 {
    public BindingException() { }
-
-   protected BindingException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
    public BindingException(string message) : base(message) { }
 

@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.Serialization;
 
 namespace Snijderman.Common.Http;
 
@@ -18,9 +17,6 @@ public class ApiException : Exception
    {
    }
 
-   protected ApiException(SerializationInfo info, StreamingContext context) : base(info, context)
-   {
-   }
    public int StatusCode { get; set; }
 
    public string Content { get; set; }

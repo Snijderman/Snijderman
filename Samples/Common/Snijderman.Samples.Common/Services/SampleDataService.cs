@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Snijderman.Samples.Common.Model;
@@ -12,11 +13,11 @@ public class SampleDataService : ISampleDataService
 
    private static IEnumerable<Customer> GetAllCompaniesOrdersAndOrderDetails()
    {
-      return new List<Customer>()
-            {
-                new Customer()
+      return new List<Customer>
+      {
+                new Customer
                 {
-                    CompanyID = "ALFKI",
+                    CompanyId = "ALFKI",
                     CompanyName = "Company A",
                     ContactName = "Maria Anders",
                     ContactTitle = "Sales Representative",
@@ -26,11 +27,11 @@ public class SampleDataService : ISampleDataService
                     Country = "Germany",
                     Phone = "030-0074321",
                     Fax = "030-0076545",
-                    Orders = new List<Order>()
+                    Orders = new List<Order>
                     {
-                        new Order()
+                        new Order
                         {
-                            OrderID = 10643, // Symbol Globe
+                            OrderId = 10643, // Symbol Globe
                             OrderDate = new DateTime(1997, 8, 25),
                             RequiredDate = new DateTime(1997, 9, 22),
                             ShippedDate = new DateTime(1997, 9, 22),
@@ -42,11 +43,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 814.50,
                             Status = "Shipped",
                             SymbolCode = 57643,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 28,
+                                    ProductId = 28,
                                     ProductName = "Rössle Sauerkraut",
                                     Quantity = 15,
                                     Discount = 0.25,
@@ -56,9 +57,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Dried fruit and bean curd",
                                     Total = 513.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 39,
+                                    ProductId = 39,
                                     ProductName = "Chartreuse verte",
                                     Quantity = 21,
                                     Discount = 0.25,
@@ -68,9 +69,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Soft drinks, coffees, teas, beers, and ales",
                                     Total = 283.50
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 46,
+                                    ProductId = 46,
                                     ProductName = "Spegesild",
                                     Quantity = 2,
                                     Discount = 0.25,
@@ -82,9 +83,9 @@ public class SampleDataService : ISampleDataService
                                 }
                             }
                         },
-                        new Order()
+                        new Order
                         {
-                            OrderID = 1512, // Symbol Music
+                            OrderId = 1512, // Symbol Music
                             OrderDate = new DateTime(1998, 1, 15),
                             RequiredDate = new DateTime(1998, 2, 12),
                             ShippedDate = new DateTime(1998, 1, 21),
@@ -96,11 +97,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 845.80,
                             Status = "Closed",
                             SymbolCode = 57737,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 59,
+                                    ProductId = 59,
                                     ProductName = "Raclette Courdavault",
                                     Quantity = 15,
                                     Discount = 0,
@@ -110,9 +111,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Cheeses",
                                     Total = 825.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 77,
+                                    ProductId = 77,
                                     ProductName = "Original Frankfurter grüne Soße",
                                     Quantity = 2,
                                     Discount = 0.2,
@@ -124,9 +125,9 @@ public class SampleDataService : ISampleDataService
                                 }
                             }
                         },
-                        new Order()
+                        new Order
                         {
-                            OrderID = 10952, // Symbol Calendar
+                            OrderId = 10952, // Symbol Calendar
                             OrderDate = new DateTime(1998, 3, 16),
                             RequiredDate = new DateTime(1998, 4, 27),
                             ShippedDate = new DateTime(1998, 3, 24),
@@ -138,11 +139,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 471.20,
                             Status = "Closed",
                             SymbolCode = 57699,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 6,
+                                    ProductId = 6,
                                     ProductName = "Grandma's Boysenberry Spread",
                                     Quantity = 16,
                                     Discount = 0.05,
@@ -152,9 +153,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Sweet and savory sauces, relishes, spreads, and seasonings",
                                     Total = 380.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 28,
+                                    ProductId = 28,
                                     ProductName = "Rössle Sauerkraut",
                                     Quantity = 2,
                                     Discount = 0,
@@ -168,9 +169,9 @@ public class SampleDataService : ISampleDataService
                         }
                     }
                 },
-                new Customer()
+                new Customer
                 {
-                    CompanyID = "ANATR",
+                    CompanyId = "ANATR",
                     CompanyName = "Company F",
                     ContactName = "Ana Trujillo",
                     ContactTitle = "Owner",
@@ -180,11 +181,11 @@ public class SampleDataService : ISampleDataService
                     Country = "Mexico",
                     Phone = "(5) 555-4729",
                     Fax = "(5) 555-3745",
-                    Orders = new List<Order>()
+                    Orders = new List<Order>
                     {
-                        new Order()
+                        new Order
                         {
-                            OrderID = 10625, // Symbol Camera
+                            OrderId = 10625, // Symbol Camera
                             OrderDate = new DateTime(1997, 8, 8),
                             RequiredDate = new DateTime(1997, 9, 5),
                             ShippedDate = new DateTime(1997, 8, 14),
@@ -196,11 +197,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 469.75,
                             Status = "Shipped",
                             SymbolCode = 57620,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 14,
+                                    ProductId = 14,
                                     ProductName = "Tofu",
                                     Quantity = 3,
                                     Discount = 0,
@@ -210,9 +211,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Dried fruit and bean curd",
                                     Total = 69.75
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 42,
+                                    ProductId = 42,
                                     ProductName = "Singaporean Hokkien Fried Mee",
                                     Quantity = 5,
                                     Discount = 0,
@@ -222,9 +223,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Breads, crackers, pasta, and cereal",
                                     Total = 70.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 60,
+                                    ProductId = 60,
                                     ProductName = "Camembert Pierrot",
                                     Quantity = 10,
                                     Discount = 0,
@@ -236,9 +237,9 @@ public class SampleDataService : ISampleDataService
                                 }
                             }
                         },
-                        new Order()
+                        new Order
                         {
-                            OrderID = 10926, // Symbol Clock
+                            OrderId = 10926, // Symbol Clock
                             OrderDate = new DateTime(1998, 3, 4),
                             RequiredDate = new DateTime(1998, 4, 1),
                             ShippedDate = new DateTime(1998, 3, 11),
@@ -250,11 +251,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 507.20,
                             Status = "Shipped",
                             SymbolCode = 57633,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 11,
+                                    ProductId = 11,
                                     ProductName = "Queso Cabrales",
                                     Quantity = 2,
                                     Discount = 0,
@@ -264,9 +265,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Cheeses",
                                     Total = 42.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 13,
+                                    ProductId = 13,
                                     ProductName = "Konbu",
                                     Quantity = 10,
                                     Discount = 0,
@@ -276,9 +277,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Seaweed and fish",
                                     Total = 60.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 19,
+                                    ProductId = 19,
                                     ProductName = "Teatime Chocolate Biscuits",
                                     Quantity = 7,
                                     Discount = 0,
@@ -288,9 +289,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Desserts, candies, and sweet breads",
                                     Total = 64.40
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 72,
+                                    ProductId = 72,
                                     ProductName = "Mozzarella di Giovanni",
                                     Quantity = 10,
                                     Discount = 0,
@@ -304,9 +305,9 @@ public class SampleDataService : ISampleDataService
                         }
                     }
                 },
-                new Customer()
+                new Customer
                 {
-                    CompanyID = "ANTON",
+                    CompanyId = "ANTON",
                     CompanyName = "Company Z",
                     ContactName = "Antonio Moreno",
                     ContactTitle = "Owner",
@@ -316,11 +317,11 @@ public class SampleDataService : ISampleDataService
                     Country = "Mexico",
                     Phone = "(5) 555-3932",
                     Fax = string.Empty,
-                    Orders = new List<Order>()
+                    Orders = new List<Order>
                     {
-                        new Order()
+                        new Order
                         {
-                            OrderID = 10507, // Symbol Contact
+                            OrderId = 10507, // Symbol Contact
                             OrderDate = new DateTime(1997, 4, 15),
                             RequiredDate = new DateTime(1997, 5, 13),
                             ShippedDate = new DateTime(1997, 4, 22),
@@ -332,11 +333,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 978.50,
                             Status = "Closed",
                             SymbolCode = 57661,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 43,
+                                    ProductId = 43,
                                     ProductName = "Ipoh Coffee",
                                     Quantity = 15,
                                     Discount = 0.15,
@@ -346,9 +347,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Soft drinks, coffees, teas, beers, and ales",
                                     Total = 816.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 48,
+                                    ProductId = 48,
                                     ProductName = "Chocolade",
                                     Quantity = 15,
                                     Discount = 0.15,
@@ -360,9 +361,9 @@ public class SampleDataService : ISampleDataService
                                 }
                             }
                         },
-                        new Order()
+                        new Order
                         {
-                            OrderID = 10573, // Symbol Star
+                            OrderId = 10573, // Symbol Star
                             OrderDate = new DateTime(1997, 6, 19),
                             RequiredDate = new DateTime(1997, 7, 17),
                             ShippedDate = new DateTime(1997, 6, 20),
@@ -374,11 +375,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 2082.00,
                             Status = "Closed",
                             SymbolCode = 57619,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 17,
+                                    ProductId = 17,
                                     ProductName = "Alice Mutton",
                                     Quantity = 18,
                                     Discount = 0,
@@ -388,9 +389,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Prepared meats",
                                     Total = 702.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 34,
+                                    ProductId = 34,
                                     ProductName = "Sasquatch Ale",
                                     Quantity = 40,
                                     Discount = 0,
@@ -400,9 +401,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Soft drinks, coffees, teas, beers, and ales",
                                     Total = 560.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 53,
+                                    ProductId = 53,
                                     ProductName = "Perth Pasties",
                                     Quantity = 25,
                                     Discount = 0,
@@ -414,9 +415,9 @@ public class SampleDataService : ISampleDataService
                                 }
                             }
                         },
-                        new Order()
+                        new Order
                         {
-                            OrderID = 10682, // Symbol Home
+                            OrderId = 10682, // Symbol Home
                             OrderDate = new DateTime(1997, 9, 25),
                             RequiredDate = new DateTime(1997, 10, 23),
                             ShippedDate = new DateTime(1997, 10, 1),
@@ -428,11 +429,11 @@ public class SampleDataService : ISampleDataService
                             OrderTotal = 375.50,
                             Status = "Closed",
                             SymbolCode = 57615,
-                            Details = new List<OrderDetail>()
+                            Details = new List<OrderDetail>
                             {
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 33,
+                                    ProductId = 33,
                                     ProductName = "Geitost",
                                     Quantity = 30,
                                     Discount = 0,
@@ -442,9 +443,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Cheeses",
                                     Total = 75.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 66,
+                                    ProductId = 66,
                                     ProductName = "Louisiana Hot Spiced Okra",
                                     Quantity = 4,
                                     Discount = 0,
@@ -454,9 +455,9 @@ public class SampleDataService : ISampleDataService
                                     CategoryDescription = "Sweet and savory sauces, relishes, spreads, and seasonings",
                                     Total = 68.00
                                 },
-                                new OrderDetail()
+                                new OrderDetail
                                 {
-                                    ProductID = 75,
+                                    ProductId = 75,
                                     ProductName = "Rhönbräu Klosterbier",
                                     Quantity = 30,
                                     Discount = 0,
@@ -482,19 +483,19 @@ public class SampleDataService : ISampleDataService
    public async Task<IEnumerable<Order>> GetOrdersAsync(string companyId)
    {
       await Task.Delay(750).ConfigureAwait(false);
-      System.Diagnostics.Debug.WriteLine("GetOrdersAsync");
-      return _allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.AsEnumerable();
+      Debug.WriteLine("GetOrdersAsync");
+      return _allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyId, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.AsEnumerable();
    }
 
    public async Task<Order> GetOrderAsync(string companyId, long orderId)
    {
       await Task.Delay(750).ConfigureAwait(false);
-      return _allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyID, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.FirstOrDefault(x => x.OrderID == orderId);
+      return _allCompaniesOrdersAndOrderDetails.FirstOrDefault(x => string.Equals(x.CompanyId, companyId, StringComparison.OrdinalIgnoreCase))?.Orders.FirstOrDefault(x => x.OrderId == orderId);
    }
 
    public async Task<IEnumerable<OrderDetail>> GetOrderDetailsAsync(long orderId)
    {
       await Task.Delay(750).ConfigureAwait(false);
-      return _allCompaniesOrdersAndOrderDetails.SelectMany(x => x.Orders).FirstOrDefault(x => x.OrderID == orderId)?.Details.AsEnumerable();
+      return _allCompaniesOrdersAndOrderDetails.SelectMany(x => x.Orders).FirstOrDefault(x => x.OrderId == orderId)?.Details.AsEnumerable();
    }
 }

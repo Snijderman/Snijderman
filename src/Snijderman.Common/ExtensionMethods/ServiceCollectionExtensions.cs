@@ -52,7 +52,7 @@ public static class ServiceCollectionExtensions
 
       RemoveRegisteredServiceTypes<TService>(services, ServiceLifetime.Transient);
 
-      services.AddTransient(typeof(TService), (sp) => implementationFactory(sp));
+      services.AddTransient(typeof(TService), sp => implementationFactory(sp));
    }
 
    /// <summary>
@@ -88,7 +88,7 @@ public static class ServiceCollectionExtensions
 
       RemoveRegisteredServiceTypes<TService>(services, ServiceLifetime.Scoped);
 
-      services.AddScoped(typeof(TService), (sp) => implementationFactory(sp));
+      services.AddScoped(typeof(TService), sp => implementationFactory(sp));
    }
 
    /// <summary>
@@ -124,7 +124,7 @@ public static class ServiceCollectionExtensions
 
       RemoveRegisteredServiceTypes<TService>(services, ServiceLifetime.Singleton);
 
-      services.AddSingleton(typeof(TService), (sp) => implementationFactory(sp));
+      services.AddSingleton(typeof(TService), sp => implementationFactory(sp));
    }
 
    public static TService TryGetServiceFromServiceCollection<TService>(this IServiceCollection services)

@@ -22,7 +22,7 @@
                    SelectionMode="Single"
                    Margin="10, 25, 10, 10">
          <DataGrid.Columns>
-            <snijdermanControls:DataGridTextColumn Header="ProductID" Binding="{Binding ProductID}"/>
+            <snijdermanControls:DataGridTextColumn Header="ProductID" Binding="{Binding ProductId}"/>
             <snijdermanControls:DataGridTextColumn Header="ProductName"  Binding="{Binding ProductName}"/>
             <snijdermanControls:DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
             <snijdermanControls:DataGridTextColumn Header="QuantityPerUnit" Binding="{Binding QuantityPerUnit}"/>

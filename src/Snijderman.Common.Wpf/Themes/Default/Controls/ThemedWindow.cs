@@ -17,18 +17,18 @@ namespace Snijderman.Common.Wpf.Themes.Default.Controls;
 /// <summary>
 /// Window with custom chrome supporting theming of non-client areas
 /// </summary>
-[TemplatePart(Name = PART_DragMoveThumb, Type = typeof(FrameworkElement))]
-[TemplatePart(Name = PART_IconPresenter, Type = typeof(FrameworkElement))]
-[TemplatePart(Name = PART_MinimizeButton, Type = typeof(Button))]
-[TemplatePart(Name = PART_MaximizeRestoreButton, Type = typeof(Button))]
-[TemplatePart(Name = PART_CloseButton, Type = typeof(Button))]
+[TemplatePart(Name = PartDragMoveThumb, Type = typeof(FrameworkElement))]
+[TemplatePart(Name = PartIconPresenter, Type = typeof(FrameworkElement))]
+[TemplatePart(Name = PartMinimizeButton, Type = typeof(Button))]
+[TemplatePart(Name = PartMaximizeRestoreButton, Type = typeof(Button))]
+[TemplatePart(Name = PartCloseButton, Type = typeof(Button))]
 public class ThemedWindow : Window
 {
-   private const string PART_DragMoveThumb = "PART_DragMoveThumb";
-   private const string PART_IconPresenter = "PART_IconPresenter";
-   private const string PART_MinimizeButton = "PART_MinimizeButton";
-   private const string PART_MaximizeRestoreButton = "PART_MaximizeRestoreButton";
-   private const string PART_CloseButton = "PART_CloseButton";
+   private const string PartDragMoveThumb = "PART_DragMoveThumb";
+   private const string PartIconPresenter = "PART_IconPresenter";
+   private const string PartMinimizeButton = "PART_MinimizeButton";
+   private const string PartMaximizeRestoreButton = "PART_MaximizeRestoreButton";
+   private const string PartCloseButton = "PART_CloseButton";
 
    static ThemedWindow()
    {
@@ -74,7 +74,7 @@ public class ThemedWindow : Window
    /// </summary>
    public object TitleBarContent
    {
-      get => (object)this.GetValue(TitleBarContentProperty);
+      get => this.GetValue(TitleBarContentProperty);
       set => this.SetValue(TitleBarContentProperty, value);
    }
 
@@ -181,11 +181,11 @@ public class ThemedWindow : Window
 
       this.HwndInterop = new HwndInterop(this);
 
-      this.DragMoveThumb = this.GetTemplateChild(PART_DragMoveThumb) as FrameworkElement;
-      this.IconPresenter = this.GetTemplateChild(PART_IconPresenter) as FrameworkElement;
-      this.MinimizeButton = this.GetTemplateChild(PART_MinimizeButton) as Button;
-      this.MaximizeRestoreButton = this.GetTemplateChild(PART_MaximizeRestoreButton) as Button;
-      this.CloseButton = this.GetTemplateChild(PART_CloseButton) as Button;
+      this.DragMoveThumb = this.GetTemplateChild(PartDragMoveThumb) as FrameworkElement;
+      this.IconPresenter = this.GetTemplateChild(PartIconPresenter) as FrameworkElement;
+      this.MinimizeButton = this.GetTemplateChild(PartMinimizeButton) as Button;
+      this.MaximizeRestoreButton = this.GetTemplateChild(PartMaximizeRestoreButton) as Button;
+      this.CloseButton = this.GetTemplateChild(PartCloseButton) as Button;
 
       if (this.DragMoveThumb != null)
       {
@@ -460,7 +460,7 @@ public class ThemedWindow : Window
    /// </summary>
    private void DisableSizeToContentWhenMaximizing(object sender, HwndInteropPositionChangingEventArgs e)
    {
-      if (e.Type == HwndInteropPositionChangingEventArgs.PositionChangeType.MAXIMIZERESTORE)
+      if (e.Type == HwndInteropPositionChangingEventArgs.PositionChangeType.Maximizerestore)
       {
          this.SizeToContent = SizeToContent.Manual;
       }

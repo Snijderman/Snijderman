@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Snijderman.Common.ExtensionMethods;
 
-public static class IAsyncEnumerableExtensions
+public static class AsyncEnumerableExtensions
 {
    public static async Task<IEnumerable<T>> GetAsEnumerable<T>(this IAsyncEnumerable<T> asyncEnumerable)
    {

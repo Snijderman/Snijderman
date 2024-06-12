@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 namespace Snijderman.Common.Wpf.Themes.Default.Helpers;
 
-public class UINavigator
+public class UiNavigator
 {
    public static T FindVisualChild<T>(DependencyObject depObj) where T : DependencyObject
    {

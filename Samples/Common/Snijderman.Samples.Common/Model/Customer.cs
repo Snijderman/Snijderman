@@ -4,7 +4,7 @@ namespace Snijderman.Samples.Common.Model;
 
 public class Customer
 {
-   public string CompanyID { get; set; }
+   public string CompanyId { get; set; }
 
    public string CompanyName { get; set; }
 

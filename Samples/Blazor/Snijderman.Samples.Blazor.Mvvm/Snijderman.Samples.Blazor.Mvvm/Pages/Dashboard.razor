@@ -1,7 +1,7 @@
 @page "/"
 @inherits MvvmViewModelComponentBase<DashboardViewModel>
 
-@if (this.ViewModel?.Customers == default)
+@if (ViewModel?.Customers == default)
 {
    <WaitingCube />
 }
@@ -9,13 +9,13 @@ else
 {
    <Tabs SelectedTab="@Bind(x => x.SelectedItem)" SelectedTabChanged="@ViewModel.SetSelectedTab">
       <Items>
-         @foreach (var customer in this.ViewModel.Customers)
+         @foreach (var customer in ViewModel.Customers)
          {
             <Tab Name="@customer.CompanyId" @key=customer>@customer.CompanyName</Tab>
          }
       </Items>
       <Content>
-         @foreach (var customer in this.ViewModel.Customers)
+         @foreach (var customer in ViewModel.Customers)
          {
             <TabPanel Name="@customer.CompanyId">
                <Snijderman.Samples.Blazor.Mvvm.Components.MainTabContent ViewModelInput="@customer" />

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
    <PropertyGroup>
-      <TargetFrameworks>net6.0-windows</TargetFrameworks>
+      <TargetFrameworks>net8.0-windows</TargetFrameworks>
       <IsTestProject>false</IsTestProject>
       <UseWPF>true</UseWPF>
 
@@ -18,6 +18,7 @@
       <RepositoryType>git</RepositoryType>
       <PackageTags>WPF;.NET Core;MVVM</PackageTags>
       <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
    </PropertyGroup>
 
    <ItemGroup>
@@ -33,9 +34,9 @@
    </ItemGroup>
 
    <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-      <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+      <PackageReference Include="System.Drawing.Common" Version="8.0.6" />
+      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
    </ItemGroup>
 
    <ItemGroup>

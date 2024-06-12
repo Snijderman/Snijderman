@@ -1,16 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
    <PropertyGroup>
-      <ClassLibTargetFrameworks>net6.0</ClassLibTargetFrameworks>
+      <ClassLibTargetFrameworks>net8.0</ClassLibTargetFrameworks>
       <OutputType>Library</OutputType>
       <RazorLangVersion>3.0</RazorLangVersion>
       <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
       <LangVersion>latest</LangVersion>
+      <Nullable>disable</Nullable>
    </PropertyGroup>
 
    <ItemGroup>
-      <PackageReference Include="Blazorise.Icons.Material" Version="0.9.5.6" />
-      <PackageReference Include="Blazorise.Material" Version="0.9.5.6" />
+      <PackageReference Include="Blazorise.Icons.Material" Version="1.5.3" />
+      <PackageReference Include="Blazorise.Material" Version="1.5.3" />
    </ItemGroup>
 
    <ItemGroup>

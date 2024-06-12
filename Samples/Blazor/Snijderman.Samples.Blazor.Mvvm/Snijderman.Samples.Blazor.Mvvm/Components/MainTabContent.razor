@@ -2,20 +2,20 @@
 
 <Heading Size="HeadingSize.Is6" Style="margin-left: 40px;">Orders</Heading>
 
-@if (this.ViewModel.IsLoaded)
+@if (ViewModel.IsLoaded)
 {
    <Layout Sider="true">
       <LayoutSider Margin="Margin.Is2">
          <LayoutSiderContent Style="width: 150px; background-color: white;">
-            @foreach (var order in this.ViewModel.Orders)
+            @foreach (var order in ViewModel.Orders)
             {
-               <Button Color="Color.Dark" Block="true" @onclick="@(() => this.SelectOrderAsync(order.OrderId))">@order.OrderId</Button>
+               <Button Color="Color.Dark" Block="true" @onclick="@(() => SelectOrderAsync(order.OrderId))">@order.OrderId</Button>
             }
          </LayoutSiderContent>
       </LayoutSider>
       <Layout>
          <LayoutContent>
-            <OrderDetails @ref="this._orderDetails" Customer="@this.ViewModel" />
+            <OrderDetails @ref="_orderDetails" Customer="@ViewModel" />
          </LayoutContent>
       </Layout>
    </Layout>
@@ -31,6 +31,6 @@ else
    private async Task SelectOrderAsync(long orderId)
    {
       //this._selectedOrderId = orderId;
-      await this._orderDetails.SetOrderViewModelAsync(orderId);
+      await _orderDetails.SetOrderViewModelAsync(orderId);
    }
 }

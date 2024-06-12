@@ -7,20 +7,11 @@ namespace Snijderman.Common.Utils;
 public static class Cryptography
 {
    /// <summary>
-   /// Creates a random byte array of 32 bytes
-   /// </summary>
-   /// <returns></returns>
-   public static byte[] GenerateRandomBytes()
-   {
-      return GenerateRandomBytes(32);
-   }
-
-   /// <summary>
    /// Creates a random byte array
    /// </summary>
    /// <param name="byteCount">Size of the byte array</param>
    /// <returns></returns>
-   public static byte[] GenerateRandomBytes(int byteCount)
+   public static byte[] GenerateRandomBytes(int byteCount = 64)
    {
       var data = new byte[byteCount];
 
@@ -30,10 +21,7 @@ public static class Cryptography
       return data;
    }
 
-   public static Rfc2898DeriveBytes CreateRfc2898DeriveBytes(byte[] password, byte[] salt)
-   {
-      return new Rfc2898DeriveBytes(password, salt, 1512);
-   }
+   public static Rfc2898DeriveBytes CreateRfc2898DeriveBytes(byte[] password, byte[] salt) => new(password, salt, 1512, HashAlgorithmName.SHA512);
 
    public static Aes CreateAesCryptography(Rfc2898DeriveBytes cryptoKey)
    {

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Snijderman.Common.Wpf.Controls">
 
-   <Style TargetType="controls:BBCodeBlock">
+   <Style TargetType="controls:BbCodeBlock">
       <Setter Property="TextTrimming" Value="CharacterEllipsis" />
       <Setter Property="TextWrapping" Value="Wrap" />
    </Style>

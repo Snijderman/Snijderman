@@ -109,7 +109,7 @@ public class MessageService : IMessageService
 
    class Subscriber
    {
-      private readonly WeakReference _reference = null;
+      private readonly WeakReference _reference;
 
       private readonly Dictionary<Type, Subscriptions> _subscriptions;
 
@@ -166,7 +166,7 @@ public class MessageService : IMessageService
 
    class Subscriptions
    {
-      private readonly Dictionary<Type, Delegate> _subscriptions = null;
+      private readonly Dictionary<Type, Delegate> _subscriptions;
 
       public Subscriptions()
       {

@@ -17,7 +17,7 @@ public class AsyncCommand<T> : CommandBase, IAsyncCommand<T>
       if (canExecute == null)
       {
          // no can execute provided, then always executable
-         canExecute = (o) => true;
+         canExecute = o => true;
       }
       this._canExecute = canExecute;
       this._errorHandler = errorHandler;
@@ -42,7 +42,7 @@ public class AsyncCommand : CommandBase, IAsyncCommand
       if (canExecute == null)
       {
          // no can execute provided, then always executable
-         canExecute = (o) => true;
+         canExecute = o => true;
       }
       this._canExecute = canExecute;
       this._errorHandler = errorHandler;

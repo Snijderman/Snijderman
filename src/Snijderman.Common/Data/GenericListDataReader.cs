@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
+using Snijderman.Common.CodeCoverage;
 
 namespace Snijderman.Common.Data;
 
-[CodeCoverage.ExcludeFromCodeCoverage("")]
+[ExcludeFromCodeCoverage("")]
 public class GenericListDataReader<T> : IDataReader
 {
    private readonly IEnumerator<T> _list;

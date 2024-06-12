@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace Snijderman.Common.Async.ProducerConsumer;
 
@@ -22,10 +21,6 @@ public class ProducerConsumerException : Exception
    public ProducerConsumerException(string message, IList<Exception> innerExceptions) : base(message)
    {
       this.InnerExceptions = innerExceptions;
-   }
-
-   protected ProducerConsumerException(SerializationInfo info, StreamingContext context) : base(info, context)
-   {
    }
 
    public IList<Exception> InnerExceptions { get; private set; } = new List<Exception>();

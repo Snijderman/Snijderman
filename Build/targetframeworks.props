@@ -1,9 +1,9 @@
 <Project>
    <PropertyGroup>
 
-      <ClassLibTargetFrameworks>net6.0</ClassLibTargetFrameworks>
+      <ClassLibTargetFrameworks>net8.0</ClassLibTargetFrameworks>
 
-      <ApplicationTargetFrameworks>net6.0</ApplicationTargetFrameworks>
+      <ApplicationTargetFrameworks>net8.0</ApplicationTargetFrameworks>
 
    </PropertyGroup>
 </Project>

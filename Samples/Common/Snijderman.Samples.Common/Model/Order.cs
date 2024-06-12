@@ -5,7 +5,7 @@ namespace Snijderman.Samples.Common.Model;
 
 public class Order
 {
-   public long OrderID { get; set; }
+   public long OrderId { get; set; }
 
    public DateTime OrderDate { get; set; }
 
@@ -35,5 +35,5 @@ public class Order
 
    public override string ToString() => $"{this.Company} {this.Status}";
 
-   public string ShortDescription => $"Order ID: {this.OrderID}";
+   public string ShortDescription => $"Order ID: {this.OrderId}";
 }
