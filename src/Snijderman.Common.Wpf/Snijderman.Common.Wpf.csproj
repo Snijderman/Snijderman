@@ -18,6 +18,7 @@
       <RepositoryType>git</RepositoryType>
       <PackageTags>WPF;.NET Core;MVVM</PackageTags>
       <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
    </PropertyGroup>
 
    <ItemGroup>

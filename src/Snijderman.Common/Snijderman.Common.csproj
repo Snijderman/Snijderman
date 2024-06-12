@@ -10,7 +10,12 @@
       <RepositoryType>git</RepositoryType>
       <PackageTags>NET Core</PackageTags>
       <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
    </PropertyGroup>
+
+   <ItemGroup>
+      <None Include=".\..\..\ReadMe\ReadMeCommon.md" Pack="true" PackagePath="\README.md" />
+   </ItemGroup>
 
    <ItemGroup>
       <PackageReference Include="Grpc.Net.Client" Version="2.63.0" />
