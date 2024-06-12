@@ -31,11 +31,9 @@ public class ApplicationHostService : IHostedService
 
    public virtual async Task StopAsync(CancellationToken cancellationToken) => await Task.CompletedTask.ConfigureAwait(false);
 
-   public virtual async Task InitializeAsync() => await Task.CompletedTask.ConfigureAwait(false);
+   protected virtual async Task InitializeAsync() => await Task.CompletedTask.ConfigureAwait(false);
 
-   public virtual async Task StartupAsync() => await Task.CompletedTask.ConfigureAwait(false);
-
-   public virtual async Task HandleActivationAsync()
+   protected virtual async Task HandleActivationAsync()
    {
       if (!Application.Current.Windows.OfType<IShellWindow>().Any())
       {
@@ -51,4 +49,6 @@ public class ApplicationHostService : IHostedService
          await Task.CompletedTask.ConfigureAwait(false);
       }
    }
+
+   protected virtual async Task StartupAsync() => await Task.CompletedTask.ConfigureAwait(false);
 }
