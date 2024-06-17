@@ -1,7 +1,5 @@
 using System;
-using System.Threading.Tasks;
 using Snijderman.Common.Mvvm;
-using Snijderman.Wpf.MVVM.Example.ViewModels;
 
 namespace Snijderman.Wpf.MVVM.Example.Services;
 
@@ -11,6 +9,4 @@ public class WpfNavigationService : NavigationService
    {
 
    }
-
-   public new async Task NavigateToAsync<TVm>(Func<TVm, IMvvmControl<TVm>, Task> handleNavigation) where TVm : IWpfMvvmViewModel => await base.NavigateToAsync(handleNavigation).ConfigureAwait(false);
 }

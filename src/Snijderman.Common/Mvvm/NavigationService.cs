@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Snijderman.Common.Helpers;
 
 namespace Snijderman.Common.Mvvm;
 
@@ -30,5 +31,18 @@ public class NavigationService : INavigationService
       }
 
       await handleNavigation(vm ?? viewModel, controlToShow).ConfigureAwait(false);
+   }
+
+   public async Task NavigateToAsync(Type viewModelType, Func<IMvvmViewModel, IMvvmControl<IMvvmViewModel>, Task> handleNavigation)
+   {
+      ArgumentNullException.ThrowIfNull(viewModelType);
+
+      // check if viewModelType is a subclass of IMvvmViewModel
+      if (!typeof(IMvvmViewModel).IsAssignableFrom(viewModelType))
+      {
+         throw new ArgumentException($"Type {viewModelType.FullName} does not implement {nameof(IMvvmViewModel)}");
+      }
+
+      await Reflection.MakeGenericMethodAndInvokeAsync(this, nameof(this.NavigateToAsync), [viewModelType], [handleNavigation]).ConfigureAwait(false);
    }
 }

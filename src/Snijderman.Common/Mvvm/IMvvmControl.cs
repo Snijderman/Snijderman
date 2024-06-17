@@ -1,6 +1,6 @@
 namespace Snijderman.Common.Mvvm;
 
-public interface IMvvmControl<VM> where VM : IMvvmViewModel
+public interface IMvvmControl<out TVm> where TVm : IMvvmViewModel
 {
-   public VM GetViewModel();
+   public TVm GetViewModel();
 }

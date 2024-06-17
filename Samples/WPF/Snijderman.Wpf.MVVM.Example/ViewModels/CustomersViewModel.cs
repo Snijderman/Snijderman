@@ -60,11 +60,20 @@ public class CustomersViewModel : ItemSelectedViewModelBase<CustomerViewModel>, 
 
       this._messageService.Send(this, MessageConstants.StatusMessage, $"Customer '{customer.CompanyId}' selected");
 
-      await this._navigationService.NavigateToAsync<OrdersViewModel>(async (viewModel, controlToShow) =>
+      try
       {
-         customer.VmContentControl.Content = controlToShow;//.GetViewModel().VmContentControl;
-         await viewModel.LoadAsync(new object[] { customer.CompanyId }).ConfigureAwait(false);
-      }).ConfigureAwait(false);
+         await this._navigationService.NavigateToAsync<OrdersViewModel>(async (viewModel, controlToShow) =>
+         {
+            customer.VmContentControl.Content = controlToShow;
+            await viewModel.LoadAsync([customer.CompanyId]).ConfigureAwait(false);
+         }).ConfigureAwait(false);
+      }
+      catch (Exception exc)
+      {
+         Console.WriteLine(exc);
+         this._messageService.Send(this, MessageConstants.StatusMessage, $"An error occurred: {exc.Message}");
+      }
+
       this._messageService.Send(this, MessageConstants.DisplayWaiting, false);
    }
 }

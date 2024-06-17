@@ -2,13 +2,13 @@
    <PropertyGroup>
 
       <!-- package version of Snijderman -->
-      <SnijdermanVersion>8.0.1</SnijdermanVersion>
+      <SnijdermanVersion>8.0.8</SnijdermanVersion>
 
       <!-- assembly version of Snijderman -->
-      <SnijdermanAssemblyVersion>8.0.1</SnijdermanAssemblyVersion>
+      <SnijdermanAssemblyVersion>8.0.8</SnijdermanAssemblyVersion>
 
       <!-- file version of all Snijderman -->
-      <SnijdermanFileVersion>8.0.1</SnijdermanFileVersion>
+      <SnijdermanFileVersion>8.0.8</SnijdermanFileVersion>
 
    </PropertyGroup>
 </Project>

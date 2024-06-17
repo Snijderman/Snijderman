@@ -17,7 +17,7 @@ public class ApplicationHostService : Common.Wpf.Mvvm.Services.ApplicationHostSe
       this._messageService = messageService;
    }
 
-   public override async Task HandleActivationAsync()
+   protected override async Task HandleActivationAsync()
    {
       await base.HandleActivationAsync().ConfigureAwait(false);
 

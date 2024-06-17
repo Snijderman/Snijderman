@@ -62,6 +62,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{9674FE
 		ReadMe\ReadMeWpf.md = ReadMe\ReadMeWpf.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{48C60441-F436-40F8-B4F6-8B75CEFFE0D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snijderman.Common.Tests", "Tests\Snijderman.Common.Tests\Snijderman.Common.Tests.csproj", "{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -150,6 +154,14 @@ Global
 		{633246D8-7464-4E09-A3BE-35DA5BB4FE77}.Release|Any CPU.Build.0 = Release|Any CPU
 		{633246D8-7464-4E09-A3BE-35DA5BB4FE77}.Release|x64.ActiveCfg = Release|x64
 		{633246D8-7464-4E09-A3BE-35DA5BB4FE77}.Release|x64.Build.0 = Release|x64
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Debug|x64.ActiveCfg = Debug|x64
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Debug|x64.Build.0 = Debug|x64
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Release|x64.ActiveCfg = Release|x64
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,6 +179,7 @@ Global
 		{5EA426CE-6011-4634-93F6-CA1A6BF97956} = {5A8FCD07-A174-4F5A-8545-13148090CE1F}
 		{ED0F29AC-0ABB-4BEB-B3F6-6539FE70BDDF} = {5A8FCD07-A174-4F5A-8545-13148090CE1F}
 		{633246D8-7464-4E09-A3BE-35DA5BB4FE77} = {5A8FCD07-A174-4F5A-8545-13148090CE1F}
+		{2AB1BFD9-2883-40F0-B456-7262A2FE5A39} = {48C60441-F436-40F8-B4F6-8B75CEFFE0D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {89C4F664-FB53-47D1-BCA6-9C4527FA7693}
